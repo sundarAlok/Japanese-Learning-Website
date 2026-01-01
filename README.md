@@ -1,9 +1,9 @@
-# 🇯🇵 Japanese Learning Website
+# Japanese Learning Website
 
 A clean, modern, and beginner-friendly **Japanese language learning website** built using **HTML, Tailwind CSS, and Vanilla JavaScript**.  
 The project focuses on **practical Japanese used in daily life**, emphasizing **complete sentences, context, and readability** instead of isolated words.
 
----
+<br>
 
 ## ✨ Key Features
 
@@ -38,7 +38,7 @@ The project focuses on **practical Japanese used in daily life**, emphasizing **
 - No external dependencies (except CDN)
 - Works offline after first load
 
----
+<br>
 
 ## 🧰 Technologies Used
 
@@ -47,7 +47,7 @@ The project focuses on **practical Japanese used in daily life**, emphasizing **
 - **Vanilla JavaScript** – Interactivity and logic
 - **Custom CSS** – Fonts, hover effects, animations
 
----
+<br>
 
 ## 📂 Project Structure
 
@@ -66,6 +66,7 @@ Japanese/
   ├── .gitignore
   └── README.md
 ```
+<br>
 
 ## 🚀 How to Use
 
@@ -78,21 +79,21 @@ Japanese/
 - Edge
 - Firefox
 
----
+<br>
 
 ## 🎓 Learning Philosophy
 
-- ❌ No isolated word memorization  
-- ✅ Sentence-based understanding  
-- ✅ Context-first learning  
-- ✅ Beginner-friendly, scalable for advanced learners  
+- ✅ Vocabulary to increase word power.
+- ✅ Sentence-based understanding.
+- ✅ Context-first learning.
+- ✅ Beginner-friendly, scalable for advanced learners.
 
 **Designed for:**
 - Absolute beginners
 - JLPT N5–N4 preparation
 - Self-learners who prefer clarity and structure
 
----
+<br>
 
 ## 🔮 Possible Enhancements
 
@@ -102,20 +103,23 @@ Japanese/
 - Progress tracking
 - Offline-first PWA support
 
----
+Note: Support this project if you want enhancements.
+
+<br>
 
 ## 📄 License
 
 This project is intended for **educational and personal learning use**.  
 You are free to modify, extend, and improve it for learning purposes.
 
----
+<br>
 
 ## 🙏 Notes
 
 This project prioritizes **clarity, usability, and real-world Japanese usage**.  
 Built with a learner-first mindset and clean design principles.
 
+<br>
 
 ---
 
