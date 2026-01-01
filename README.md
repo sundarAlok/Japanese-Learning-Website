@@ -2,7 +2,9 @@
 
 A clean, modern, and beginner-friendly **Japanese language learning website** built using **HTML, Tailwind CSS, and Vanilla JavaScript**.  
 The project focuses on **practical Japanese used in daily life**, emphasizing **complete sentences, context, and readability** instead of isolated words.
-
+<br>
+<br>
+Visit: [Live-Website](https://sundaralok.github.io/Japanese-Learning-Website/)
 <br>
 
 ## ✨ Key Features
