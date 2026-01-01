@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Japanese Writing System</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+  --bg1:#f8fafc;
+  --bg2:#eef2ff;
+  --accent:#4f46e5;
+  --text:#0f172a;
+  --muted:#475569;
+}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+}
+
+/* ================= HEADER ================= */
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.85);
+  border-bottom:1px solid rgba(15,23,42,.08);
+}
+.header-inner{
+  max-width:1200px;margin:auto;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;}
+.logo{
+  width:42px;height:42px;
+  background:linear-gradient(135deg,#3e4ce6,#8351f7);
+  color:#ffffff;display:grid;place-items:center;border-radius:10px;
+}
+nav a{
+  margin-left:10px;padding:8px 14px;font-weight:600;
+  color:var(--muted);border-radius:8px;
+}
+nav a:hover{background:rgba(79,70,229,.1);color:var(--accent);}
+nav a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+
+/* mobile */
+.menu-btn{display:none;font-size:26px;cursor:pointer;}
+.mobile-menu{display:none;background:#fff;border-top:1px solid rgba(15,23,42,.08);}
+.mobile-menu a{
+  display:block;padding:14px 20px;font-weight:600;color:var(--muted);
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.mobile-menu a:hover{background:rgba(79,70,229,.08);color:var(--accent);}
+.mobile-menu a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+@media(max-width:900px){
+  nav{display:none;}
+  .menu-btn{display:block;}
+}
+
+/* ================= LAYOUT ================= */
+.container{max-width:950px;margin:auto;padding:48px 20px;}
+.section{
+  background:#fff;border-radius:16px;padding:32px;
+  box-shadow:0 15px 40px rgba(0,0,0,.05);
+  margin-bottom:32px;
+}
+.section h2{color:var(--accent);}
+
+/* visual placeholder */
+.visual-box{
+  border:2px dashed rgba(79,70,229,.25);
+  border-radius:12px;
+  padding:10px;
+  margin-top:16px;
+  background:rgba(247, 248, 253, 0.404);
+  color:#474af1;
+  font-weight:600;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
+/* comparison table */
+.table-wrap{overflow-x:auto;margin-top:16px;}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.95rem;
+}
+th,td{
+  border:1px solid rgba(15,23,42,.1);
+  padding:12px;
+  text-align:left;
+}
+th{
+  background:rgba(79,70,229,.08);
+  font-weight:700;
+}
+tbody tr:nth-child(even){
+  background:#f8fafc;
+}
+
+footer{
+  background:#fff;border-top:1px solid rgba(15,23,42,.08);
+  text-align:center;padding:24px;color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">JL</div>
+      <span>Japanese Learning</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="introduction.html">Introduction</a>
+      <a href="writingSystem.html" class="active">Writing</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="commonSentences.html">Phrases</a>
+      <a href="readingPassage.html">Reading</a>
+      <a href="additional.html">More</a>
+    </nav>
+
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="writingSystem.html" class="active">Writing</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="commonSentences.html">Phrases</a>
+    <a href="readingPassage.html">Reading</a>
+    <a href="additional.html">More</a>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- INTRO -->
+<section class="section">
+  <h1 class="text-3xl font-bold mb-3">Japanese Writing System</h1>
+
+  <p class="text-slate-700 mb-4">
+    Japanese uses multiple writing systems together, each serving a specific role
+    in reading and writing.
+  </p>
+
+  <ul class="list-disc list-inside text-slate-700 space-y-2">
+    <li><strong>Hiragana:</strong> Phonetic script used for grammar, particles, and native Japanese words.</li>
+    <li><strong>Katakana:</strong> Phonetic script used for foreign words, loanwords, and emphasis.</li>
+    <li><strong>Kanji:</strong> Meaning-based characters used for vocabulary, nouns, and verb roots.</li>
+    <li><strong>Romaji:</strong> Japanese sounds written in the Latin alphabet, mainly for beginners and typing.</li>
+  </ul>
+</section>
+
+<!-- HIRAGANA -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-3">Hiragana (ひらがな)</h2>
+  <p>
+    Hiragana is the core phonetic script used for grammar, particles, and native
+    Japanese words.
+  </p>
+
+  <ul class="list-disc list-inside mt-3 space-y-2">
+    <li>46 basic characters with additional sounds using dakuten ( ゛) and handakuten ( ゜)</li>
+    <li>Represents pure Japanese sounds (a, ka, sa, ta…)</li>
+    <li>Used for grammatical particles (は, が, を, に, で)</li>
+    <li>Used for verb and adjective endings (okurigana)</li>
+    <li>Words without Kanji are written completely in Hiragana</li>
+    <li>Stroke order is important for correct writing</li>
+    <li>First script learned by children and beginners</li>
+    <li>Essential for reading basic Japanese sentences</li>
+  </ul>
+
+  <div class="visual-box">
+    <img src="Assets/Hiragana.png" alt="Hiragana Chart" />
+  </div>
+</section>
+
+<!-- KATAKANA -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-3">Katakana (カタカナ)</h2>
+  <p>
+    Katakana is mainly used for foreign words, loanwords, and emphasis.
+  </p>
+
+  <ul class="list-disc list-inside mt-3 space-y-2">
+    <li>46 basic characters with the same sounds as Hiragana</li>
+    <li>Used for foreign loanwords (e.g., コンピュータ – computer)</li>
+    <li>Used for foreign names, places, and brand names</li>
+    <li>Common in menus, advertisements, and pop culture</li>
+    <li>Used to give emphasis, similar to italics in English</li>
+    <li>Frequently seen in science, technology, and medicine</li>
+    <li>Characters have a sharp and angular writing style</li>
+    <li>Pronunciation rules are identical to Hiragana</li>
+  </ul>
+
+  <div class="visual-box">
+    <img src="Assets/Katakana.png" alt="Katakana Chart" />
+  </div>
+</section>
+
+<!-- KANJI -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-3">Kanji (漢字)</h2>
+  <p>
+    Kanji are meaning-based characters borrowed from Chinese and adapted into
+    Japanese.
+  </p>
+
+  <ul class="list-disc list-inside mt-3 space-y-2">
+    <li>Each character represents meaning rather than sound</li>
+    <li>Used mainly for nouns, verb roots, adjectives, and names</li>
+    <li>Over 2,000 commonly used characters (Jōyō Kanji)</li>
+    <li>Each Kanji may have multiple readings</li>
+    <li>On-yomi (Chinese-based reading)</li>
+    <li>Kun-yomi (Japanese-based reading)</li>
+    <li>Helps reduce ambiguity in sentences</li>
+    <li>Learning focuses on meaning, stroke order, and radicals</li>
+  </ul>
+</section>
+
+<!-- ROMAJI -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-3">Romaji (ローマ字)</h2>
+  <p>
+    Romaji is the representation of Japanese sounds using the Latin (English)
+    alphabet.
+  </p>
+
+  <ul class="list-disc list-inside mt-3 space-y-2">
+    <li>Mainly used by beginners to learn pronunciation</li>
+    <li>Used for typing Japanese using keyboards</li>
+    <li>Common on road signs, maps, and passports</li>
+    <li>Not commonly used in native Japanese writing</li>
+    <li>Overuse can slow real reading and writing progress</li>
+    <li>Should be treated as a temporary learning aid</li>
+  </ul>
+</section>
+
+
+<!-- COMPARISON TABLE -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-3">Comparison of Writing Systems</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Script</th>
+          <th>Type</th>
+          <th>Main Usage</th>
+          <th>Number of Characters</th>
+          <th>Difficulty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hiragana</td>
+          <td>Phonetic</td>
+          <td>Grammar, native words</td>
+          <td>46</td>
+          <td>Easy</td>
+        </tr>
+        <tr>
+          <td>Katakana</td>
+          <td>Phonetic</td>
+          <td>Foreign words, emphasis</td>
+          <td>46</td>
+          <td>Easy</td>
+        </tr>
+        <tr>
+          <td>Kanji</td>
+          <td>Logographic</td>
+          <td>Meaning, vocabulary</td>
+          <td>2000+</td>
+          <td>Hard</td>
+        </tr>
+        <tr>
+          <td>Romaji</td>
+          <td>Alphabetic</td>
+          <td>Input & beginners</td>
+          <td>26 letters</td>
+          <td>Very Easy</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2025 Japanese Learning
+</footer>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("mobileMenu");
+btn.onclick=()=>menu.style.display=menu.style.display==="block"?"none":"block";
+</script>
+
+</body>
+</html>

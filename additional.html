@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Additional Topics — Japanese Learning</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+  --accent-rgb: 86,96,210;
+  --muted:#475569;
+  --card:rgba(255,255,255,0.96);
+  --radius:16px;
+  --maxw:1100px;
+}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:Inter,"Hiragino Kaku Gothic Pro","Meiryo","Noto Sans JP",system-ui;
+  background:linear-gradient(180deg,#ffffff,#f4f7ff 40%,#ffffff);
+  color:#0f172a;
+  line-height:1.65;
+}
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.88);
+  border-bottom:1px solid rgba(15,23,42,.08);
+}
+.header-inner{
+  max-width:1200px;margin:auto;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;}
+.logo{
+  width:42px;height:42px;
+  background:linear-gradient(135deg,#3e4ce6,#8351f7);
+  color:#ffffff;display:grid;place-items:center;border-radius:10px;
+}
+nav a{
+  margin-left:10px;padding:8px 14px;font-weight:600;
+  color:var(--muted);border-radius:8px;
+}
+nav a:hover{background:rgba(86,96,210,.1);color:rgb(var(--accent-rgb));}
+nav a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(var(--accent-rgb));
+}
+.menu-btn{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+.mobile-menu{
+  display:none;
+  background:#fff;
+  border-top:1px solid rgba(15,23,42,.08);
+}
+.mobile-menu a{
+  display:block;
+  padding:14px 20px;
+  border-bottom:1px solid rgba(15,23,42,.06);
+  color:var(--muted);
+  font-weight:600;
+}
+.mobile-menu a:hover{
+  background:rgba(79,70,229,.08);
+  color:var(--accent);
+}
+.mobile-menu a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+@media(max-width:900px){
+  nav{display:none;}
+  .menu-btn{display:block;}
+}
+.container{max-width:var(--maxw);margin:auto;padding:48px 20px;}
+.section{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:32px;
+  box-shadow:0 16px 48px rgba(6,12,34,.06);
+  margin-bottom:32px;
+}
+.section h2{color:rgb(var(--accent-rgb));}
+.muted{color:var(--muted);}
+.table-wrap{overflow-x:auto;margin-top:16px;}
+table{width:100%;border-collapse:collapse;font-size:.95rem;}
+th,td{
+  border:1px solid rgba(15,23,42,.1);
+  padding:10px;
+}
+th{
+  background:rgba(86,96,210,.08);
+  font-weight:700;
+}
+tbody tr:nth-child(even){background:#f8fafc;}
+a.resource{
+  color:rgb(var(--accent-rgb));
+  font-weight:600;
+  text-decoration:underline;
+}
+a.resource:hover{color:#8b5cf6;}
+footer{
+  background:#fff;
+  border-top:1px solid rgba(15,23,42,.08);
+  text-align:center;
+  padding:24px;
+  color:#64748b;
+}
+pre.example{
+  background:#f8fafc;
+  padding:12px;
+  border-radius:10px;
+  overflow:auto;
+  font-size:.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">JL</div>
+      <span>Japanese Learning</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="introduction.html">Introduction</a>
+      <a href="writingSystem.html">Writing</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="commonSentences.html">Phrases</a>
+      <a href="readingPassage.html">Reading</a>
+      <a href="additional.html" class="active">More</a>
+    </nav>
+
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="writingSystem.html">Writing</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="commonSentences.html">Phrases</a>
+    <a href="readingPassage.html">Reading</a>
+    <a href="additional.html" class="active">More</a>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- ===== INTRO ===== -->
+<section class="section">
+  <h1 class="text-3xl font-extrabold mb-3">Additional Topics & Resources</h1>
+  <p class="muted">
+    This page gives you resources to go beyond the basics: grammar, culture, listening, reading, and practice materials.
+    You will find <strong>free online books, PDFs, grammar guides, listening exercises, and study strategies</strong> to make your Japanese learning effective.
+  </p>
+</section>
+
+<!-- ===== FREE BOOKS & PDFS ===== -->
+<section class="section">
+<h2 class="text-2xl font-bold">Free Japanese Learning Books & PDFs</h2>
+<p class="muted mt-3">
+Here are high-quality resources you can download or read online for free:
+</p>
+
+<ul class="list-disc pl-5 mt-3 text-slate-700 space-y-2">
+<li><a class="resource" href="https://www.guidetojapanese.org/learn/grammar" target="_blank">A Guide to Japanese Grammar (Tae Kim)</a> – Complete grammar guide, beginner to intermediate</li>
+<li><a class="resource" href="https://www3.nhk.or.jp/nhkworld/en/learnjapanese/" target="_blank">NHK Easy Japanese Lessons</a> – Free audio and text for daily life</li>
+<li><a class="resource" href="https://www.erin.ne.jp/en/" target="_blank">ERIN Japanese Course</a> – Free beginner-friendly PDF lessons with videos</li>
+<li><a class="resource" href="https://www.imabi.net/" target="_blank">Imabi</a> – Advanced grammar, detailed explanations</li>
+<li><a class="resource" href="https://www.marugotoweb.jp/" target="_blank">Marugoto Online</a> – Textbook style lessons with exercises</li>
+<li><a class="resource" href="https://japanesetest4you.com/" target="_blank">Japanese Test 4 You</a> – Free practice quizzes and vocabulary lists</li>
+<li><a class="resource" href="https://genki.japantimes.co.jp/self-study" target="_blank">Genki Self-Study Resources</a> – Worksheets and exercises for Genki textbooks</li>
+</ul>
+</section>
+
+<!-- ===== CULTURE & LIFESTYLE ===== -->
+<section class="section">
+<h2 class="text-2xl font-bold">Japanese Culture & Practical Tips</h2>
+<p class="muted mt-3">
+Learning Japanese is more than words; understanding culture helps you speak naturally. Some key tips:
+</p>
+
+<ul class="list-disc pl-5 mt-3 text-slate-700 space-y-1">
+<li>Use polite forms when speaking to strangers, elders, or superiors.</li>
+<li>Understand Japanese seasons, festivals, and customs to make conversations richer.</li>
+<li>Watch Japanese TV shows, anime, or news with subtitles to improve listening skills.</li>
+<li>Learn about <strong>honorifics (keigo)</strong> and casual forms to avoid sounding rude.</li>
+<li>Try shadowing: repeat what native speakers say to improve pronunciation and rhythm.</li>
+<li>Practice reading signs, menus, and labels — real-life Japanese is often simpler than textbooks!</li>
+</ul>
+</section>
+
+<!-- ===== ADDITIONAL PRACTICE RESOURCES ===== -->
+<section class="section">
+<h2 class="text-2xl font-bold">Additional Practice Materials</h2>
+<p class="muted mt-3">Here are some ways to expand your practice:</p>
+
+<ul class="list-disc pl-5 mt-3 text-slate-700 space-y-2">
+<li><a class="resource" href="https://www.tofugu.com/japanese/kanji/" target="_blank">Tofugu Kanji Guide</a> – Learn kanji radicals and mnemonics</li>
+<li><a class="resource" href="https://www.wanikani.com/" target="_blank">WaniKani</a> – Free trial for kanji and vocabulary spaced repetition</li>
+<li><a class="resource" href="https://jisho.org/" target="_blank">Jisho.org</a> – Powerful dictionary for kanji, words, example sentences</li>
+<li><a class="resource" href="https://www3.nhk.or.jp/nhkworld/en/learnjapanese/audio/" target="_blank">NHK Listening Practice</a> – Free audio for listening comprehension</li>
+<li><a class="resource" href="https://jlptsensei.com/" target="_blank">JLPT Sensei</a> – Grammar charts, vocabulary, and JLPT practice materials</li>
+<li><a class="resource" href="https://bunpro.jp/" target="_blank">Bunpro</a> – Free grammar SRS exercises online</li>
+</ul>
+</section>
+
+<!-- ===== STUDY STRATEGIES ===== -->
+<section class="section">
+<h2 class="text-2xl font-bold">Effective Study Strategies</h2>
+<ul class="list-disc pl-5 mt-3 text-slate-700 space-y-1">
+<li>Set small daily goals: 15–30 minutes consistently beats long cramming.</li>
+<li>Combine skills: practice reading, writing, listening, and speaking together.</li>
+<li>Use spaced repetition systems (SRS) like Anki or Bunpro for long-term retention.</li>
+<li>Keep a notebook for new kanji, vocabulary, and example sentences.</li>
+<li>Teach someone else: explaining grammar or words helps solidify memory.</li>
+<li>Immerse yourself: try thinking in Japanese about your day-to-day activities.</li>
+</ul>
+</section>
+
+</main>
+
+<footer>
+© 2025 Japanese Learning — Extended study topics & free resources
+</footer>
+
+<script>
+  const btn=document.getElementById("menuBtn");
+  const menu=document.getElementById("mobileMenu");
+  btn.onclick=()=>menu.style.display=menu.style.display==="block"?"none":"block";
+</script>
+
+</body>
+</html>

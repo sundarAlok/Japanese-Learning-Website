@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Japanese Reading Passages</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+  --bg1:#f8fafc;
+  --bg2:#eef2ff;
+  --accent:#4f46e5;
+  --text:#0f172a;
+  --muted:#475569;
+}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.85);
+  border-bottom:1px solid rgba(15,23,42,.08);
+}
+.header-inner{
+  max-width:1200px;margin:auto;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;}
+.logo{
+  width:42px;height:42px;
+  background:linear-gradient(135deg,#3e4ce6,#8351f7);
+  color:#ffffff;display:grid;place-items:center;border-radius:10px;
+}
+nav a{
+  margin-left:10px;padding:8px 14px;font-weight:600;
+  color:var(--muted);border-radius:8px;
+}
+nav a:hover{background:rgba(79,70,229,.1);color:var(--accent);}
+nav a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+.menu-btn{display:none;font-size:26px;cursor:pointer;}
+.mobile-menu{display:none;background:#fff;border-top:1px solid rgba(15,23,42,.08);}
+.mobile-menu a{
+  display:block;padding:14px 20px;font-weight:600;color:var(--muted);
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.mobile-menu a:hover{background:rgba(79,70,229,.08);color:var(--accent);}
+.mobile-menu a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+@media(max-width:900px){
+  nav{display:none;}
+  .menu-btn{display:block;}
+}
+
+/* LAYOUT */
+.container{max-width:1100px;margin:auto;padding:48px 20px;}
+.section{
+  background:#fff;border-radius:16px;padding:32px;
+  box-shadow:0 15px 40px rgba(0,0,0,.05);
+  margin-bottom:32px;
+}
+.section h2{color:var(--accent);}
+
+/* ================= READING PASSAGE (COMMON STYLE) ================= */
+.reading-passage {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 16px 48px rgba(79,70,229,0.08);
+}
+
+/* Passage Title */
+.reading-passage .title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #4f46e5;
+  margin-bottom: 16px;
+  padding: 4px;
+  border-radius: 12px;
+  text-align: left;
+}
+
+/* Japanese text */
+.reading-passage .kana {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+/* Romaji & English blocks */
+.reading-passage .romaji,
+.reading-passage .eng {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 20px;
+}
+
+.reading-passage .romaji strong,
+.reading-passage .eng strong,
+.reading-passage .vocab strong {
+  color: #0f172a;
+}
+
+/* Vocabulary */
+.reading-passage .vocab {
+  font-size: 1rem;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+/* Questions */
+.reading-passage ol {
+  margin-top: 6px;
+  padding-left: 20px;
+  font-size: 1rem;
+  color: #334155;
+}
+
+.reading-passage ol li {
+  margin-bottom: 4px;
+}
+
+
+footer{
+  background:#fff;border-top:1px solid rgba(15,23,42,.08);
+  text-align:center;padding:24px;color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">JL</div>
+      <span>Japanese Learning</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="introduction.html">Introduction</a>
+      <a href="writingSystem.html">Writing</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="commonSentences.html">Phrases</a>
+      <a href="readingPassage.html" class="active">Reading</a>
+      <a href="additional.html">More</a>
+    </nav>
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="writingSystem.html">Writing</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="commonSentences.html">Phrases</a>
+    <a href="readingPassage.html" class="active">Reading</a>
+    <a href="additional.html">More</a>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="section">
+  <h1 class="text-3xl font-extrabold mb-3 text-slate-900">
+    Japanese Reading Passages
+  </h1>
+
+  <p class="text-slate-700 leading-relaxed">
+    This page contains <strong>short, structured Japanese reading passages</strong> designed
+    especially for beginners.
+    Each passage is written in simple language and presented with
+    <strong>Japanese</strong>, <strong>Romaji</strong>, and <strong>English meaning</strong>
+    to help you read with confidence.
+  </p>
+
+  <ul class="mt-4 list-disc pl-5 text-slate-700 space-y-1">
+    <li>Read the Japanese passage carefully line by line</li>
+    <li>Use Romaji only to confirm pronunciation</li>
+    <li>Check the English meaning to verify understanding</li>
+    <li>Answer the questions to test comprehension</li>
+  </ul>
+</section>
+
+
+<!-- PASSAGE 1: My Daily Life -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p1">
+
+  <h3 id="p1" class="title">
+    1. My Daily Life &nbsp; ( あたしのいちにち )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    あたしは まいあさ 六じに おきます。
+    そして かおを あらって、ふくを きます。
+    それから あさごはんを たべて、コーヒーを のみます。
+    八じに うちを でて、でんしゃで がっこうへ いきます。
+    がっこうでは べんきょうを して、せんせいの はなしを ききます。
+    ときどき ともだちと いっしょに はなします。
+    ひるは きゅうしょくを たべて、すこし やすみます。
+    ごごは じゅぎょうを うけて、しゅくだいを します。
+    よるは いえに かえって、かぞくと ばんごはんを たべます。
+    そのあと テレビを みて、十一じごろ ねます。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Atashi wa maiasa roku-ji ni okimasu.
+    Soshite kao o aratte, fuku o kimasu.
+    Sorekara asagohan o tabete, koohii o nomimasu.
+    Hachi-ji ni uchi o dete, densha de gakkou e ikimasu.
+    Gakkou de wa benkyou o shite, sensei no hanashi o kikimasu.
+    Tokidoki tomodachi to issho ni hanashimasu.
+    Hiru wa kyuushoku o tabete, sukoshi yasumimasu.
+    Gogo wa jugyou o ukete, shukudai o shimasu.
+    Yoru wa ie ni kaette, kazoku to bangohan o tabemasu.
+    Sono ato terebi o mite, juuichi-ji goro nemasu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    I wake up at six every morning.
+    Then I wash my face and get dressed.
+    After that I eat breakfast and drink coffee.
+    At eight I leave home and go to school by train.
+    At school I study and listen to the teacher.
+    Sometimes I talk with my friends.
+    At noon I eat lunch and rest a little.
+    In the afternoon I attend classes and do homework.
+    At night I return home and eat dinner with my family.
+    After that I watch TV and go to sleep around eleven.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    まいあさ (every morning),
+    でんしゃ (train),
+    せんせい (teacher),
+    きゅうしょく (school lunch),
+    しゅくだい (homework),
+    ばんごはん (dinner)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>なんじに いえを でますか？ (What time do they leave home?)</li>
+    <li>よるに なにを しますか？ (What do they do at night?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 2: My Family -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p2">
+
+  <h3 id="p2" class="title">
+    2. My Family &nbsp; ( あたしのかぞく )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    あたしの かぞくは よにん います。
+    ちちは まいにち かいしゃで はたらいています。
+    ははは いえで りょうりや そうじを します。
+    あにが ひとり いて、だいがくで べんきょうしています。
+    あには とても まじめな ひとです。
+    よるに なると、かぞく みんなで ばんごはんを たべます。
+    ばんごはんの あと、いっしょに テレビを みます。
+    しゅうまつは こうえんへ いく ことも あります。
+    かぞくと すごす じかんは とても だいじです。
+    あたしは じぶんの かぞくが だいすきです。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Atashi no kazoku wa yonin imasu.
+    Chichi wa mainichi kaisha de hataraite imasu.
+    Haha wa ie de ryouri ya souji o shimasu.
+    Ani ga hitori ite, daigaku de benkyou shite imasu.
+    Ani wa totemo majime na hito desu.
+    Yoru ni naru to, kazoku minna de bangohan o tabemasu.
+    Bangohan no ato, issho ni terebi o mimasu.
+    Shuumatsu wa kouen e iku koto mo arimasu.
+    Kazoku to sugosu jikan wa totemo daiji desu.
+    Atashi wa jibun no kazoku ga daisuki desu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    There are four people in my family.
+    My father works at a company every day.
+    My mother cooks and cleans at home.
+    I have one older brother who studies at university.
+    My brother is a very serious person.
+    In the evening, my whole family eats dinner together.
+    After dinner, we watch TV together.
+    On weekends, we sometimes go to the park.
+    The time I spend with my family is very important.
+    I really love my family.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    かぞく (family),
+    かいしゃ (company),
+    りょうり (cooking),
+    だいがく (university),
+    しゅうまつ (weekend),
+    だいじ (important)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>かぞくは なんにん いますか？ (How many people are in the family?)</li>
+    <li>しゅうまつに なにを しますか？ (What do they do on weekends?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 3: At School -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p3">
+
+  <h3 id="p3" class="title">
+    3. At School &nbsp; ( がっこうで )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    あたしは まいにち がっこうへ いきます。
+    がっこうは いえから すこし とおい です。
+    あさは まず きょうしつに はいります。
+    それから せんせいの はなしを ききます。
+    じゅぎょうでは にほんごや すうがくを べんきょうします。
+    ときどき むずかしい もんだいも あります。
+    でも あたしは あきらめません。
+    ひるは ともだちと いっしょに きゅうしょくを たべます。
+    ひるやすみは こうていで あそびます。
+    がっこうせいかつは いそがしいですが たのしいです。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Atashi wa mainichi gakkou e ikimasu.
+    Gakkou wa ie kara sukoshi tooi desu.
+    Asa wa mazu kyoushitsu ni hairimasu.
+    Sorekara sensei no hanashi o kikimasu.
+    Jugyou de wa nihongo ya suugaku o benkyou shimasu.
+    Tokidoki muzukashii mondai mo arimasu.
+    Demo atashi wa akiramemasen.
+    Hiru wa tomodachi to issho ni kyuushoku o tabemasu.
+    Hiruyasumi wa koutei de asobimasu.
+    Gakkou seikatsu wa isogashii desu ga tanoshii desu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    I go to school every day.
+    The school is a little far from my house.
+    In the morning, I first enter the classroom.
+    Then I listen to the teacher.
+    In class, I study Japanese and mathematics.
+    Sometimes there are difficult problems.
+    But I do not give up.
+    At noon, I eat lunch with my friends.
+    During lunch break, I play in the schoolyard.
+    School life is busy but fun.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    がっこう (school),
+    きょうしつ (classroom),
+    じゅぎょう (class),
+    もんだい (problem),
+    こうてい (schoolyard),
+    あきらめる (to give up)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>なにを べんきょうしますか？ (What do they study?)</li>
+    <li>ひるやすみは なにを しますか？ (What do they do during lunch break?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 4: After School -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p4">
+
+  <h3 id="p4" class="title">
+    4. After School &nbsp; ( ほうかご )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    がっこうが おわると、あたしは いえに かえります。
+    いえに つくと、まず かばんを おきます。
+    それから すこし やすんで、しゅくだいを します。
+    しゅくだいは ときどき むずかしいです。
+    でも まいにち がんばって します。
+    しゅくだいの あとは、ほんを よんだり えを かいたりします。
+    ときどき テレビも みます。
+    よるに なると、かぞくが みんな そろいます。
+    いっしょに ばんごはんを たべて はなします。
+    この じかんが あたしは いちばん すきです。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Gakkou ga owaru to, atashi wa ie ni kaerimasu.
+    Ie ni tsuku to, mazu kaban o okimasu.
+    Sorekara sukoshi yasunde, shukudai o shimasu.
+    Shukudai wa tokidoki muzukashii desu.
+    Demo mainichi ganbatte shimasu.
+    Shukudai no ato wa, hon o yondari e o kaitari shimasu.
+    Tokidoki terebi mo mimasu.
+    Yoru ni naru to, kazoku ga minna soroi masu.
+    Issho ni bangohan o tabete hanashimasu.
+    Kono jikan ga atashi wa ichiban suki desu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    When school finishes, I go home.
+    When I arrive home, I first put my bag down.
+    Then I rest a little and do my homework.
+    Homework is sometimes difficult.
+    But I do my best every day.
+    After homework, I read books or draw pictures.
+    Sometimes I also watch TV.
+    In the evening, my whole family gathers.
+    We eat dinner together and talk.
+    This time is my favorite.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    ほうかご (after school),
+    しゅくだい (homework),
+    かばん (bag),
+    え (picture),
+    じかん (time),
+    いちばん (most / favorite)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>がっこうの あとは なにを しますか？ (What do they do after school?)</li>
+    <li>いちばん すきな じかんは いつですか？ (When is their favorite time?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 5: Shopping at the Market -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p5">
+
+  <h3 id="p5" class="title">
+    5. Shopping at the Market &nbsp; ( いちばでの かいもの )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    しゅうまつに あたしは いちばへ いきます。
+    いちばには やさいや くだものが たくさん あります。
+    あたしは トマトと にんじんを かいます。
+    くだものは りんごと バナナを えらびます。
+    みせの ひとは とても しんせつです。
+    ねだんを きいて、すこし はなします。
+    さいごに レジで おかねを はらいます。
+    かいものの あとは いえに かえります。
+    かぞくの ために りょうりを します。
+    じぶんで えらんだ たべものは おいしいです。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Shuumatsu ni atashi wa ichiba e ikimasu.
+    Ichiba ni wa yasai ya kudamono ga takusan arimasu.
+    Atashi wa tomato to ninjin o kaimasu.
+    Kudamono wa ringo to banana o erabimasu.
+    Mise no hito wa totemo shinsetsu desu.
+    Nedan o kiite, sukoshi hanashimasu.
+    Saigo ni reji de okane o haraimasu.
+    Kaimono no ato wa ie ni kaerimasu.
+    Kazoku no tame ni ryouri o shimasu.
+    Jibun de eranda tabemono wa oishii desu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    On weekends, I go to the market.
+    There are many vegetables and fruits at the market.
+    I buy tomatoes and carrots.
+    For fruits, I choose apples and bananas.
+    The shop staff are very kind.
+    I ask the price and talk a little.
+    Finally, I pay money at the register.
+    After shopping, I go home.
+    I cook food for my family.
+    Food I choose myself tastes delicious.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    いちば (market),
+    やさい (vegetables),
+    くだもの (fruit),
+    ねだん (price),
+    レジ (cash register),
+    えらぶ (to choose)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>なにを かいますか？ (What do they buy?)</li>
+    <li>かいものの あと なにを しますか？ (What do they do after shopping?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 6: My Hobby -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p6">
+
+  <h3 id="p6" class="title">
+    6. My Hobby &nbsp; ( わたしの しゅみ )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    あたしの しゅみは おんがくを きく ことです。
+    ひまな ときに、へやで ゆっくり おんがくを ききます。
+    とくに ポップスと バラードが すきです。
+    おんがくを きくと、こころが おちつきます。
+    ときどき えいごの うたも ききます。
+    うたの ことばを しらべるのは たのしいです。
+    しゅうまつは ヘッドホンを つけて ながく ききます。
+    おんがくは きぶんを よく してくれます。
+    つかれた ときも げんきに なります。
+    あたしに とって おんがくは だいじな しゅみです。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Atashi no shumi wa ongaku o kiku koto desu.
+    Hima na toki ni, heya de yukkuri ongaku o kikimasu.
+    Tokuni poppusu to baraado ga suki desu.
+    Ongaku o kiku to, kokoro ga ochitsukimasu.
+    Tokidoki eigo no uta mo kikimasu.
+    Uta no kotoba o shiraberu no wa tanoshii desu.
+    Shuumatsu wa heddohon o tsukete nagaku kikimasu.
+    Ongaku wa kibun o yoku shite kuremasu.
+    Tsukareta toki mo genki ni narimasu.
+    Atashi ni totte ongaku wa daiji na shumi desu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    My hobby is listening to music.
+    When I have free time, I relax in my room and listen to music.
+    I especially like pop songs and ballads.
+    When I listen to music, my mind becomes calm.
+    Sometimes I also listen to English songs.
+    It is fun to look up the words of the songs.
+    On weekends, I listen for a long time with headphones.
+    Music makes me feel better.
+    Even when I am tired, I feel energetic.
+    For me, music is an important hobby.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    しゅみ (hobby),
+    おんがく (music),
+    へや (room),
+    こころ (heart / mind),
+    きぶん (feeling),
+    ヘッドホン (headphones)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>しゅみは なんですか？ (What is their hobby?)</li>
+    <li>おんがくを きくと どう なりますか？ (How do they feel when listening to music?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 7: Traveling by Train -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p7">
+
+  <h3 id="p7" class="title">
+    7. Traveling by Train &nbsp; ( でんしゃでの りょこう )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    きょねんの なつ、あたしは でんしゃで りょこうを しました。
+    あさ はやく えきを でて、きっぷを かいました。
+    でんしゃの なかは とても ひろくて きれいでした。
+    まどから まちや やまが みえました。
+    とちゅうで べんとうを たべて、のみものを のみました。
+    りょこうちに つくと、えきの ちかくを さんぽしました。
+    はじめての ばしょで どきどき しました。
+    しゃしんを たくさん とりました。
+    ひとは みんな しんせつでした。
+    とても たのしい りょこうに なりました。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Kyonen no natsu, atashi wa densha de ryokou o shimashita.
+    Asa hayaku eki o dete, kippu o kaimashita.
+    Densha no naka wa totemo hirokute kirei deshita.
+    Mado kara machi ya yama ga miemashita.
+    Tochuu de bentou o tabete, nomimono o nomimashita.
+    Ryokouchi ni tsuku to, eki no chikaku o sanpo shimashita.
+    Hajimete no basho de dokidoki shimashita.
+    Shashin o takusan torimashita.
+    Hito wa minna shinsetsu deshita.
+    Totemo tanoshii ryokou ni narimashita.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    Last summer, I traveled by train.
+    I left the station early in the morning and bought a ticket.
+    The inside of the train was very spacious and clean.
+    I could see towns and mountains from the window.
+    On the way, I ate a lunch box and drank a beverage.
+    When I arrived at the destination, I took a walk near the station.
+    I felt excited because it was my first time there.
+    I took many photos.
+    Everyone was kind.
+    It became a very enjoyable trip.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    りょこう (travel),
+    えき (station),
+    きっぷ (ticket),
+    べんとう (lunch box),
+    さんぽ (walk),
+    しゃしん (photo)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>なにで りょこうを しましたか？ (How did they travel?)</li>
+    <li>とちゅうで なにを しましたか？ (What did they do on the way?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 8: At the Restaurant -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p8">
+
+  <h3 id="p8" class="title">
+    8. At the Restaurant &nbsp; ( レストランで )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    きのうの よる、あたしは ともだちと レストランへ いきました。
+    いりぐちで てんいんさんが えがおで むかえて くれました。
+    せきに すわって、メニューを ゆっくり よみました。
+    あたしは パスタを たのみ、ともだちは ピザを えらびました。
+    りょうりが くるまで、みずを のんで はなしました。
+    りょうりは あつあつで、とても おいしかったです。
+    たべながら きょうの できごとを はなしました。
+    デザートに ケーキを たべました。
+    おかねを はらって、てんいんさんに おれいを いいました。
+    とても まんぞくな ばんでした。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Kinou no yoru, atashi wa tomodachi to resutoran e ikimashita.
+    Iriguchi de tenin-san ga egao de mukaete kuremashita.
+    Seki ni suwatte, menyuu o yukkuri yomimashita.
+    Atashi wa pasuta o tanomi, tomodachi wa piza o erabimashita.
+    Ryouri ga kuru made, mizu o nonde hanashimashita.
+    Ryouri wa atsuatte, totemo oishikatta desu.
+    Tabenagara kyou no dekigoto o hanashimashita.
+    Dezaato ni keeki o tabemashita.
+    Okane o haratte, tenin-san ni orei o iimashita.
+    Totemo manzoku na ban deshita.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    Last night, I went to a restaurant with a friend.
+    At the entrance, a staff member welcomed us with a smile.
+    We sat down and slowly read the menu.
+    I ordered pasta, and my friend chose pizza.
+    While waiting for the food, we drank water and talked.
+    The food was hot and very delicious.
+    While eating, we talked about today’s events.
+    For dessert, we ate cake.
+    We paid the bill and thanked the staff.
+    It was a very satisfying evening.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    レストラン (restaurant),
+    てんいん (staff),
+    メニュー (menu),
+    りょうり (food),
+    デザート (dessert),
+    まんぞく (satisfied)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>だれと レストランへ いきましたか？ (Who did they go with?)</li>
+    <li>なにを たのみましたか？ (What did they order?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 9: Going to the Hospital -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p9">
+
+  <h3 id="p9" class="title">
+    9. Going to the Hospital &nbsp; ( びょういんへ いく )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    あるひの あさ、あたしは すこし ねつが ありました。
+    からだが だるくて、あたまも いたかったです。
+    それで、かぞくと いっしょに びょういんへ いきました。
+    うけつけで なまえを かいて、まちました。
+    いしゃは しんせつに はなしを きいて くれました。
+    くすりを もらって、ゆっくり やすむように いわれました。
+    びょういんの あと、まっすぐ いえに かえりました。
+    いえで ねて、みずを たくさん のみました。
+    よるには ねつが さがって、すこし らくに なりました。
+    いまは もう げんきです。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Aru hi no asa, atashi wa sukoshi netsu ga arimashita.
+    Karada ga darukute, atama mo itakatta desu.
+    Sore de, kazoku to issho ni byouin e ikimashita.
+    Uketsuke de namae o kaite, machimashita.
+    Isha wa shinsetsu ni hanashi o kiite kuremashita.
+    Kusuri o moratte, yukkuri yasumu you ni iwaremashita.
+    Byouin no ato, massugu ie ni kaerimashita.
+    Ie de nete, mizu o takusan nomimashita.
+    Yoru ni wa netsu ga sagatte, sukoshi raku ni narimashita.
+    Ima wa mou genki desu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    One morning, I had a slight fever.
+    My body felt tired, and my head hurt.
+    So I went to the hospital with my family.
+    At the reception, I wrote my name and waited.
+    The doctor kindly listened to me.
+    I received medicine and was told to rest well.
+    After the hospital visit, I went straight home.
+    I slept at home and drank plenty of water.
+    By night, my fever went down and I felt better.
+    Now I am healthy again.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    びょういん (hospital),
+    いしゃ (doctor),
+    ねつ (fever),
+    くすり (medicine),
+    からだ (body),
+    げんき (healthy)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>どうして びょういんへ いきましたか？ (Why did they go to the hospital?)</li>
+    <li>いしゃは なにを いいましたか？ (What did the doctor say?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 10: Court Visit -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p10">
+
+  <h3 id="p10" class="title">
+    10. At the Court &nbsp; ( さいばんしょ )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    あるひ、あたしは おとうさんと さいばんしょへ いきました。
+    さいばんしょは とても おおきくて しずかでした。
+    なかには たくさんの ひとが すわっていました。
+    べんごしは まえに たって はなしを していました。
+    さいばんかんは しんけんな かおで きいていました。
+    みんな きまりを まもって こうどうしていました。
+    ちゅういが ひつような ばしょだと おもいました。
+    あたしは こえを ださずに しずかに みていました。
+    さいばんは とても たいせつだと かんじました。
+    かえりに おとうさんが ほうりつの はなしを してくれました。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Aru hi, atashi wa otousan to saibansho e ikimashita.
+    Saibansho wa totemo ookikute shizuka deshita.
+    Naka ni wa takusan no hito ga suwatte imashita.
+    Bengoshi wa mae ni tatte hanashi o shite imashita.
+    Saibankan wa shinken na kao de kiite imashita.
+    Minna kimari o mamotte koudou shite imashita.
+    Chuui ga hitsuyou na basho da to omoimashita.
+    Atashi wa koe o dasazu ni shizuka ni mite imashita.
+    Saiban wa totemo taisetsu da to kanjimashita.
+    Kaeri ni otousan ga houritsu no hanashi o shite kuremashita.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    One day I went to a court with my father.
+    The courthouse was very big and quiet.
+    Many people were sitting inside.
+    A lawyer was standing in front and speaking.
+    The judge was listening with a serious face.
+    Everyone was following the rules.
+    I felt it was a place that needs attention and respect.
+    I watched quietly without making noise.
+    I felt that trials are very important.
+    On the way back, my father explained about the law.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    さいばんしょ (court),
+    べんごし (lawyer),
+    さいばんかん (judge),
+    きまり (rule),
+    ほうりつ (law)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>だれと さいばんしょへ いきましたか？ (Who did they go to the court with?)</li>
+    <li>さいばんしょは どんな ばしょですか？ (What kind of place is the court?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 11: Anime and My Favorites -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p11-anime">
+
+  <h3 id="p11-anime" class="title">
+    11. Anime I Like &nbsp; ( すきな アニメ )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    あたしは アニメが だいすきです。
+    ひまな とき、よく アニメを みます。
+    いちばん すきな アニメは ワンピースです。
+    ぼうけんの はなしが とても おもしろいです。
+    きめつのやいばも だいすきです。
+    キャラクターが つよくて かっこいいです。
+    しんげきのきょじんは すこし こわいですが、みごたえが あります。
+    ストーリーが ふかくて かんどうします。
+    アニメから ゆうきや ゆめを もらいます。
+    あたしは これからも たくさんの アニメを みたいです。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Atashi wa anime ga daisuki desu.
+    Hima na toki, yoku anime o mimasu.
+    Ichiban suki na anime wa One Piece desu.
+    Bouken no hanashi ga totemo omoshiroi desu.
+    Kimetsu no Yaiba mo daisuki desu.
+    Kyarakutaa ga tsuyokute kakkoii desu.
+    Shingeki no Kyojin wa sukoshi kowai desu ga, migotae ga arimasu.
+    Sutoorii ga fukakute kandou shimasu.
+    Anime kara yuuki ya yume o moraimasu.
+    Atashi wa kore kara mo takusan no anime o mitai desu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    I love anime very much.
+    When I have free time, I often watch anime.
+    My favorite anime is One Piece.
+    The adventure story is very interesting.
+    I also love Demon Slayer.
+    The characters are strong and cool.
+    Attack on Titan is a little scary, but very impressive.
+    The story is deep and moving.
+    I get courage and dreams from anime.
+    I want to watch many more anime in the future.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    アニメ (anime),
+    ぼうけん (adventure),
+    すき (like),
+    きゃらくたー (character),
+    ストーリー (story),
+    ゆめ (dream)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>いちばん すきな アニメは なんですか？ (What is their favorite anime?)</li>
+    <li>アニメから なにを もらいますか？ (What do they get from anime?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 12: Entertainment Industry -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p12-entertainment">
+
+  <h3 id="p12-entertainment" class="title">
+    12. Entertainment Industry &nbsp; ( エンターテインメント ぎょうかい )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    エンターテインメント ぎょうかいは とても にぎやかです。
+    えいが、ドラマ、おんがくが せかいじゅうで みられています。
+    ゆうめいな はいゆうや かしゅが たくさん います。
+    えいがかんでは あたらしい えいがが じょうえいされます。
+    コンサートでは おおぜいの ひとが あつまります。
+    ファンは アーティストを おうえんします。
+    テレビや インターネットで さくひんを たのしめます。
+    この ぎょうかいは ゆめを あたえて くれます。
+    ひとは えがおに なり、かんどうします。
+    これからも もっと はってん するでしょう。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Entaateinmento gyoukai wa totemo nigiyaka desu.
+    Eiga, dorama, ongaku ga sekaijuu de mirarete imasu.
+    Yuumei na haiyuu ya kashu ga takusan imasu.
+    Eigakan de wa atarashii eiga ga jouei saremasu.
+    Konsaato de wa oozei no hito ga atsumarimasu.
+    Fan wa aatisuto o ouen shimasu.
+    Terebi ya intaanetto de sakuhin o tanoshimemasu.
+    Kono gyoukai wa yume o ataete kuremasu.
+    Hito wa egao ni nari, kandou shimasu.
+    Kore kara mo motto hatten suru deshou.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    The entertainment industry is very lively.
+    Movies, dramas, and music are enjoyed all over the world.
+    There are many famous actors and singers.
+    New movies are shown in theaters.
+    Many people gather at concerts.
+    Fans support their favorite artists.
+    People enjoy works on TV and the internet.
+    This industry gives people dreams.
+    People smile and feel moved.
+    It will continue to grow in the future.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    えいが (movie),
+    おんがく (music),
+    はいゆう (actor),
+    かしゅ (singer),
+    コンサート (concert),
+    ファン (fan)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>エンターテインメント ぎょうかいには なにが ありますか？ (What is in the entertainment industry?)</li>
+    <li>ファンは なにを しますか？ (What do fans do?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 13: Sports -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p13-sports">
+
+  <h3 id="p13-sports" class="title">
+    13. Sports &nbsp; ( スポーツ )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    スポーツは からだと こころに いいです。
+    サッカーや やきゅうは とても にんきが あります。
+    こどもから おとなまで みんなが たのしめます。
+    まいにち うんどうを すると けんこうに なります。
+    チームスポーツでは きょうりょくが だいじです。
+    せんしゅは まいにち れんしゅうを します。
+    しあいでは しょうりを めざします。
+    かちまけが あっても けいけんに なります。
+    スポーツは がまんと どりょくを おしえます。
+    ひとは スポーツで げんきに なります。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Supootsu wa karada to kokoro ni ii desu.
+    Sakkaa ya yakyuu wa totemo ninki ga arimasu.
+    Kodomo kara otona made minna ga tanoshimemasu.
+    Mainichi undou o suru to kenkou ni narimasu.
+    Chiimu supootsu de wa kyouryoku ga daiji desu.
+    Senshu wa mainichi renshuu o shimasu.
+    Shiai de wa shouri o mezashimasu.
+    Kachimake ga atte mo keiken ni narimasu.
+    Supootsu wa gaman to doryoku o oshiemasu.
+    Hito wa supootsu de genki ni narimasu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    Sports are good for the body and mind.
+    Soccer and baseball are very popular.
+    Everyone from children to adults can enjoy them.
+    Exercising every day makes you healthy.
+    In team sports, cooperation is important.
+    Athletes practice every day.
+    In matches, they aim to win.
+    Winning and losing both become experience.
+    Sports teach patience and effort.
+    People become energetic through sports.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    スポーツ (sports),
+    やきゅう (baseball),
+    うんどう (exercise),
+    せんしゅ (athlete),
+    しあい (match),
+    れんしゅう (practice)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>スポーツは なにに いいですか？ (What are sports good for?)</li>
+    <li>せんしゅは なにを しますか？ (What do athletes do?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 14: Nature -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p14-nature">
+
+  <h3 id="p14-nature" class="title">
+    14. Nature &nbsp; ( しぜん )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    しぜんは とても うつくしいです。
+    やまや かわ、うみが あります。
+    はるには はなが さきます。
+    なつは あつくて みどりが ふえます。
+    あきは もみじが きれいです。
+    ふゆは ゆきが ふります。
+    しぜんの なかで こころが やすみます。
+    どうぶつや とりも しぜんに すんでいます。
+    しぜんを まもる ことは とても だいじです。
+    わたしたちは しぜんと いきて います。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Shizen wa totemo utsukushii desu.
+    Yama ya kawa, umi ga arimasu.
+    Haru ni wa hana ga sakimasu.
+    Natsu wa atsukute midori ga fuemasu.
+    Aki wa momiji ga kirei desu.
+    Fuyu wa yuki ga furimasu.
+    Shizen no naka de kokoro ga yasumimasu.
+    Doubutsu ya tori mo shizen ni sunde imasu.
+    Shizen o mamoru koto wa totemo daiji desu.
+    Watashitachi wa shizen to ikite imasu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    Nature is very beautiful.
+    There are mountains, rivers, and seas.
+    Flowers bloom in spring.
+    Summer is hot and greenery increases.
+    In autumn, the autumn leaves are beautiful.
+    In winter, snow falls.
+    Being in nature calms the heart.
+    Animals and birds also live in nature.
+    Protecting nature is very important.
+    We live together with nature.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    しぜん (nature),
+    やま (mountain),
+    かわ (river),
+    うみ (sea),
+    はる (spring),
+    ふゆ (winter)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>しぜんには なにが ありますか？ (What is there in nature?)</li>
+    <li>なぜ しぜんを まもる ことが だいじですか？ (Why is protecting nature important?)</li>
+  </ol>
+
+</article>
+
+<!-- PASSAGE 15: Technology -->
+<article class="passage passage-jp reading-passage" aria-labelledby="p15-technology">
+
+  <h3 id="p15-technology" class="title">
+    15. Technology &nbsp; ( テクノロジー )
+  </h3>
+
+  <!-- Japanese -->
+  <p class="kana">
+    テクノロジーは せいかつを べんりに します。
+    スマートフォンや パソコンは まいにち つかいます。
+    インターネットで じょうほうを すぐ しらべられます。
+    オンラインで べんきょうや しごとが できます。
+    AIは さまざまな ぶんやで つかわれています。
+    テクノロジーは いしゃや がくせいを たすけます。
+    でも つかいすぎは よく ありません。
+    めや からだを やすませる じかんも ひつようです。
+    あたらしい ぎじゅつは まいにち うまれます。
+    テクノロジーと うまく つきあう ことが だいじです。
+  </p>
+
+  <!-- Romaji -->
+  <p class="romaji">
+    <strong>Romaji</strong><br>
+    Tekunoroji wa seikatsu o benri ni shimasu.
+    Sumaato fon ya pasokon wa mainichi tsukaimasu.
+    Intaanetto de jouhou o sugu shiraberaremasu.
+    Onrain de benkyou ya shigoto ga dekimasu.
+    AI wa samazama na bunya de tsukawarete imasu.
+    Tekunoroji wa isha ya gakusei o tasukemasu.
+    Demo tsukaisugi wa yoku arimasen.
+    Me ya karada o yasumaseru jikan mo hitsuyou desu.
+    Atarashii gijutsu wa mainichi umaremasu.
+    Tekunoroji to umaku tsukiau koto ga daiji desu.
+  </p>
+
+  <!-- English -->
+  <p class="eng">
+    <strong>English</strong><br>
+    Technology makes life convenient.
+    We use smartphones and computers every day.
+    We can quickly find information on the internet.
+    We can study and work online.
+    AI is used in many different fields.
+    Technology helps doctors and students.
+    However, using it too much is not good.
+    Time to rest our eyes and body is also necessary.
+    New technologies are created every day.
+    It is important to use technology wisely.
+  </p>
+
+  <!-- Vocabulary -->
+  <p class="vocab">
+    <strong>Key Vocabulary</strong><br>
+    テクノロジー (technology),
+    スマートフォン (smartphone),
+    インターネット (internet),
+    じょうほう (information),
+    ぎじゅつ (technology/technique),
+    べんり (convenient)
+  </p>
+
+  <!-- Questions -->
+  <ol class="list-decimal">
+    <li>テクノロジーは なにを べんりに しますか？ (What does technology make convenient?)</li>
+    <li>テクノロジーを つかう とき なにが だいじですか？ (What is important when using technology?)</li>
+  </ol>
+
+</article>
+
+</main>
+
+<footer>
+© 2025 Japanese Learning — Reading Practice
+</footer>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("mobileMenu");
+btn.onclick=()=>menu.style.display=menu.style.display==="block"?"none":"block";
+</script>
+
+</body>
+</html>

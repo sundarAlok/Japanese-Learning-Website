@@ -1,0 +1,2635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Japanese Vocabulary</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+  --bg1:#f8fafc;
+  --bg2:#eef2ff;
+  --accent:#4f46e5;
+  --text:#0f172a;
+  --muted:#475569;
+}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.85);
+  border-bottom:1px solid rgba(15,23,42,.08);
+}
+.header-inner{
+  max-width:1200px;margin:auto;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;}
+.logo{
+  width:42px;height:42px;
+  background:linear-gradient(135deg,#3e4ce6,#8351f7);
+  color:#ffffff;display:grid;place-items:center;border-radius:10px;
+}
+nav a{
+  margin-left:10px;padding:8px 14px;font-weight:600;
+  color:var(--muted);border-radius:8px;
+}
+nav a:hover{background:rgba(79,70,229,.1);color:var(--accent);}
+nav a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+
+.search-bar{
+  margin-left: 15rem;
+}
+
+.explore-search-div{
+  gap: 5rem;
+}
+
+/* mobile */
+.menu-btn{display:none;font-size:26px;cursor:pointer;}
+.mobile-menu{display:none;background:#fff;border-top:1px solid rgba(15,23,42,.08);}
+.mobile-menu a{
+  display:block;padding:14px 20px;font-weight:600;color:var(--muted);
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.mobile-menu a:hover{background:rgba(79,70,229,.08);color:var(--accent);}
+.mobile-menu a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+@media(max-width:900px){
+  nav{display:none;}
+  .menu-btn{display:block;}
+
+  .search-bar{
+    margin-left: 0rem;
+  }
+
+  .explore-search-div{
+    gap: 1rem;
+  }
+
+  .vocab-card {
+    font-size: 14px;
+  }
+}
+
+/* LAYOUT */
+.container{max-width:1100px;margin:auto;padding:48px 20px;}
+.section{
+  background:#fff;border-radius:16px;padding:32px;
+  box-shadow:0 15px 40px rgba(0,0,0,.05);
+  margin-bottom:32px;
+}
+.section h2{color:var(--accent);}
+
+.table-wrap{overflow-x:auto;margin-top:16px;}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.95rem;
+}
+th,td{
+  border:1px solid rgba(15,23,42,.1);
+  padding:10px;
+}
+th{
+  background:rgba(79,70,229,.08);
+  font-weight:700;
+}
+tbody tr:nth-child(even){background:#f8fafc;}
+
+footer{
+  background:#fff;border-top:1px solid rgba(15,23,42,.08);
+  text-align:center;padding:24px;color:#64748b;
+}
+
+.vocab-row {
+  display: none;
+}
+
+.page-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.page-controls span {
+  cursor: pointer;
+  user-select: none;
+}
+
+.page-controls span.disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.page-controls .prev,
+.page-controls .next {
+  font-size: 34px;        /* increase arrow size */
+  line-height: 1;
+  padding: 4px 6px;
+  margin-top: -8px;
+}
+.vocab-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 14px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #ffffff, #f1f5ff);
+  color: #1e2b3f;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 0; /* important */
+}
+
+/* gradient overlay */
+.vocab-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #6366f1, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1; /* 🔑 keep overlay behind text */
+}
+
+/* hover effects */
+.vocab-card:hover::before {
+  opacity: 1;
+}
+
+.vocab-card:hover {
+  color: #ffffff; /* ✅ now visible */
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
+}
+
+/* ensure inner text stays above everything */
+.vocab-card,
+.vocab-card * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Applies to ALL vocab sections ending with "-section" */
+section[id$="-section"] {
+  scroll-margin-top: 80px; /* header height + 10px gap */
+}
+
+.highlight {
+  background-color: #fde68a; /* pale yellow */
+  transition: background-color 0.5s ease; /* smooth fade in/out */
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">JL</div>
+      <span>Japanese Learning</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="introduction.html">Introduction</a>
+      <a href="writingSystem.html">Writing</a>
+      <a href="vocabulary.html" class="active">Vocabulary</a>
+      <a href="commonSentences.html">Phrases</a>
+      <a href="readingPassage.html">Reading</a>
+      <a href="additional.html">More</a>
+    </nav>
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="writingSystem.html">Writing</a>
+    <a href="vocabulary.html" class="active">Vocabulary</a>
+    <a href="commonSentences.html">Phrases</a>
+    <a href="readingPassage.html">Reading</a>
+    <a href="additional.html">More</a>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- =========================
+     Vocabulary Hero Section
+========================== -->
+<section class="section rounded-2xl shadow-lg p-8 md:p-12 mb-14">
+
+  <!-- Intro -->
+  <div>
+    <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
+      Japanese Vocabulary
+    </h1>
+
+
+    <p class="text-slate-600 text-lg leading-7">
+      Learn Japanese vocabulary through a carefully structured, category-based system designed for real-life usage. From daily conversations to modern topics like technology, media, and entertainment, this section covers everything needed to build strong vocabulary foundations.
+    </p>
+
+
+    <div class="mt-6 mb-6 flex flex-col sm:flex-row items-center explore-search-div">
+      <!-- Explore button -->
+      <a href="#greetings-section"
+        class="flex-1 sm:flex-none inline-flex justify-center items-center gap-2 px-7 py-3
+                bg-indigo-600 text-white rounded-xl font-semibold
+                hover:bg-indigo-700 hover:shadow-md transition">
+        Explore Vocabulary Categories →
+      </a>
+
+      <!-- Search bar -->
+      <div class="flex-1 flex gap-2 w-full sm:w-auto search-bar">
+        <input type="text" id="vocabSearch" placeholder="Search vocabulary..."
+              class="flex-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <button id="searchBtn"
+                class="px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700">
+          Search
+        </button>
+      </div>
+    </div>
+
+
+  <!-- =========================
+       Vocabulary Navigation
+  ========================== -->
+  <div id="vocab-navigation">
+
+    <p class="text-slate-600 mb-6">
+      This vocabulary module contains <strong>41 comprehensive categories</strong>,
+      each organized into clear tables with Japanese script, pronunciation,
+      and English meaning. 
+    </p>
+
+    <!-- Category Cards -->
+    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 category-cards">
+
+      <!-- Core -->
+      <a href="#greetings-section" class="vocab-card">Greetings</a>
+      <a href="#numbers-section" class="vocab-card">Numbers</a>
+      <a href="#colors-section" class="vocab-card">Colors</a>
+      <a href="#days-section" class="vocab-card">Days</a>
+      <a href="#time-date-section" class="vocab-card">Time & Date</a>
+
+      <!-- Daily Life -->
+      <a href="#family-section" class="vocab-card">Family</a>
+      <a href="#food-section" class="vocab-card">Food</a>
+      <a href="#verb-section" class="vocab-card">Verbs</a>
+      <a href="#animals-section" class="vocab-card">Animals</a>
+      <a href="#house-rooms-section" class="vocab-card">House & Rooms</a>
+      <a href="#people-relationship-section" class="vocab-card">Relationships</a>
+
+      <!-- Places & Objects -->
+      <a href="#buildings-section" class="vocab-card">Buildings</a>
+      <a href="#flowers-section" class="vocab-card">Flowers</a>
+      <a href="#kitchen-items-section" class="vocab-card">Kitchen Items</a>
+      <a href="#school-college-section" class="vocab-card">School / College</a>
+      <a href="#education-section" class="vocab-card">Education</a>
+
+      <!-- Professional -->
+      <a href="#healthcare-section" class="vocab-card">Healthcare</a>
+      <a href="#law-section" class="vocab-card">Law</a>
+      <a href="#business-section" class="vocab-card">Business</a>
+      <a href="#technology-section" class="vocab-card">Technology</a>
+      <a href="#media-news-section" class="vocab-card">Media & News</a>
+      <a href="#government-section" class="vocab-card">Government</a>
+
+      <!-- Nature -->
+      <a href="#birds-section" class="vocab-card">Birds</a>
+      <a href="#trees-section" class="vocab-card">Trees</a>
+      <a href="#weather-seasons-section" class="vocab-card">Weather & Seasons</a>
+
+      <!-- Clothing & Travel -->
+      <a href="#clothing-section" class="vocab-card">Clothing</a>
+      <a href="#transportation-section" class="vocab-card">Transportation</a>
+      <a href="#places-section" class="vocab-card">Places</a>
+
+      <!-- Daily Use -->
+      <a href="#daily-use-1-section" class="vocab-card">Daily Use – 1</a>
+      <a href="#daily-use-2-section" class="vocab-card">Daily Use – 2</a>
+
+      <!-- Body & Essentials -->
+      <a href="#body-section" class="vocab-card">Body</a>
+      <a href="#fruits-section" class="vocab-card">Fruits</a>
+      <a href="#vegetables-section" class="vocab-card">Vegetables</a>
+      <a href="#money-section" class="vocab-card">Money</a>
+      <a href="#emotion-section" class="vocab-card">Emotion</a>
+      <a href="#countries-section" class="vocab-card">Countries</a>
+
+      <!-- Lifestyle -->
+      <a href="#shopping-section" class="vocab-card">Shopping</a>
+      <a href="#entertainment-section" class="vocab-card">Entertainment</a>
+      <a href="#anime-section" class="vocab-card">Anime</a>
+      <a href="#games-section" class="vocab-card">Games</a>
+      <a href="#adult-section" class="vocab-card">Adult</a>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- All the sections are Greetings, Numbers, Colors, Days, Time-Date, Family, Food, Verb, Animals, House & Rooms, People Relationship, Buildings, Flowers, Kitchen Items, School/College, Education, Healthcare, Law, Business, Technology, Media & News, Government, Birds, Trees, Clothing, Transportation, Places, Daily Use 1, Daily Use 2, Weather Seasons, Body, Fruits, Vegetables, Money, Emotion, Countries, Shopping, Entertainment, Anime, Games, Adult -->
+
+<!-- ================= 1. GREETINGS ================= -->
+<section class="section" id="greetings-section" data-page="1">
+<h2 class="text-2xl font-bold">1. Greetings (あいさつ)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="vocab-row"><td>こんにちは</td><td>コンニチハ</td><td>konnichiwa</td><td>Hello</td></tr>
+      <tr class="vocab-row"><td>おはよう</td><td>オハヨウ</td><td>ohayou</td><td>Good morning</td></tr>
+      <tr class="vocab-row"><td>おはようございます</td><td>オハヨウゴザイマス</td><td>ohayou gozaimasu</td><td>Good morning (polite)</td></tr>
+      <tr class="vocab-row"><td>こんばんは</td><td>コンバンハ</td><td>konbanwa</td><td>Good evening</td></tr>
+      <tr class="vocab-row"><td>さようなら</td><td>サヨウナラ</td><td>sayounara</td><td>Goodbye</td></tr>
+      <tr class="vocab-row"><td>ありがとう</td><td>アリガトウ</td><td>arigatou</td><td>Thank you</td></tr>
+      <tr class="vocab-row"><td>ありがとうございます</td><td>アリガトウゴザイマス</td><td>arigatou gozaimasu</td><td>Thank you (polite)</td></tr>
+      <tr class="vocab-row"><td>すみません</td><td>スミマセン</td><td>sumimasen</td><td>Excuse me</td></tr>
+      <tr class="vocab-row"><td>はい</td><td>ハイ</td><td>hai</td><td>Yes</td></tr>
+      <tr class="vocab-row"><td>いいえ</td><td>イイエ</td><td>iie</td><td>No</td></tr>
+
+      <tr class="vocab-row"><td>もしもし</td><td>モシモシ</td><td>moshi moshi</td><td>Hello (phone)</td></tr>
+      <tr class="vocab-row"><td>ごめんなさい</td><td>ゴメンナサイ</td><td>gomennasai</td><td>Sorry</td></tr>
+      <tr class="vocab-row"><td>はじめまして</td><td>ハジメマシテ</td><td>hajimemashite</td><td>Nice to meet you</td></tr>
+      <tr class="vocab-row"><td>よろしく</td><td>ヨロシク</td><td>yoroshiku</td><td>Please be kind to me</td></tr>
+      <tr class="vocab-row"><td>いってきます</td><td>イッテキマス</td><td>ittekimasu</td><td>I’m leaving</td></tr>
+      <tr class="vocab-row"><td>いってらっしゃい</td><td>イッテラッシャイ</td><td>itterasshai</td><td>Take care</td></tr>
+      <tr class="vocab-row"><td>ただいま</td><td>タダイマ</td><td>tadaima</td><td>I’m home</td></tr>
+      <tr class="vocab-row"><td>おかえり</td><td>オカエリ</td><td>okaeri</td><td>Welcome back</td></tr>
+      <tr class="vocab-row"><td>おやすみ</td><td>オヤスミ</td><td>oyasumi</td><td>Good night</td></tr>
+      <tr class="vocab-row"><td>どうも</td><td>ドウモ</td><td>doumo</td><td>Thanks</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('greetings-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('greetings-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 2. NUMBERS ================= -->
+<section class="section" id="numbers-section" data-page="1">
+<h2 class="text-2xl font-bold">2. Numbers (数字)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 0–9 -->
+      <tr class="vocab-row"><td>ぜろ</td><td>ゼロ</td><td>zero</td><td>Zero (0)</td></tr>
+      <tr class="vocab-row"><td>いち</td><td>イチ</td><td>ichi</td><td>One (1)</td></tr>
+      <tr class="vocab-row"><td>に</td><td>ニ</td><td>ni</td><td>Two (2)</td></tr>
+      <tr class="vocab-row"><td>さん</td><td>サン</td><td>san</td><td>Three (3)</td></tr>
+      <tr class="vocab-row"><td>よん</td><td>ヨン</td><td>yon</td><td>Four (4)</td></tr>
+      <tr class="vocab-row"><td>ご</td><td>ゴ</td><td>go</td><td>Five (5)</td></tr>
+      <tr class="vocab-row"><td>ろく</td><td>ロク</td><td>roku</td><td>Six (6)</td></tr>
+      <tr class="vocab-row"><td>なな</td><td>ナナ</td><td>nana</td><td>Seven (7)</td></tr>
+      <tr class="vocab-row"><td>はち</td><td>ハチ</td><td>hachi</td><td>Eight (8)</td></tr>
+      <tr class="vocab-row"><td>きゅう</td><td>キュウ</td><td>kyuu</td><td>Nine (9)</td></tr>
+
+      <!-- 10–12 -->
+      <tr class="vocab-row"><td>じゅう</td><td>ジュウ</td><td>juu</td><td>Ten (10)</td></tr>
+      <tr class="vocab-row"><td>じゅういち</td><td>ジュウイチ</td><td>juu ichi</td><td>Eleven (11)</td></tr>
+      <tr class="vocab-row"><td>じゅうに</td><td>ジュウニ</td><td>juu ni</td><td>Twelve (12)</td></tr>
+
+      <!-- Larger numbers -->
+      <tr class="vocab-row"><td>にじゅう</td><td>ニジュウ</td><td>nijuu</td><td>Twenty (20)</td></tr>
+      <tr class="vocab-row"><td>ひゃく</td><td>ヒャク</td><td>hyaku</td><td>One hundred (100)</td></tr>
+      <tr class="vocab-row"><td>ひゃくごじゅう</td><td>ヒャクゴジュウ</td><td>hyaku gojuu</td><td>One hundred fifty (150)</td></tr>
+      <tr class="vocab-row"><td>にひゃく</td><td>ニヒャク</td><td>nihyaku</td><td>Two hundred (200)</td></tr>
+      <tr class="vocab-row"><td>せん</td><td>セン</td><td>sen</td><td>One thousand (1000)</td></tr>
+      <tr class="vocab-row"><td>じゅうまん</td><td>ジュウマン</td><td>juu man</td><td>One hundred thousand (100,000)</td></tr>
+      <tr class="vocab-row"><td>じゅうおく</td><td>ジュウオク</td><td>juu oku</td><td>One billion (1,000,000,000)</td></tr>
+    </tbody>
+
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('numbers-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('numbers-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 3. COLORS ================= -->
+<section class="section" id="colors-section" data-page="1">
+<h2 class="text-2xl font-bold">3. Colors (色)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="vocab-row"><td>あか</td><td>アカ</td><td>aka</td><td>Red</td></tr>
+      <tr class="vocab-row"><td>あお</td><td>アオ</td><td>ao</td><td>Blue</td></tr>
+      <tr class="vocab-row"><td>きいろ</td><td>キイロ</td><td>kiiro</td><td>Yellow</td></tr>
+      <tr class="vocab-row"><td>みどり</td><td>ミドリ</td><td>midori</td><td>Green</td></tr>
+      <tr class="vocab-row"><td>しろ</td><td>シロ</td><td>shiro</td><td>White</td></tr>
+      <tr class="vocab-row"><td>くろ</td><td>クロ</td><td>kuro</td><td>Black</td></tr>
+      <tr class="vocab-row"><td>ちゃいろ</td><td>チャイロ</td><td>chairo</td><td>Brown</td></tr>
+      <tr class="vocab-row"><td>むらさき</td><td>ムラサキ</td><td>murasaki</td><td>Purple</td></tr>
+      <tr class="vocab-row"><td>ピンク</td><td>ピンク</td><td>pinku</td><td>Pink</td></tr>
+      <tr class="vocab-row"><td>オレンジ</td><td>オレンジ</td><td>orenji</td><td>Orange</td></tr>
+
+      <tr class="vocab-row"><td>はいいろ</td><td>ハイイロ</td><td>haiiro</td><td>Gray</td></tr>
+      <tr class="vocab-row"><td>きんいろ</td><td>キンイロ</td><td>kiniro</td><td>Gold</td></tr>
+      <tr class="vocab-row"><td>ぎんいろ</td><td>ギンイロ</td><td>giniro</td><td>Silver</td></tr>
+      <tr class="vocab-row"><td>みずいろ</td><td>ミズイロ</td><td>mizuiro</td><td>Light blue</td></tr>
+      <tr class="vocab-row"><td>こんいろ</td><td>コンイロ</td><td>koniro</td><td>Navy blue</td></tr>
+      <tr class="vocab-row"><td>きみどり</td><td>キミドリ</td><td>kimidori</td><td>Light green</td></tr>
+      <tr class="vocab-row"><td>だいだいいろ</td><td>ダイダイイロ</td><td>daidaiiro</td><td>Orange (traditional)</td></tr>
+      <tr class="vocab-row"><td>あかむらさき</td><td>アカムラサキ</td><td>akamurasaki</td><td>Magenta</td></tr>
+      <tr class="vocab-row"><td>こげちゃ</td><td>コゲチャ</td><td>kogecha</td><td>Dark brown</td></tr>
+      <tr class="vocab-row"><td>ベージュ</td><td>ベージュ</td><td>bēju</td><td>Beige</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('colors-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('colors-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 4. DAYS OF THE WEEK ================= -->
+<section class="section" id="days-section" data-page="1">
+  <h2 class="text-2xl font-bold">4. Days of the Week (曜日)</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Hiragana</th>
+          <th>Katakana</th>
+          <th>Romaji</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="vocab-row"><td>げつようび</td><td>ゲツヨウビ</td><td>getsuyoubi</td><td>Monday</td></tr>
+        <tr class="vocab-row"><td>かようび</td><td>カヨウビ</td><td>kayoubi</td><td>Tuesday</td></tr>
+        <tr class="vocab-row"><td>すいようび</td><td>スイヨウビ</td><td>suiyoubi</td><td>Wednesday</td></tr>
+        <tr class="vocab-row"><td>もくようび</td><td>モクヨウビ</td><td>mokuyoubi</td><td>Thursday</td></tr>
+        <tr class="vocab-row"><td>きんようび</td><td>キンヨウビ</td><td>kinyoubi</td><td>Friday</td></tr>
+        <tr class="vocab-row"><td>どようび</td><td>ドヨウビ</td><td>doyoubi</td><td>Saturday</td></tr>
+        <tr class="vocab-row"><td>にちようび</td><td>ニチヨウビ</td><td>nichiyoubi</td><td>Sunday</td></tr>
+
+        <tr class="vocab-row"><td>きょう</td><td>キョウ</td><td>kyou</td><td>Today</td></tr>
+        <tr class="vocab-row"><td>あした</td><td>アシタ</td><td>ashita</td><td>Tomorrow</td></tr>
+        <tr class="vocab-row"><td>きのう</td><td>キノウ</td><td>kinou</td><td>Yesterday</td></tr>
+
+        <tr class="vocab-row"><td>あさって</td><td>アサッテ</td><td>asatte</td><td>Day after tomorrow</td></tr>
+        <tr class="vocab-row"><td>おととい</td><td>オトトイ</td><td>ototoi</td><td>Day before yesterday</td></tr>
+        <tr class="vocab-row"><td>こんしゅう</td><td>コンシュウ</td><td>konshuu</td><td>This week</td></tr>
+        <tr class="vocab-row"><td>らいしゅう</td><td>ライシュウ</td><td>raishuu</td><td>Next week</td></tr>
+        <tr class="vocab-row"><td>せんしゅう</td><td>センシュウ</td><td>senshuu</td><td>Last week</td></tr>
+
+        <tr class="vocab-row"><td>まいにち</td><td>マイニチ</td><td>mainichi</td><td>Every day</td></tr>
+        <tr class="vocab-row"><td>へいじつ</td><td>ヘイジツ</td><td>heijitsu</td><td>Weekday</td></tr>
+        <tr class="vocab-row"><td>しゅうまつ</td><td>シュウマツ</td><td>shuumatsu</td><td>Weekend</td></tr>
+        <tr class="vocab-row"><td>なんようび</td><td>ナンヨウビ</td><td>nanyoubi</td><td>What day (of the week)</td></tr>
+        <tr class="vocab-row"><td>ようび</td><td>ヨウビ</td><td>youbi</td><td>Day of the week</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('days-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('days-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 5. TIME & DATE ================= -->
+<section class="section" id="time-date-section" data-page="1">
+<h2 class="text-2xl font-bold">5. Time & Date (時間・日付)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="vocab-row"><td>じかん</td><td>ジカン</td><td>jikan</td><td>Time</td></tr>
+      <tr class="vocab-row"><td>ひ</td><td>ヒ</td><td>hi</td><td>Day</td></tr>
+      <tr class="vocab-row"><td>ひづけ</td><td>ヒヅケ</td><td>hizuke</td><td>Date</td></tr>
+      <tr class="vocab-row"><td>いま</td><td>イマ</td><td>ima</td><td>Now</td></tr>
+      <tr class="vocab-row"><td>なんじ</td><td>ナンジ</td><td>nanji</td><td>What time (hour)</td></tr>
+      <tr class="vocab-row"><td>なんぷん</td><td>ナンプン</td><td>nanpun</td><td>What minute</td></tr>
+      <tr class="vocab-row"><td>あさ</td><td>アサ</td><td>asa</td><td>Morning</td></tr>
+      <tr class="vocab-row"><td>ひる</td><td>ヒル</td><td>hiru</td><td>Noon / Daytime</td></tr>
+      <tr class="vocab-row"><td>ばん</td><td>バン</td><td>ban</td><td>Evening</td></tr>
+      <tr class="vocab-row"><td>よる</td><td>ヨル</td><td>yoru</td><td>Night</td></tr>
+
+      <tr class="vocab-row"><td>ごぜん</td><td>ゴゼン</td><td>gozen</td><td>AM</td></tr>
+      <tr class="vocab-row"><td>ごご</td><td>ゴゴ</td><td>gogo</td><td>PM</td></tr>
+      <tr class="vocab-row"><td>まいにち</td><td>マイニチ</td><td>mainichi</td><td>Every day</td></tr>
+      <tr class="vocab-row"><td>きょう</td><td>キョウ</td><td>kyou</td><td>Today</td></tr>
+      <tr class="vocab-row"><td>あした</td><td>アシタ</td><td>ashita</td><td>Tomorrow</td></tr>
+      <tr class="vocab-row"><td>きのう</td><td>キノウ</td><td>kinou</td><td>Yesterday</td></tr>
+      <tr class="vocab-row"><td>しゅう</td><td>シュウ</td><td>shuu</td><td>Week</td></tr>
+      <tr class="vocab-row"><td>つき</td><td>ツキ</td><td>tsuki</td><td>Month</td></tr>
+      <tr class="vocab-row"><td>とし</td><td>トシ</td><td>toshi</td><td>Year</td></tr>
+      <tr class="vocab-row"><td>いつ</td><td>イツ</td><td>itsu</td><td>When</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('time-date-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('time-date-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 6. FAMILY ================= -->
+<section class="section" id="family-section" data-page="1">
+<h2 class="text-2xl font-bold">6. Family (家族)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="vocab-row"><td>かぞく</td><td>カゾク</td><td>kazoku</td><td>Family</td></tr>
+      <tr class="vocab-row"><td>ちち</td><td>チチ</td><td>chichi</td><td>Father (my)</td></tr>
+      <tr class="vocab-row"><td>はは</td><td>ハハ</td><td>haha</td><td>Mother (my)</td></tr>
+      <tr class="vocab-row"><td>おとうさん</td><td>オトウサン</td><td>otousan</td><td>Father</td></tr>
+      <tr class="vocab-row"><td>おかあさん</td><td>オカアサン</td><td>okaasan</td><td>Mother</td></tr>
+      <tr class="vocab-row"><td>あに</td><td>アニ</td><td>ani</td><td>Older brother (my)</td></tr>
+      <tr class="vocab-row"><td>あね</td><td>アネ</td><td>ane</td><td>Older sister (my)</td></tr>
+      <tr class="vocab-row"><td>おにいさん</td><td>オニイサン</td><td>oniisan</td><td>Older brother</td></tr>
+      <tr class="vocab-row"><td>おねえさん</td><td>オネエサン</td><td>oneesan</td><td>Older sister</td></tr>
+      <tr class="vocab-row"><td>おとうと</td><td>オトウト</td><td>otouto</td><td>Younger brother</td></tr>
+
+      <tr class="vocab-row"><td>いもうと</td><td>イモウト</td><td>imouto</td><td>Younger sister</td></tr>
+      <tr class="vocab-row"><td>そふ</td><td>ソフ</td><td>sofu</td><td>Grandfather (my)</td></tr>
+      <tr class="vocab-row"><td>そぼ</td><td>ソボ</td><td>sobo</td><td>Grandmother (my)</td></tr>
+      <tr class="vocab-row"><td>おじいさん</td><td>オジイサン</td><td>ojiisan</td><td>Grandfather</td></tr>
+      <tr class="vocab-row"><td>おばあさん</td><td>オバアサン</td><td>obaasan</td><td>Grandmother</td></tr>
+      <tr class="vocab-row"><td>おじ</td><td>オジ</td><td>oji</td><td>Uncle</td></tr>
+      <tr class="vocab-row"><td>おば</td><td>オバ</td><td>oba</td><td>Aunt</td></tr>
+      <tr class="vocab-row"><td>いとこ</td><td>イトコ</td><td>itoko</td><td>Cousin</td></tr>
+      <tr class="vocab-row"><td>むすこ</td><td>ムスコ</td><td>musuko</td><td>Son</td></tr>
+      <tr class="vocab-row"><td>むすめ</td><td>ムスメ</td><td>musume</td><td>Daughter</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('family-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('family-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 7. FOOD & DRINK ================= -->
+<section class="section" id="food-section" data-page="1">
+<h2 class="text-2xl font-bold">7. Food & Drink (食べ物・飲み物)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="vocab-row"><td>たべもの</td><td>タベモノ</td><td>tabemono</td><td>Food</td></tr>
+      <tr class="vocab-row"><td>のみもの</td><td>ノミモノ</td><td>nomimono</td><td>Drink</td></tr>
+      <tr class="vocab-row"><td>ごはん</td><td>ゴハン</td><td>gohan</td><td>Rice / Meal</td></tr>
+      <tr class="vocab-row"><td>パン</td><td>パン</td><td>pan</td><td>Bread</td></tr>
+      <tr class="vocab-row"><td>めん</td><td>メン</td><td>men</td><td>Noodles</td></tr>
+      <tr class="vocab-row"><td>にく</td><td>ニク</td><td>niku</td><td>Meat</td></tr>
+      <tr class="vocab-row"><td>さかな</td><td>サカナ</td><td>sakana</td><td>Fish</td></tr>
+      <tr class="vocab-row"><td>やさい</td><td>ヤサイ</td><td>yasai</td><td>Vegetables</td></tr>
+      <tr class="vocab-row"><td>くだもの</td><td>クダモノ</td><td>kudamono</td><td>Fruit</td></tr>
+      <tr class="vocab-row"><td>たまご</td><td>タマゴ</td><td>tamago</td><td>Egg</td></tr>
+
+      <tr class="vocab-row"><td>みず</td><td>ミズ</td><td>mizu</td><td>Water</td></tr>
+      <tr class="vocab-row"><td>おちゃ</td><td>オチャ</td><td>ocha</td><td>Tea</td></tr>
+      <tr class="vocab-row"><td>コーヒー</td><td>コーヒー</td><td>kōhī</td><td>Coffee</td></tr>
+      <tr class="vocab-row"><td>ぎゅうにゅう</td><td>ギュウニュウ</td><td>gyuunyuu</td><td>Milk</td></tr>
+      <tr class="vocab-row"><td>ジュース</td><td>ジュース</td><td>jūsu</td><td>Juice</td></tr>
+      <tr class="vocab-row"><td>ケーキ</td><td>ケーキ</td><td>kēki</td><td>Cake</td></tr>
+      <tr class="vocab-row"><td>あまい</td><td>アマイ</td><td>amai</td><td>Sweet</td></tr>
+      <tr class="vocab-row"><td>からい</td><td>カライ</td><td>karai</td><td>Spicy</td></tr>
+      <tr class="vocab-row"><td>おいしい</td><td>オイシイ</td><td>oishii</td><td>Delicious</td></tr>
+      <tr class="vocab-row"><td>まずい</td><td>マズイ</td><td>mazui</td><td>Bad tasting</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('food-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('food-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 8. VERBS ================= -->
+<section class="section" id="verbs-section" data-page="1">
+  <h2 class="text-2xl font-bold">8. Verbs (動詞)</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Hiragana</th>
+          <th>Katakana</th>
+          <th>Romaji</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="vocab-row"><td>たべる</td><td>タベル</td><td>taberu</td><td>To eat</td></tr>
+        <tr class="vocab-row"><td>のむ</td><td>ノム</td><td>nomu</td><td>To drink</td></tr>
+        <tr class="vocab-row"><td>いく</td><td>イク</td><td>iku</td><td>To go</td></tr>
+        <tr class="vocab-row"><td>くる</td><td>クル</td><td>kuru</td><td>To come</td></tr>
+        <tr class="vocab-row"><td>かえる</td><td>カエル</td><td>kaeru</td><td>To return</td></tr>
+        <tr class="vocab-row"><td>みる</td><td>ミル</td><td>miru</td><td>To see / watch</td></tr>
+        <tr class="vocab-row"><td>きく</td><td>キク</td><td>kiku</td><td>To listen / ask</td></tr>
+        <tr class="vocab-row"><td>はなす</td><td>ハナス</td><td>hanasu</td><td>To speak</td></tr>
+        <tr class="vocab-row"><td>よむ</td><td>ヨム</td><td>yomu</td><td>To read</td></tr>
+        <tr class="vocab-row"><td>かく</td><td>カク</td><td>kaku</td><td>To write</td></tr>
+
+        <tr class="vocab-row"><td>する</td><td>スル</td><td>suru</td><td>To do</td></tr>
+        <tr class="vocab-row"><td>ある</td><td>アル</td><td>aru</td><td>To exist (inanimate)</td></tr>
+        <tr class="vocab-row"><td>いる</td><td>イル</td><td>iru</td><td>To exist (animate)</td></tr>
+        <tr class="vocab-row"><td>ねる</td><td>ネル</td><td>neru</td><td>To sleep</td></tr>
+        <tr class="vocab-row"><td>おきる</td><td>オキル</td><td>okiru</td><td>To wake up</td></tr>
+        <tr class="vocab-row"><td>はたらく</td><td>ハタラク</td><td>hataraku</td><td>To work</td></tr>
+        <tr class="vocab-row"><td>やすむ</td><td>ヤスム</td><td>yasumu</td><td>To rest</td></tr>
+        <tr class="vocab-row"><td>かう</td><td>カウ</td><td>kau</td><td>To buy</td></tr>
+        <tr class="vocab-row"><td>あう</td><td>アウ</td><td>au</td><td>To meet</td></tr>
+        <tr class="vocab-row"><td>わかる</td><td>ワカル</td><td>wakaru</td><td>To understand</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+    <div class="page-controls">
+      <span class="prev disabled" onclick="showPage('verbs-section',1)">‹</span>
+      <span class="page-number">01</span>
+      <span>/ 02</span>
+      <span class="next" onclick="showPage('verbs-section',2)">›</span>
+    </div>
+</section>
+
+
+<!-- ================= 9. ANIMALS ================= -->
+<section class="section" id="animals-section" data-page="1">
+<h2 class="text-2xl font-bold">9. Animals (動物)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="vocab-row"><td>どうぶつ</td><td>ドウブツ</td><td>doubutsu</td><td>Animal</td></tr>
+      <tr class="vocab-row"><td>いぬ</td><td>イヌ</td><td>inu</td><td>Dog</td></tr>
+      <tr class="vocab-row"><td>ねこ</td><td>ネコ</td><td>neko</td><td>Cat</td></tr>
+      <tr class="vocab-row"><td>とり</td><td>トリ</td><td>tori</td><td>Bird</td></tr>
+      <tr class="vocab-row"><td>うま</td><td>ウマ</td><td>uma</td><td>Horse</td></tr>
+      <tr class="vocab-row"><td>うし</td><td>ウシ</td><td>ushi</td><td>Cow</td></tr>
+      <tr class="vocab-row"><td>ぶた</td><td>ブタ</td><td>buta</td><td>Pig</td></tr>
+      <tr class="vocab-row"><td>ひつじ</td><td>ヒツジ</td><td>hitsuji</td><td>Sheep</td></tr>
+      <tr class="vocab-row"><td>さる</td><td>サル</td><td>saru</td><td>Monkey</td></tr>
+      <tr class="vocab-row"><td>くま</td><td>クマ</td><td>kuma</td><td>Bear</td></tr>
+
+      <tr class="vocab-row"><td>ぞう</td><td>ゾウ</td><td>zou</td><td>Elephant</td></tr>
+      <tr class="vocab-row"><td>きりん</td><td>キリン</td><td>kirin</td><td>Giraffe</td></tr>
+      <tr class="vocab-row"><td>とら</td><td>トラ</td><td>tora</td><td>Tiger</td></tr>
+      <tr class="vocab-row"><td>らいおん</td><td>ライオン</td><td>raion</td><td>Lion</td></tr>
+      <tr class="vocab-row"><td>しか</td><td>シカ</td><td>shika</td><td>Deer</td></tr>
+      <tr class="vocab-row"><td>おおかみ</td><td>オオカミ</td><td>ookami</td><td>Wolf</td></tr>
+      <tr class="vocab-row"><td>ねずみ</td><td>ネズミ</td><td>nezumi</td><td>Mouse</td></tr>
+      <tr class="vocab-row"><td>うさぎ</td><td>ウサギ</td><td>usagi</td><td>Rabbit</td></tr>
+      <tr class="vocab-row"><td>かめ</td><td>カメ</td><td>kame</td><td>Turtle</td></tr>
+      <tr class="vocab-row"><td>へび</td><td>ヘビ</td><td>hebi</td><td>Snake</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('animals-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('animals-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 10. HOUSE & ROOMS ================= -->
+<section class="section" id="house-rooms-section" data-page="1">
+<h2 class="text-2xl font-bold">10. House & Rooms (家・部屋)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="vocab-row"><td>いえ</td><td>イエ</td><td>ie</td><td>House</td></tr>
+      <tr class="vocab-row"><td>うち</td><td>ウチ</td><td>uchi</td><td>Home</td></tr>
+      <tr class="vocab-row"><td>へや</td><td>ヘヤ</td><td>heya</td><td>Room</td></tr>
+      <tr class="vocab-row"><td>げんかん</td><td>ゲンカン</td><td>genkan</td><td>Entrance</td></tr>
+      <tr class="vocab-row"><td>リビング</td><td>リビング</td><td>ribingu</td><td>Living room</td></tr>
+      <tr class="vocab-row"><td>しんしつ</td><td>シンシツ</td><td>shinshitsu</td><td>Bedroom</td></tr>
+      <tr class="vocab-row"><td>だいどころ</td><td>ダイドコロ</td><td>daidokoro</td><td>Kitchen</td></tr>
+      <tr class="vocab-row"><td>トイレ</td><td>トイレ</td><td>toire</td><td>Toilet</td></tr>
+      <tr class="vocab-row"><td>おふろ</td><td>オフロ</td><td>ofuro</td><td>Bath</td></tr>
+      <tr class="vocab-row"><td>せんめんじょ</td><td>センメンジョ</td><td>senmenjo</td><td>Washroom</td></tr>
+
+      <tr class="vocab-row"><td>にわ</td><td>ニワ</td><td>niwa</td><td>Garden</td></tr>
+      <tr class="vocab-row"><td>ベランダ</td><td>ベランダ</td><td>beranda</td><td>Balcony</td></tr>
+      <tr class="vocab-row"><td>かいだん</td><td>カイダン</td><td>kaidan</td><td>Stairs</td></tr>
+      <tr class="vocab-row"><td>ドア</td><td>ドア</td><td>doa</td><td>Door</td></tr>
+      <tr class="vocab-row"><td>まど</td><td>マド</td><td>mado</td><td>Window</td></tr>
+      <tr class="vocab-row"><td>ゆか</td><td>ユカ</td><td>yuka</td><td>Floor</td></tr>
+      <tr class="vocab-row"><td>てんじょう</td><td>テンジョウ</td><td>tenjou</td><td>Ceiling</td></tr>
+      <tr class="vocab-row"><td>かべ</td><td>カベ</td><td>kabe</td><td>Wall</td></tr>
+      <tr class="vocab-row"><td>でんき</td><td>デンキ</td><td>denki</td><td>Electric light</td></tr>
+      <tr class="vocab-row"><td>かぐ</td><td>カグ</td><td>kagu</td><td>Furniture</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('house-rooms-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('house-rooms-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 11. PEOPLE & RELATIONSHIP ================= -->
+<section class="section" id="people-relationship-section" data-page="1">
+<h2 class="text-2xl font-bold">11. People & Relationship (人・関係)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>ひと</td><td>ヒト</td><td>hito</td><td>Person</td></tr>
+      <tr class="vocab-row"><td>おとこ</td><td>オトコ</td><td>otoko</td><td>Man</td></tr>
+      <tr class="vocab-row"><td>おんな</td><td>オンナ</td><td>onna</td><td>Woman</td></tr>
+      <tr class="vocab-row"><td>こども</td><td>コドモ</td><td>kodomo</td><td>Child</td></tr>
+      <tr class="vocab-row"><td>ともだち</td><td>トモダチ</td><td>tomodachi</td><td>Friend</td></tr>
+      <tr class="vocab-row"><td>かぞく</td><td>カゾク</td><td>kazoku</td><td>Family</td></tr>
+      <tr class="vocab-row"><td>りょうしん</td><td>リョウシン</td><td>ryoushin</td><td>Parents</td></tr>
+      <tr class="vocab-row"><td>せんせい</td><td>センセイ</td><td>sensei</td><td>Teacher</td></tr>
+      <tr class="vocab-row"><td>がくせい</td><td>ガクセイ</td><td>gakusei</td><td>Student</td></tr>
+      <tr class="vocab-row"><td>かれ</td><td>カレ</td><td>kare</td><td>He / Boyfriend</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>かのじょ</td><td>カノジョ</td><td>kanojo</td><td>She / Girlfriend</td></tr>
+      <tr class="vocab-row"><td>ふうふ</td><td>フウフ</td><td>fuufu</td><td>Married couple</td></tr>
+      <tr class="vocab-row"><td>つま</td><td>ツマ</td><td>tsuma</td><td>Wife</td></tr>
+      <tr class="vocab-row"><td>おっと</td><td>オット</td><td>otto</td><td>Husband</td></tr>
+      <tr class="vocab-row"><td>しんせき</td><td>シンセキ</td><td>shinseki</td><td>Relative</td></tr>
+      <tr class="vocab-row"><td>となり</td><td>トナリ</td><td>tonari</td><td>Neighbor</td></tr>
+      <tr class="vocab-row"><td>しりあい</td><td>シリアイ</td><td>shiriai</td><td>Acquaintance</td></tr>
+      <tr class="vocab-row"><td>なかま</td><td>ナカマ</td><td>nakama</td><td>Companion</td></tr>
+      <tr class="vocab-row"><td>こいびと</td><td>コイビト</td><td>koibito</td><td>Lover</td></tr>
+      <tr class="vocab-row"><td>あいて</td><td>アイテ</td><td>aite</td><td>Partner / Opponent</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('people-relationship-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('people-relationship-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 12. BUILDINGS ================= -->
+<section class="section" id="buildings-section" data-page="1">
+<h2 class="text-2xl font-bold">12. Buildings (建物)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>たてもの</td><td>タテモノ</td><td>tatemono</td><td>Building</td></tr>
+      <tr class="vocab-row"><td>いえ</td><td>イエ</td><td>ie</td><td>House</td></tr>
+      <tr class="vocab-row"><td>びる</td><td>ビル</td><td>biru</td><td>Building (office)</td></tr>
+      <tr class="vocab-row"><td>まんしょん</td><td>マンション</td><td>manshon</td><td>Apartment</td></tr>
+      <tr class="vocab-row"><td>がっこう</td><td>ガッコウ</td><td>gakkou</td><td>School</td></tr>
+      <tr class="vocab-row"><td>びょういん</td><td>ビョウイン</td><td>byouin</td><td>Hospital</td></tr>
+      <tr class="vocab-row"><td>えき</td><td>エキ</td><td>eki</td><td>Station</td></tr>
+      <tr class="vocab-row"><td>みせ</td><td>ミセ</td><td>mise</td><td>Shop</td></tr>
+      <tr class="vocab-row"><td>ぎんこう</td><td>ギンコウ</td><td>ginkou</td><td>Bank</td></tr>
+      <tr class="vocab-row"><td>ゆうびんきょく</td><td>ユウビンキョク</td><td>yuubinkyoku</td><td>Post office</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>としょかん</td><td>トショカン</td><td>toshokan</td><td>Library</td></tr>
+      <tr class="vocab-row"><td>びじゅつかん</td><td>ビジュツカン</td><td>bijutsukan</td><td>Art museum</td></tr>
+      <tr class="vocab-row"><td>はくぶつかん</td><td>ハクブツカン</td><td>hakubutsukan</td><td>Museum</td></tr>
+      <tr class="vocab-row"><td>こうじょう</td><td>コウジョウ</td><td>koujou</td><td>Factory</td></tr>
+      <tr class="vocab-row"><td>しやくしょ</td><td>シヤクショ</td><td>shiyakusho</td><td>City hall</td></tr>
+      <tr class="vocab-row"><td>ほてる</td><td>ホテル</td><td>hoteru</td><td>Hotel</td></tr>
+      <tr class="vocab-row"><td>れすとらん</td><td>レストラン</td><td>resutoran</td><td>Restaurant</td></tr>
+      <tr class="vocab-row"><td>でぱーと</td><td>デパート</td><td>depaato</td><td>Department store</td></tr>
+      <tr class="vocab-row"><td>こうえん</td><td>コウエン</td><td>kouen</td><td>Park</td></tr>
+      <tr class="vocab-row"><td>てら</td><td>テラ</td><td>tera</td><td>Temple</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('buildings-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('buildings-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 13. FLOWERS ================= -->
+<section class="section" id="flowers-section" data-page="1">
+<h2 class="text-2xl font-bold">13. Flowers (花)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>はな</td><td>ハナ</td><td>hana</td><td>Flower</td></tr>
+      <tr class="vocab-row"><td>さくら</td><td>サクラ</td><td>sakura</td><td>Cherry blossom</td></tr>
+      <tr class="vocab-row"><td>ばら</td><td>バラ</td><td>bara</td><td>Rose</td></tr>
+      <tr class="vocab-row"><td>ゆり</td><td>ユリ</td><td>yuri</td><td>Lily</td></tr>
+      <tr class="vocab-row"><td>きく</td><td>キク</td><td>kiku</td><td>Chrysanthemum</td></tr>
+      <tr class="vocab-row"><td>あさがお</td><td>アサガオ</td><td>asagao</td><td>Morning glory</td></tr>
+      <tr class="vocab-row"><td>すみれ</td><td>スミレ</td><td>sumire</td><td>Violet</td></tr>
+      <tr class="vocab-row"><td>ひまわり</td><td>ヒマワリ</td><td>himawari</td><td>Sunflower</td></tr>
+      <tr class="vocab-row"><td>つばき</td><td>ツバキ</td><td>tsubaki</td><td>Camellia</td></tr>
+      <tr class="vocab-row"><td>すいせん</td><td>スイセン</td><td>suisen</td><td>Daffodil</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>れんげ</td><td>レンゲ</td><td>renge</td><td>Lotus flower</td></tr>
+      <tr class="vocab-row"><td>もも</td><td>モモ</td><td>momo</td><td>Peach blossom</td></tr>
+      <tr class="vocab-row"><td>うめ</td><td>ウメ</td><td>ume</td><td>Plum blossom</td></tr>
+      <tr class="vocab-row"><td>たんぽぽ</td><td>タンポポ</td><td>tanpopo</td><td>Dandelion</td></tr>
+      <tr class="vocab-row"><td>あじさい</td><td>アジサイ</td><td>ajisai</td><td>Hydrangea</td></tr>
+      <tr class="vocab-row"><td>すずらん</td><td>スズラン</td><td>suzuran</td><td>Lily of the valley</td></tr>
+      <tr class="vocab-row"><td>らん</td><td>ラン</td><td>ran</td><td>Orchid</td></tr>
+      <tr class="vocab-row"><td>なのはな</td><td>ナノハナ</td><td>nanohana</td><td>Rapeseed flower</td></tr>
+      <tr class="vocab-row"><td>こすもす</td><td>コスモス</td><td>kosumosu</td><td>Cosmos flower</td></tr>
+      <tr class="vocab-row"><td>しゃくやく</td><td>シャクヤク</td><td>shakuyaku</td><td>Peony</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('flowers-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('flowers-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 14. KITCHEN ITEMS ================= -->
+<section class="section" id="kitchen-items-section" data-page="1">
+<h2 class="text-2xl font-bold">14. Kitchen Items (台所用品)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>だいどころ</td><td>ダイドコロ</td><td>daidokoro</td><td>Kitchen</td></tr>
+      <tr class="vocab-row"><td>なべ</td><td>ナベ</td><td>nabe</td><td>Pot</td></tr>
+      <tr class="vocab-row"><td>ふらいぱん</td><td>フライパン</td><td>furaipan</td><td>Frying pan</td></tr>
+      <tr class="vocab-row"><td>さら</td><td>サラ</td><td>sara</td><td>Plate</td></tr>
+      <tr class="vocab-row"><td>はし</td><td>ハシ</td><td>hashi</td><td>Chopsticks</td></tr>
+      <tr class="vocab-row"><td>すぷーん</td><td>スプーン</td><td>supuun</td><td>Spoon</td></tr>
+      <tr class="vocab-row"><td>ふぉーく</td><td>フォーク</td><td>fooku</td><td>Fork</td></tr>
+      <tr class="vocab-row"><td>ないふ</td><td>ナイフ</td><td>naifu</td><td>Knife</td></tr>
+      <tr class="vocab-row"><td>こっぷ</td><td>コップ</td><td>koppu</td><td>Cup</td></tr>
+      <tr class="vocab-row"><td>ちゃわん</td><td>チャワン</td><td>chawan</td><td>Rice bowl</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>まな板</td><td>マナイタ</td><td>manaita</td><td>Cutting board</td></tr>
+      <tr class="vocab-row"><td>れいぞうこ</td><td>レイゾウコ</td><td>reizōko</td><td>Refrigerator</td></tr>
+      <tr class="vocab-row"><td>でんしれんじ</td><td>デンシレンジ</td><td>denshi renji</td><td>Microwave</td></tr>
+      <tr class="vocab-row"><td>とーすたー</td><td>トースター</td><td>tōsutā</td><td>Toaster</td></tr>
+      <tr class="vocab-row"><td>すいはんき</td><td>スイハンキ</td><td>suihanki</td><td>Rice cooker</td></tr>
+      <tr class="vocab-row"><td>やかん</td><td>ヤカン</td><td>yakan</td><td>Kettle</td></tr>
+      <tr class="vocab-row"><td>おたま</td><td>オタマ</td><td>otama</td><td>Ladle</td></tr>
+      <tr class="vocab-row"><td>ざる</td><td>ザル</td><td>zaru</td><td>Strainer</td></tr>
+      <tr class="vocab-row"><td>ふきん</td><td>フキン</td><td>fukin</td><td>Dishcloth</td></tr>
+      <tr class="vocab-row"><td>しょっき</td><td>ショッキ</td><td>shokki</td><td>Tableware</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('kitchen-items-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('kitchen-items-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 15. SCHOOL & COLLEGE ================= -->
+<section class="section" id="school-college-section" data-page="1">
+<h2 class="text-2xl font-bold">15. School / College (学校・大学)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>がっこう</td><td>ガッコウ</td><td>gakkou</td><td>School</td></tr>
+      <tr class="vocab-row"><td>だいがく</td><td>ダイガク</td><td>daigaku</td><td>University</td></tr>
+      <tr class="vocab-row"><td>こうこう</td><td>コウコウ</td><td>koukou</td><td>High school</td></tr>
+      <tr class="vocab-row"><td>きょうしつ</td><td>キョウシツ</td><td>kyoushitsu</td><td>Classroom</td></tr>
+      <tr class="vocab-row"><td>せんせい</td><td>センセイ</td><td>sensei</td><td>Teacher</td></tr>
+      <tr class="vocab-row"><td>がくせい</td><td>ガクセイ</td><td>gakusei</td><td>Student</td></tr>
+      <tr class="vocab-row"><td>ともだち</td><td>トモダチ</td><td>tomodachi</td><td>Classmate / Friend</td></tr>
+      <tr class="vocab-row"><td>じゅぎょう</td><td>ジュギョウ</td><td>jugyou</td><td>Class / Lecture</td></tr>
+      <tr class="vocab-row"><td>きょうかしょ</td><td>キョウカショ</td><td>kyoukasho</td><td>Textbook</td></tr>
+      <tr class="vocab-row"><td>ほん</td><td>ホン</td><td>hon</td><td>Book</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>のーと</td><td>ノート</td><td>nooto</td><td>Notebook</td></tr>
+      <tr class="vocab-row"><td>ぺん</td><td>ペン</td><td>pen</td><td>Pen</td></tr>
+      <tr class="vocab-row"><td>えんぴつ</td><td>エンピツ</td><td>enpitsu</td><td>Pencil</td></tr>
+      <tr class="vocab-row"><td>けしごむ</td><td>ケシゴム</td><td>keshigomu</td><td>Eraser</td></tr>
+      <tr class="vocab-row"><td>しゅくだい</td><td>シュクダイ</td><td>shukudai</td><td>Homework</td></tr>
+      <tr class="vocab-row"><td>しけん</td><td>シケン</td><td>shiken</td><td>Exam</td></tr>
+      <tr class="vocab-row"><td>てすと</td><td>テスト</td><td>tesuto</td><td>Test</td></tr>
+      <tr class="vocab-row"><td>じかんわり</td><td>ジカンワリ</td><td>jikanwari</td><td>Timetable</td></tr>
+      <tr class="vocab-row"><td>としょかん</td><td>トショカン</td><td>toshokan</td><td>Library</td></tr>
+      <tr class="vocab-row"><td>そつぎょう</td><td>ソツギョウ</td><td>sotsugyou</td><td>Graduation</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('school-college-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('school-college-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 16. EDUCATION ================= -->
+<section class="section" id="education-section" data-page="1">
+<h2 class="text-2xl font-bold">16. Education (教育)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>きょういく</td><td>キョウイク</td><td>kyouiku</td><td>Education</td></tr>
+      <tr class="vocab-row"><td>がくもん</td><td>ガクモン</td><td>gakumon</td><td>Learning / Scholarship</td></tr>
+      <tr class="vocab-row"><td>べんきょう</td><td>ベンキョウ</td><td>benkyou</td><td>Study</td></tr>
+      <tr class="vocab-row"><td>ちしき</td><td>チシキ</td><td>chishiki</td><td>Knowledge</td></tr>
+      <tr class="vocab-row"><td>ぎじゅつ</td><td>ギジュツ</td><td>gijutsu</td><td>Skill / Technique</td></tr>
+      <tr class="vocab-row"><td>のうりょく</td><td>ノウリョク</td><td>nouryoku</td><td>Ability</td></tr>
+      <tr class="vocab-row"><td>がくい</td><td>ガクイ</td><td>gakui</td><td>Academic degree</td></tr>
+      <tr class="vocab-row"><td>こうぎ</td><td>コウギ</td><td>kougi</td><td>Lecture</td></tr>
+      <tr class="vocab-row"><td>じっしゅう</td><td>ジッシュウ</td><td>jisshuu</td><td>Practical training</td></tr>
+      <tr class="vocab-row"><td>けんきゅう</td><td>ケンキュウ</td><td>kenkyuu</td><td>Research</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>きょうざい</td><td>キョウザイ</td><td>kyouzai</td><td>Teaching materials</td></tr>
+      <tr class="vocab-row"><td>かだい</td><td>カダイ</td><td>kadai</td><td>Assignment</td></tr>
+      <tr class="vocab-row"><td>しけん</td><td>シケン</td><td>shiken</td><td>Examination</td></tr>
+      <tr class="vocab-row"><td>せいせき</td><td>セイセキ</td><td>seiseki</td><td>Academic record</td></tr>
+      <tr class="vocab-row"><td>ひょうか</td><td>ヒョウカ</td><td>hyouka</td><td>Evaluation</td></tr>
+      <tr class="vocab-row"><td>しゅうりょう</td><td>シュウリョウ</td><td>shuuryou</td><td>Completion</td></tr>
+      <tr class="vocab-row"><td>そつぎょう</td><td>ソツギョウ</td><td>sotsugyou</td><td>Graduation</td></tr>
+      <tr class="vocab-row"><td>にゅうがく</td><td>ニュウガク</td><td>nyuugaku</td><td>Admission</td></tr>
+      <tr class="vocab-row"><td>がくしゅう</td><td>ガクシュウ</td><td>gakushuu</td><td>Learning (process)</td></tr>
+      <tr class="vocab-row"><td>しどう</td><td>シドウ</td><td>shidou</td><td>Guidance / Instruction</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('education-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('education-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 17. HEALTHCARE ================= -->
+<section class="section" id="healthcare-section" data-page="1">
+<h2 class="text-2xl font-bold">17. Healthcare (医療)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>いりょう</td><td>イリョウ</td><td>iryou</td><td>Medical care</td></tr>
+      <tr class="vocab-row"><td>びょういん</td><td>ビョウイン</td><td>byouin</td><td>Hospital</td></tr>
+      <tr class="vocab-row"><td>いしゃ</td><td>イシャ</td><td>isha</td><td>Doctor</td></tr>
+      <tr class="vocab-row"><td>かんごし</td><td>カンゴシ</td><td>kangoshi</td><td>Nurse</td></tr>
+      <tr class="vocab-row"><td>かんじゃ</td><td>カンジャ</td><td>kanja</td><td>Patient</td></tr>
+      <tr class="vocab-row"><td>くすり</td><td>クスリ</td><td>kusuri</td><td>Medicine</td></tr>
+      <tr class="vocab-row"><td>ちりょう</td><td>チリョウ</td><td>chiryou</td><td>Treatment</td></tr>
+      <tr class="vocab-row"><td>びょうき</td><td>ビョウキ</td><td>byouki</td><td>Illness</td></tr>
+      <tr class="vocab-row"><td>いたみ</td><td>イタミ</td><td>itami</td><td>Pain</td></tr>
+      <tr class="vocab-row"><td>ねつ</td><td>ネツ</td><td>netsu</td><td>Fever</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>けんこう</td><td>ケンコウ</td><td>kenkou</td><td>Health</td></tr>
+      <tr class="vocab-row"><td>しんさつ</td><td>シンサツ</td><td>shinsatsu</td><td>Medical examination</td></tr>
+      <tr class="vocab-row"><td>ちゅうしゃ</td><td>チュウシャ</td><td>chuusha</td><td>Injection</td></tr>
+      <tr class="vocab-row"><td>てあて</td><td>テアテ</td><td>teate</td><td>First aid</td></tr>
+      <tr class="vocab-row"><td>けんさ</td><td>ケンサ</td><td>kensa</td><td>Medical test</td></tr>
+      <tr class="vocab-row"><td>しゅじゅつ</td><td>シュジュツ</td><td>shujutsu</td><td>Surgery</td></tr>
+      <tr class="vocab-row"><td>やくきょく</td><td>ヤクキョク</td><td>yakkyoku</td><td>Pharmacy</td></tr>
+      <tr class="vocab-row"><td>ほけん</td><td>ホケン</td><td>hoken</td><td>Insurance</td></tr>
+      <tr class="vocab-row"><td>たいおん</td><td>タイオン</td><td>taion</td><td>Body temperature</td></tr>
+      <tr class="vocab-row"><td>きゅうきゅう</td><td>キュウキュウ</td><td>kyuukyuu</td><td>Emergency</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('healthcare-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('healthcare-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 18. LAW ================= -->
+<section class="section" id="law-section" data-page="1">
+<h2 class="text-2xl font-bold">18. Law (法律)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>ほうりつ</td><td>ホウリツ</td><td>houritsu</td><td>Law</td></tr>
+      <tr class="vocab-row"><td>さいばん</td><td>サイバン</td><td>saiban</td><td>Trial</td></tr>
+      <tr class="vocab-row"><td>さいばんしょ</td><td>サイバンショ</td><td>saibansho</td><td>Court</td></tr>
+      <tr class="vocab-row"><td>べんごし</td><td>ベンゴシ</td><td>bengoshi</td><td>Lawyer</td></tr>
+      <tr class="vocab-row"><td>けいさつ</td><td>ケイサツ</td><td>keisatsu</td><td>Police</td></tr>
+      <tr class="vocab-row"><td>はんざい</td><td>ハンザイ</td><td>hanzai</td><td>Crime</td></tr>
+      <tr class="vocab-row"><td>けいほう</td><td>ケイホウ</td><td>keihou</td><td>Criminal law</td></tr>
+      <tr class="vocab-row"><td>みんぽう</td><td>ミンポウ</td><td>minpou</td><td>Civil law</td></tr>
+      <tr class="vocab-row"><td>けいやく</td><td>ケイヤク</td><td>keiyaku</td><td>Contract</td></tr>
+      <tr class="vocab-row"><td>ぎむ</td><td>ギム</td><td>gimu</td><td>Duty / Obligation</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>けんり</td><td>ケンリ</td><td>kenri</td><td>Right</td></tr>
+      <tr class="vocab-row"><td>しょうこ</td><td>ショウコ</td><td>shouko</td><td>Evidence</td></tr>
+      <tr class="vocab-row"><td>はんけつ</td><td>ハンケツ</td><td>hanketsu</td><td>Judgment</td></tr>
+      <tr class="vocab-row"><td>ばっそく</td><td>バッソク</td><td>bassoku</td><td>Penalty</td></tr>
+      <tr class="vocab-row"><td>けいばつ</td><td>ケイバツ</td><td>keibatsu</td><td>Punishment</td></tr>
+      <tr class="vocab-row"><td>たいほ</td><td>タイホ</td><td>taiho</td><td>Arrest</td></tr>
+      <tr class="vocab-row"><td>そうさ</td><td>ソウサ</td><td>sousa</td><td>Investigation</td></tr>
+      <tr class="vocab-row"><td>ほうてい</td><td>ホウテイ</td><td>houtei</td><td>Courtroom</td></tr>
+      <tr class="vocab-row"><td>そしょう</td><td>ソショウ</td><td>soshou</td><td>Lawsuit</td></tr>
+      <tr class="vocab-row"><td>むざい</td><td>ムザイ</td><td>muzai</td><td>Not guilty</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('law-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('law-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 19. BUSINESS ================= -->
+<section class="section" id="business-section" data-page="1">
+<h2 class="text-2xl font-bold">19. Business (ビジネス)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>びじねす</td><td>ビジネス</td><td>bijinesu</td><td>Business</td></tr>
+      <tr class="vocab-row"><td>かいしゃ</td><td>カイシャ</td><td>kaisha</td><td>Company</td></tr>
+      <tr class="vocab-row"><td>かいぎ</td><td>カイギ</td><td>kaigi</td><td>Meeting</td></tr>
+      <tr class="vocab-row"><td>じょうし</td><td>ジョウシ</td><td>joushi</td><td>Boss / Superior</td></tr>
+      <tr class="vocab-row"><td>どうりょう</td><td>ドウリョウ</td><td>douryou</td><td>Colleague</td></tr>
+      <tr class="vocab-row"><td>しゃいん</td><td>シャイン</td><td>shain</td><td>Employee</td></tr>
+      <tr class="vocab-row"><td>きゅうりょう</td><td>キュウリョウ</td><td>kyuuryou</td><td>Salary</td></tr>
+      <tr class="vocab-row"><td>けいやく</td><td>ケイヤク</td><td>keiyaku</td><td>Contract</td></tr>
+      <tr class="vocab-row"><td>しごと</td><td>シゴト</td><td>shigoto</td><td>Work / Job</td></tr>
+      <tr class="vocab-row"><td>じむしょ</td><td>ジムショ</td><td>jimusho</td><td>Office</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>めーる</td><td>メール</td><td>meeru</td><td>Email</td></tr>
+      <tr class="vocab-row"><td>でんわ</td><td>デンワ</td><td>denwa</td><td>Phone call</td></tr>
+      <tr class="vocab-row"><td>しょうひん</td><td>ショウヒン</td><td>shouhin</td><td>Product</td></tr>
+      <tr class="vocab-row"><td>うりあげ</td><td>ウリアゲ</td><td>uriage</td><td>Sales</td></tr>
+      <tr class="vocab-row"><td>りえき</td><td>リエキ</td><td>rieki</td><td>Profit</td></tr>
+      <tr class="vocab-row"><td>ひよう</td><td>ヒヨウ</td><td>hiyou</td><td>Expense</td></tr>
+      <tr class="vocab-row"><td>よさん</td><td>ヨサン</td><td>yosan</td><td>Budget</td></tr>
+      <tr class="vocab-row"><td>ぷれぜん</td><td>プレゼン</td><td>purezen</td><td>Presentation</td></tr>
+      <tr class="vocab-row"><td>すけじゅーる</td><td>スケジュール</td><td>sukejuuru</td><td>Schedule</td></tr>
+      <tr class="vocab-row"><td>しゅっちょう</td><td>シュッチョウ</td><td>shutchou</td><td>Business trip</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('business-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('business-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 20. TECHNOLOGY ================= -->
+<section class="section" id="technology-section" data-page="1">
+<h2 class="text-2xl font-bold">20. Technology (技術)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>ぎじゅつ</td><td>ギジュツ</td><td>gijutsu</td><td>Technology</td></tr>
+      <tr class="vocab-row"><td>こんぴゅーた</td><td>コンピュータ</td><td>konpyuuta</td><td>Computer</td></tr>
+      <tr class="vocab-row"><td>すまーとふぉん</td><td>スマートフォン</td><td>sumaato fon</td><td>Smartphone</td></tr>
+      <tr class="vocab-row"><td>いんたーねっと</td><td>インターネット</td><td>intaanetto</td><td>Internet</td></tr>
+      <tr class="vocab-row"><td>そふと</td><td>ソフト</td><td>sofuto</td><td>Software</td></tr>
+      <tr class="vocab-row"><td>はーどうぇあ</td><td>ハードウェア</td><td>haadowea</td><td>Hardware</td></tr>
+      <tr class="vocab-row"><td>あぷり</td><td>アプリ</td><td>apuri</td><td>Application (app)</td></tr>
+      <tr class="vocab-row"><td>でーた</td><td>データ</td><td>deeta</td><td>Data</td></tr>
+      <tr class="vocab-row"><td>ねっとわーく</td><td>ネットワーク</td><td>nettowaaku</td><td>Network</td></tr>
+      <tr class="vocab-row"><td>せきゅりてぃ</td><td>セキュリティ</td><td>sekyuriti</td><td>Security</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>あい</td><td>アイ</td><td>ai</td><td>Artificial Intelligence</td></tr>
+      <tr class="vocab-row"><td>ろぼっと</td><td>ロボット</td><td>robotto</td><td>Robot</td></tr>
+      <tr class="vocab-row"><td>ぷろぐらむ</td><td>プログラム</td><td>puroguramu</td><td>Program</td></tr>
+      <tr class="vocab-row"><td>こーど</td><td>コード</td><td>koodo</td><td>Code</td></tr>
+      <tr class="vocab-row"><td>しすてむ</td><td>システム</td><td>shisutemu</td><td>System</td></tr>
+      <tr class="vocab-row"><td>くらうど</td><td>クラウド</td><td>kuraudo</td><td>Cloud</td></tr>
+      <tr class="vocab-row"><td>でーたべーす</td><td>データベース</td><td>deetabeesu</td><td>Database</td></tr>
+      <tr class="vocab-row"><td>さーばー</td><td>サーバー</td><td>saabaa</td><td>Server</td></tr>
+      <tr class="vocab-row"><td>ばっくあっぷ</td><td>バックアップ</td><td>bakkuappu</td><td>Backup</td></tr>
+      <tr class="vocab-row"><td>あっぷでーと</td><td>アップデート</td><td>appudeeto</td><td>Update</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('technology-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('technology-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 21. MEDIA & NEWS ================= -->
+<section class="section" id="media-news-section" data-page="1">
+<h2 class="text-2xl font-bold">21. Media & News (メディア・ニュース)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>めでぃあ</td><td>メディア</td><td>media</td><td>Media</td></tr>
+      <tr class="vocab-row"><td>にゅーす</td><td>ニュース</td><td>nyuusu</td><td>News</td></tr>
+      <tr class="vocab-row"><td>しんぶん</td><td>シンブン</td><td>shinbun</td><td>Newspaper</td></tr>
+      <tr class="vocab-row"><td>てれび</td><td>テレビ</td><td>terebi</td><td>Television</td></tr>
+      <tr class="vocab-row"><td>らじお</td><td>ラジオ</td><td>rajio</td><td>Radio</td></tr>
+      <tr class="vocab-row"><td>きじ</td><td>キジ</td><td>kiji</td><td>Article</td></tr>
+      <tr class="vocab-row"><td>ほうどう</td><td>ホウドウ</td><td>houdou</td><td>Report</td></tr>
+      <tr class="vocab-row"><td>きしゃ</td><td>キシャ</td><td>kisha</td><td>Reporter</td></tr>
+      <tr class="vocab-row"><td>じょうほう</td><td>ジョウホウ</td><td>jouhou</td><td>Information</td></tr>
+      <tr class="vocab-row"><td>とくしゅう</td><td>トクシュウ</td><td>tokushuu</td><td>Feature / Special report</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>しゅざい</td><td>シュザイ</td><td>shuzai</td><td>Interview / Coverage</td></tr>
+      <tr class="vocab-row"><td>せいじ</td><td>セイジ</td><td>seiji</td><td>Politics</td></tr>
+      <tr class="vocab-row"><td>けいざい</td><td>ケイザイ</td><td>keizai</td><td>Economy</td></tr>
+      <tr class="vocab-row"><td>しゃかい</td><td>シャカイ</td><td>shakai</td><td>Society</td></tr>
+      <tr class="vocab-row"><td>こくさい</td><td>コクサイ</td><td>kokusai</td><td>International</td></tr>
+      <tr class="vocab-row"><td>てれびばんぐみ</td><td>テレビバングミ</td><td>terebi bangumi</td><td>TV program</td></tr>
+      <tr class="vocab-row"><td>こうこく</td><td>コウコク</td><td>koukoku</td><td>Advertisement</td></tr>
+      <tr class="vocab-row"><td>じほう</td><td>ジホウ</td><td>jihou</td><td>Breaking news</td></tr>
+      <tr class="vocab-row"><td>へんしゅう</td><td>ヘンシュウ</td><td>henshuu</td><td>Editing</td></tr>
+      <tr class="vocab-row"><td>しちょうしゃ</td><td>シチョウシャ</td><td>shichousha</td><td>Viewer / Audience</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('media-news-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('media-news-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 22. GOVERNMENT ================= -->
+<section class="section" id="government-section" data-page="1">
+<h2 class="text-2xl font-bold">22. Government (政府)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>せいふ</td><td>セイフ</td><td>seifu</td><td>Government</td></tr>
+      <tr class="vocab-row"><td>こっかい</td><td>コッカイ</td><td>kokkai</td><td>National Diet / Parliament</td></tr>
+      <tr class="vocab-row"><td>そうりだいじん</td><td>ソウリダイジン</td><td>souri daijin</td><td>Prime Minister</td></tr>
+      <tr class="vocab-row"><td>だいとうりょう</td><td>ダイトウリョウ</td><td>daitouryou</td><td>President</td></tr>
+      <tr class="vocab-row"><td>ぎいん</td><td>ギイン</td><td>giin</td><td>Assembly member</td></tr>
+      <tr class="vocab-row"><td>せいじ</td><td>セイジ</td><td>seiji</td><td>Politics</td></tr>
+      <tr class="vocab-row"><td>ほうりつ</td><td>ホウリツ</td><td>houritsu</td><td>Law</td></tr>
+      <tr class="vocab-row"><td>せいさく</td><td>セイサク</td><td>seisaku</td><td>Policy</td></tr>
+      <tr class="vocab-row"><td>せんきょ</td><td>センキョ</td><td>senkyo</td><td>Election</td></tr>
+      <tr class="vocab-row"><td>とうひょう</td><td>トウヒョウ</td><td>touhyou</td><td>Voting</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>こくみん</td><td>コクミン</td><td>kokumin</td><td>Citizen</td></tr>
+      <tr class="vocab-row"><td>けんぽう</td><td>ケンポウ</td><td>kenpou</td><td>Constitution</td></tr>
+      <tr class="vocab-row"><td>ぎかい</td><td>ギカイ</td><td>gikai</td><td>Assembly</td></tr>
+      <tr class="vocab-row"><td>ぎょうせい</td><td>ギョウセイ</td><td>gyousei</td><td>Administration</td></tr>
+      <tr class="vocab-row"><td>かんりょう</td><td>カンリョウ</td><td>kanryou</td><td>Bureaucrat</td></tr>
+      <tr class="vocab-row"><td>しゅしょう</td><td>シュショウ</td><td>shushou</td><td>Head of government</td></tr>
+      <tr class="vocab-row"><td>こくぼう</td><td>コクボウ</td><td>kokubou</td><td>National defense</td></tr>
+      <tr class="vocab-row"><td>がいこう</td><td>ガイコウ</td><td>gaikou</td><td>Diplomacy</td></tr>
+      <tr class="vocab-row"><td>ざいせい</td><td>ザイセイ</td><td>zaisei</td><td>Public finance</td></tr>
+      <tr class="vocab-row"><td>せいけん</td><td>セイケン</td><td>seiken</td><td>Administration / Regime</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('government-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('government-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 23. BIRDS ================= -->
+<section class="section" id="birds-section" data-page="1">
+<h2 class="text-2xl font-bold">23. Birds (鳥)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>とり</td><td>トリ</td><td>tori</td><td>Bird</td></tr>
+      <tr class="vocab-row"><td>すずめ</td><td>スズメ</td><td>suzume</td><td>Sparrow</td></tr>
+      <tr class="vocab-row"><td>からす</td><td>カラス</td><td>karasu</td><td>Crow</td></tr>
+      <tr class="vocab-row"><td>はと</td><td>ハト</td><td>hato</td><td>Pigeon / Dove</td></tr>
+      <tr class="vocab-row"><td>わし</td><td>ワシ</td><td>washi</td><td>Eagle</td></tr>
+      <tr class="vocab-row"><td>たか</td><td>タカ</td><td>taka</td><td>Hawk</td></tr>
+      <tr class="vocab-row"><td>ふくろう</td><td>フクロウ</td><td>fukurou</td><td>Owl</td></tr>
+      <tr class="vocab-row"><td>つる</td><td>ツル</td><td>tsuru</td><td>Crane</td></tr>
+      <tr class="vocab-row"><td>あひる</td><td>アヒル</td><td>ahiru</td><td>Duck</td></tr>
+      <tr class="vocab-row"><td>にわとり</td><td>ニワトリ</td><td>niwatori</td><td>Chicken</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>かも</td><td>カモ</td><td>kamo</td><td>Wild duck</td></tr>
+      <tr class="vocab-row"><td>つばめ</td><td>ツバメ</td><td>tsubame</td><td>Swallow</td></tr>
+      <tr class="vocab-row"><td>うぐいす</td><td>ウグイス</td><td>uguisu</td><td>Bush warbler</td></tr>
+      <tr class="vocab-row"><td>はくちょう</td><td>ハクチョウ</td><td>hakuchou</td><td>Swan</td></tr>
+      <tr class="vocab-row"><td>きじ</td><td>キジ</td><td>kiji</td><td>Pheasant</td></tr>
+      <tr class="vocab-row"><td>くじゃく</td><td>クジャク</td><td>kujaku</td><td>Peacock</td></tr>
+      <tr class="vocab-row"><td>ぺんぎん</td><td>ペンギン</td><td>pengin</td><td>Penguin</td></tr>
+      <tr class="vocab-row"><td>かもめ</td><td>カモメ</td><td>kamome</td><td>Seagull</td></tr>
+      <tr class="vocab-row"><td>ひよこ</td><td>ヒヨコ</td><td>hiyoko</td><td>Chick</td></tr>
+      <tr class="vocab-row"><td>おおとり</td><td>オオトリ</td><td>ootori</td><td>Large bird</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('birds-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('birds-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 24. TREES ================= -->
+<section class="section" id="trees-section" data-page="1">
+<h2 class="text-2xl font-bold">24. Trees (木)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>き</td><td>キ</td><td>ki</td><td>Tree</td></tr>
+      <tr class="vocab-row"><td>さくら</td><td>サクラ</td><td>sakura</td><td>Cherry blossom tree</td></tr>
+      <tr class="vocab-row"><td>まつ</td><td>マツ</td><td>matsu</td><td>Pine tree</td></tr>
+      <tr class="vocab-row"><td>うめ</td><td>ウメ</td><td>ume</td><td>Plum tree</td></tr>
+      <tr class="vocab-row"><td>かえで</td><td>カエデ</td><td>kaede</td><td>Maple tree</td></tr>
+      <tr class="vocab-row"><td>いちょう</td><td>イチョウ</td><td>ichou</td><td>Ginkgo tree</td></tr>
+      <tr class="vocab-row"><td>すぎ</td><td>スギ</td><td>sugi</td><td>Cedar tree</td></tr>
+      <tr class="vocab-row"><td>ひのき</td><td>ヒノキ</td><td>hinoki</td><td>Cypress tree</td></tr>
+      <tr class="vocab-row"><td>やし</td><td>ヤシ</td><td>yashi</td><td>Palm tree</td></tr>
+      <tr class="vocab-row"><td>りんごのき</td><td>リンゴノキ</td><td>ringo no ki</td><td>Apple tree</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>もみじ</td><td>モミジ</td><td>momiji</td><td>Japanese maple</td></tr>
+      <tr class="vocab-row"><td>くり</td><td>クリ</td><td>kuri</td><td>Chestnut tree</td></tr>
+      <tr class="vocab-row"><td>もも</td><td>モモ</td><td>momo</td><td>Peach tree</td></tr>
+      <tr class="vocab-row"><td>なし</td><td>ナシ</td><td>nashi</td><td>Pear tree</td></tr>
+      <tr class="vocab-row"><td>ばらのき</td><td>バラノキ</td><td>bara no ki</td><td>Rose bush</td></tr>
+      <tr class="vocab-row"><td>けやき</td><td>ケヤキ</td><td>keyaki</td><td>Zelkova tree</td></tr>
+      <tr class="vocab-row"><td>たけ</td><td>タケ</td><td>take</td><td>Bamboo</td></tr>
+      <tr class="vocab-row"><td>やなぎ</td><td>ヤナギ</td><td>yanagi</td><td>Willow tree</td></tr>
+      <tr class="vocab-row"><td>くすのき</td><td>クスノキ</td><td>kusunoki</td><td>Camphor tree</td></tr>
+      <tr class="vocab-row"><td>えんじゅ</td><td>エンジュ</td><td>enju</td><td>Pagoda tree</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('trees-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('trees-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 25. CLOTHING ================= -->
+<section class="section" id="clothing-section" data-page="1">
+<h2 class="text-2xl font-bold">25. Clothing (服)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>ふく</td><td>フク</td><td>fuku</td><td>Clothes</td></tr>
+      <tr class="vocab-row"><td>ようふく</td><td>ヨウフク</td><td>youfuku</td><td>Western clothes</td></tr>
+      <tr class="vocab-row"><td>わふく</td><td>ワフク</td><td>wafuku</td><td>Japanese clothes</td></tr>
+      <tr class="vocab-row"><td>きもの</td><td>キモノ</td><td>kimono</td><td>Kimono</td></tr>
+      <tr class="vocab-row"><td>しゃつ</td><td>シャツ</td><td>shatsu</td><td>Shirt</td></tr>
+      <tr class="vocab-row"><td>ずぼん</td><td>ズボン</td><td>zubon</td><td>Pants / Trousers</td></tr>
+      <tr class="vocab-row"><td>すかーと</td><td>スカート</td><td>sukaato</td><td>Skirt</td></tr>
+      <tr class="vocab-row"><td>こーと</td><td>コート</td><td>kooto</td><td>Coat</td></tr>
+      <tr class="vocab-row"><td>じゃけっと</td><td>ジャケット</td><td>jaketto</td><td>Jacket</td></tr>
+      <tr class="vocab-row"><td>せーたー</td><td>セーター</td><td>seetaa</td><td>Sweater</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>くつ</td><td>クツ</td><td>kutsu</td><td>Shoes</td></tr>
+      <tr class="vocab-row"><td>くつした</td><td>クツシタ</td><td>kutsushita</td><td>Socks</td></tr>
+      <tr class="vocab-row"><td>ぼうし</td><td>ボウシ</td><td>boushi</td><td>Hat</td></tr>
+      <tr class="vocab-row"><td>めがね</td><td>メガネ</td><td>megane</td><td>Glasses</td></tr>
+      <tr class="vocab-row"><td>てぶくろ</td><td>テブクロ</td><td>tebukuro</td><td>Gloves</td></tr>
+      <tr class="vocab-row"><td>まふらー</td><td>マフラー</td><td>mafuraa</td><td>Scarf</td></tr>
+      <tr class="vocab-row"><td>べると</td><td>ベルト</td><td>beruto</td><td>Belt</td></tr>
+      <tr class="vocab-row"><td>したぎ</td><td>シタギ</td><td>shitagi</td><td>Underwear</td></tr>
+      <tr class="vocab-row"><td>ぱじゃま</td><td>パジャマ</td><td>pajama</td><td>Pajamas</td></tr>
+      <tr class="vocab-row"><td>どれす</td><td>ドレス</td><td>doresu</td><td>Dress</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('clothing-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('clothing-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 26. VEHICLE & TRANSPORTATION ================= -->
+<section class="section" id="transportation-section" data-page="1">
+<h2 class="text-2xl font-bold">26. Vehicle & Transportation (乗り物・交通)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>のりもの</td><td>ノリモノ</td><td>norimono</td><td>Vehicle</td></tr>
+      <tr class="vocab-row"><td>くるま</td><td>クルマ</td><td>kuruma</td><td>Car</td></tr>
+      <tr class="vocab-row"><td>じてんしゃ</td><td>ジテンシャ</td><td>jitensha</td><td>Bicycle</td></tr>
+      <tr class="vocab-row"><td>ばす</td><td>バス</td><td>basu</td><td>Bus</td></tr>
+      <tr class="vocab-row"><td>でんしゃ</td><td>デンシャ</td><td>densha</td><td>Train</td></tr>
+      <tr class="vocab-row"><td>ちかてつ</td><td>チカテツ</td><td>chikatetsu</td><td>Subway</td></tr>
+      <tr class="vocab-row"><td>たくしー</td><td>タクシー</td><td>takushii</td><td>Taxi</td></tr>
+      <tr class="vocab-row"><td>ひこうき</td><td>ヒコウキ</td><td>hikouki</td><td>Airplane</td></tr>
+      <tr class="vocab-row"><td>ふね</td><td>フネ</td><td>fune</td><td>Ship / Boat</td></tr>
+      <tr class="vocab-row"><td>ばいく</td><td>バイク</td><td>baiku</td><td>Motorcycle</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>えき</td><td>エキ</td><td>eki</td><td>Station</td></tr>
+      <tr class="vocab-row"><td>くうこう</td><td>クウコウ</td><td>kuukou</td><td>Airport</td></tr>
+      <tr class="vocab-row"><td>みち</td><td>ミチ</td><td>michi</td><td>Road</td></tr>
+      <tr class="vocab-row"><td>こうさてん</td><td>コウサテン</td><td>kousaten</td><td>Intersection</td></tr>
+      <tr class="vocab-row"><td>しんごう</td><td>シンゴウ</td><td>shingou</td><td>Traffic light</td></tr>
+      <tr class="vocab-row"><td>うんてん</td><td>ウンテン</td><td>unten</td><td>Driving</td></tr>
+      <tr class="vocab-row"><td>きっぷ</td><td>キップ</td><td>kippu</td><td>Ticket</td></tr>
+      <tr class="vocab-row"><td>のりば</td><td>ノリバ</td><td>noriba</td><td>Platform / Stop</td></tr>
+      <tr class="vocab-row"><td>じこ</td><td>ジコ</td><td>jiko</td><td>Accident</td></tr>
+      <tr class="vocab-row"><td>こうつう</td><td>コウツウ</td><td>koutsuu</td><td>Traffic / Transportation</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('transportation-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('transportation-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 27. PLACES ================= -->
+<section class="section" id="places-section" data-page="1">
+<h2 class="text-2xl font-bold">27. Places (場所)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>ばしょ</td><td>バショ</td><td>basho</td><td>Place</td></tr>
+      <tr class="vocab-row"><td>まち</td><td>マチ</td><td>machi</td><td>Town / City</td></tr>
+      <tr class="vocab-row"><td>むら</td><td>ムラ</td><td>mura</td><td>Village</td></tr>
+      <tr class="vocab-row"><td>くに</td><td>クニ</td><td>kuni</td><td>Country</td></tr>
+      <tr class="vocab-row"><td>こうえん</td><td>コウエン</td><td>kouen</td><td>Park</td></tr>
+      <tr class="vocab-row"><td>みせ</td><td>ミセ</td><td>mise</td><td>Shop / Store</td></tr>
+      <tr class="vocab-row"><td>れすとらん</td><td>レストラン</td><td>resutoran</td><td>Restaurant</td></tr>
+      <tr class="vocab-row"><td>ほてる</td><td>ホテル</td><td>hoteru</td><td>Hotel</td></tr>
+      <tr class="vocab-row"><td>びょういん</td><td>ビョウイン</td><td>byouin</td><td>Hospital</td></tr>
+      <tr class="vocab-row"><td>がっこう</td><td>ガッコウ</td><td>gakkou</td><td>School</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>だいがく</td><td>ダイガク</td><td>daigaku</td><td>University</td></tr>
+      <tr class="vocab-row"><td>えき</td><td>エキ</td><td>eki</td><td>Station</td></tr>
+      <tr class="vocab-row"><td>くうこう</td><td>クウコウ</td><td>kuukou</td><td>Airport</td></tr>
+      <tr class="vocab-row"><td>としょかん</td><td>トショカン</td><td>toshokan</td><td>Library</td></tr>
+      <tr class="vocab-row"><td>ゆうびんきょく</td><td>ユウビンキョク</td><td>yuubinkyoku</td><td>Post office</td></tr>
+      <tr class="vocab-row"><td>ぎんこう</td><td>ギンコウ</td><td>ginkou</td><td>Bank</td></tr>
+      <tr class="vocab-row"><td>いちば</td><td>イチバ</td><td>ichiba</td><td>Market</td></tr>
+      <tr class="vocab-row"><td>でぱーと</td><td>デパート</td><td>depaato</td><td>Department store</td></tr>
+      <tr class="vocab-row"><td>じんじゃ</td><td>ジンジャ</td><td>jinja</td><td>Shrine</td></tr>
+      <tr class="vocab-row"><td>おてら</td><td>オテラ</td><td>otera</td><td>Temple</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('places-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('places-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 28. DAILY USE WORDS – 1 ================= -->
+<section class="section" id="daily-use-1-section" data-page="1">
+<h2 class="text-2xl font-bold">28. Daily Use Words – 1 (日常用品・場所)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>といれ</td><td>トイレ</td><td>toire</td><td>Toilet</td></tr>
+      <tr class="vocab-row"><td>こうえん</td><td>コウエン</td><td>kouen</td><td>Park</td></tr>
+      <tr class="vocab-row"><td>あそびば</td><td>アソビバ</td><td>asobiba</td><td>Playground</td></tr>
+      <tr class="vocab-row"><td>じむ</td><td>ジム</td><td>jimu</td><td>Gym</td></tr>
+      <tr class="vocab-row"><td>みち</td><td>ミチ</td><td>michi</td><td>Road</td></tr>
+      <tr class="vocab-row"><td>ぼうし</td><td>ボウシ</td><td>boushi</td><td>Cap / Hat</td></tr>
+      <tr class="vocab-row"><td>かさ</td><td>カサ</td><td>kasa</td><td>Umbrella</td></tr>
+      <tr class="vocab-row"><td>かばん</td><td>カバン</td><td>kaban</td><td>Bag</td></tr>
+      <tr class="vocab-row"><td>くつ</td><td>クツ</td><td>kutsu</td><td>Shoes</td></tr>
+      <tr class="vocab-row"><td>じどうはんばいき</td><td>ジドウハンバイキ</td><td>jidou hanbaiki</td><td>Vending machine</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>ちょこれーと</td><td>チョコレート</td><td>chokoreeto</td><td>Chocolate</td></tr>
+      <tr class="vocab-row"><td>あめ</td><td>アメ</td><td>ame</td><td>Candy</td></tr>
+      <tr class="vocab-row"><td>みせ</td><td>ミセ</td><td>mise</td><td>Shop</td></tr>
+      <tr class="vocab-row"><td>こんびに</td><td>コンビニ</td><td>konbini</td><td>Convenience store</td></tr>
+      <tr class="vocab-row"><td>すーぱー</td><td>スーパー</td><td>suupaa</td><td>Supermarket</td></tr>
+      <tr class="vocab-row"><td>れすとらん</td><td>レストラン</td><td>resutoran</td><td>Restaurant</td></tr>
+      <tr class="vocab-row"><td>かふぇ</td><td>カフェ</td><td>kafe</td><td>Café</td></tr>
+      <tr class="vocab-row"><td>でんき</td><td>デンキ</td><td>denki</td><td>Electricity / Light</td></tr>
+      <tr class="vocab-row"><td>みず</td><td>ミズ</td><td>mizu</td><td>Water</td></tr>
+      <tr class="vocab-row"><td>ごみばこ</td><td>ゴミバコ</td><td>gomibako</td><td>Trash bin</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('daily-use-1-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('daily-use-1-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- ================= 29. DAILY USE WORDS – 2 ================= -->
+<section class="section" id="daily-use-2-section" data-page="1">
+<h2 class="text-2xl font-bold">29. Daily Use Words – 2 (日常生活用品)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>いす</td><td>イス</td><td>isu</td><td>Chair</td></tr>
+      <tr class="vocab-row"><td>つくえ</td><td>ツクエ</td><td>tsukue</td><td>Table / Desk</td></tr>
+      <tr class="vocab-row"><td>まど</td><td>マド</td><td>mado</td><td>Window</td></tr>
+      <tr class="vocab-row"><td>どあ</td><td>ドア</td><td>doa</td><td>Door</td></tr>
+      <tr class="vocab-row"><td>でんき</td><td>デンキ</td><td>denki</td><td>Light / Electricity</td></tr>
+      <tr class="vocab-row"><td>えあこん</td><td>エアコン</td><td>eakon</td><td>Air conditioner</td></tr>
+      <tr class="vocab-row"><td>てれび</td><td>テレビ</td><td>terebi</td><td>Television</td></tr>
+      <tr class="vocab-row"><td>れいぞうこ</td><td>レイゾウコ</td><td>reizoko</td><td>Refrigerator</td></tr>
+      <tr class="vocab-row"><td>せんたくき</td><td>センタクキ</td><td>sentakuki</td><td>Washing machine</td></tr>
+      <tr class="vocab-row"><td>そうじき</td><td>ソウジキ</td><td>soujiki</td><td>Vacuum cleaner</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>とけい</td><td>トケイ</td><td>tokei</td><td>Clock / Watch</td></tr>
+      <tr class="vocab-row"><td>かがみ</td><td>カガミ</td><td>kagami</td><td>Mirror</td></tr>
+      <tr class="vocab-row"><td>たおる</td><td>タオル</td><td>taoru</td><td>Towel</td></tr>
+      <tr class="vocab-row"><td>せっけん</td><td>セッケン</td><td>sekken</td><td>Soap</td></tr>
+      <tr class="vocab-row"><td>しゃんぷー</td><td>シャンプー</td><td>shanpuu</td><td>Shampoo</td></tr>
+      <tr class="vocab-row"><td>はぶらし</td><td>ハブラシ</td><td>haburashi</td><td>Toothbrush</td></tr>
+      <tr class="vocab-row"><td>こっぷ</td><td>コップ</td><td>koppu</td><td>Cup</td></tr>
+      <tr class="vocab-row"><td>さら</td><td>サラ</td><td>sara</td><td>Plate</td></tr>
+      <tr class="vocab-row"><td>すぷーん</td><td>スプーン</td><td>supūn</td><td>Spoon</td></tr>
+      <tr class="vocab-row"><td>ふぉーく</td><td>フォーク</td><td>fōku</td><td>Fork</td></tr>
+
+      <!-- 21–30 -->
+      <tr class="vocab-row"><td>かぎ</td><td>カギ</td><td>kagi</td><td>Key</td></tr>
+      <tr class="vocab-row"><td>さいふ</td><td>サイフ</td><td>saifu</td><td>Wallet</td></tr>
+      <tr class="vocab-row"><td>でんち</td><td>デンチ</td><td>denchi</td><td>Battery</td></tr>
+      <tr class="vocab-row"><td>けーぶる</td><td>ケーブル</td><td>keeburu</td><td>Cable</td></tr>
+      <tr class="vocab-row"><td>りもこん</td><td>リモコン</td><td>rimokon</td><td>Remote control</td></tr>
+      <tr class="vocab-row"><td>かさたて</td><td>カサタテ</td><td>kasatate</td><td>Umbrella stand</td></tr>
+      <tr class="vocab-row"><td>ごみぶくろ</td><td>ゴミブクロ</td><td>gomibukuro</td><td>Garbage bag</td></tr>
+      <tr class="vocab-row"><td>てぃっしゅ</td><td>ティッシュ</td><td>tisshu</td><td>Tissue paper</td></tr>
+      <tr class="vocab-row"><td>のーと</td><td>ノート</td><td>nooto</td><td>Notebook</td></tr>
+      <tr class="vocab-row"><td>ぺん</td><td>ペン</td><td>pen</td><td>Pen</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev" onclick="showPage('daily-use-2-section', Number(this.closest('section').dataset.page) - 1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 03</span>
+    <span class="next" onclick="showPage('daily-use-2-section', Number(this.closest('section').dataset.page) + 1)">›</span>
+
+  </div>
+</section>
+
+
+<!-- ================= 30. WEATHER & SEASONS ================= -->
+<section class="section" id="weather-seasons-section" data-page="1">
+<h2 class="text-2xl font-bold">30. Weather & Seasons (天気・季節)</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Katakana</th>
+        <th>Romaji</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 1–10 -->
+      <tr class="vocab-row"><td>てんき</td><td>テンキ</td><td>tenki</td><td>Weather</td></tr>
+      <tr class="vocab-row"><td>はれ</td><td>ハレ</td><td>hare</td><td>Sunny / Clear</td></tr>
+      <tr class="vocab-row"><td>くもり</td><td>クモリ</td><td>kumori</td><td>Cloudy</td></tr>
+      <tr class="vocab-row"><td>あめ</td><td>アメ</td><td>ame</td><td>Rain</td></tr>
+      <tr class="vocab-row"><td>ゆき</td><td>ユキ</td><td>yuki</td><td>Snow</td></tr>
+      <tr class="vocab-row"><td>かぜ</td><td>カゼ</td><td>kaze</td><td>Wind</td></tr>
+      <tr class="vocab-row"><td>たいふう</td><td>タイフウ</td><td>taifuu</td><td>Typhoon</td></tr>
+      <tr class="vocab-row"><td>あつい</td><td>アツイ</td><td>atsui</td><td>Hot</td></tr>
+      <tr class="vocab-row"><td>さむい</td><td>サムイ</td><td>samui</td><td>Cold</td></tr>
+      <tr class="vocab-row"><td>すずしい</td><td>スズシイ</td><td>suzushii</td><td>Cool</td></tr>
+
+      <!-- 11–20 -->
+      <tr class="vocab-row"><td>はる</td><td>ハル</td><td>haru</td><td>Spring</td></tr>
+      <tr class="vocab-row"><td>なつ</td><td>ナツ</td><td>natsu</td><td>Summer</td></tr>
+      <tr class="vocab-row"><td>あき</td><td>アキ</td><td>aki</td><td>Autumn / Fall</td></tr>
+      <tr class="vocab-row"><td>ふゆ</td><td>フユ</td><td>fuyu</td><td>Winter</td></tr>
+      <tr class="vocab-row"><td>きおん</td><td>キオン</td><td>kion</td><td>Temperature</td></tr>
+      <tr class="vocab-row"><td>しつど</td><td>シツド</td><td>shitsudo</td><td>Humidity</td></tr>
+      <tr class="vocab-row"><td>あらし</td><td>アラシ</td><td>arashi</td><td>Storm</td></tr>
+      <tr class="vocab-row"><td>かみなり</td><td>カミナリ</td><td>kaminari</td><td>Thunder</td></tr>
+      <tr class="vocab-row"><td>たいよう</td><td>タイヨウ</td><td>taiyou</td><td>Sun</td></tr>
+      <tr class="vocab-row"><td>つき</td><td>ツキ</td><td>tsuki</td><td>Moon</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('weather-seasons-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('weather-seasons-section',2)">›</span>
+  </div>
+</section>
+
+
+<!-- 31–40 (body, fruits, vegetables, money, emotions, countries, shopping, shopping, enternmainment, anime, games, adult) -->
+<!-- ================= 31. BODY ================= -->
+<section class="section" id="body-section" data-page="1">
+<h2 class="text-2xl font-bold">31. Body (体)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>からだ</td><td>カラダ</td><td>karada</td><td>Body</td></tr>
+<tr class="vocab-row"><td>あたま</td><td>アタマ</td><td>atama</td><td>Head</td></tr>
+<tr class="vocab-row"><td>かお</td><td>カオ</td><td>kao</td><td>Face</td></tr>
+<tr class="vocab-row"><td>め</td><td>メ</td><td>me</td><td>Eye</td></tr>
+<tr class="vocab-row"><td>みみ</td><td>ミミ</td><td>mimi</td><td>Ear</td></tr>
+<tr class="vocab-row"><td>はな</td><td>ハナ</td><td>hana</td><td>Nose</td></tr>
+<tr class="vocab-row"><td>くち</td><td>クチ</td><td>kuchi</td><td>Mouth</td></tr>
+<tr class="vocab-row"><td>は</td><td>ハ</td><td>ha</td><td>Tooth / Teeth</td></tr>
+<tr class="vocab-row"><td>かみのけ</td><td>カミノケ</td><td>kaminoke</td><td>Hair</td></tr>
+<tr class="vocab-row"><td>て</td><td>テ</td><td>te</td><td>Hand</td></tr>
+
+<tr class="vocab-row"><td>あし</td><td>アシ</td><td>ashi</td><td>Leg / Foot</td></tr>
+<tr class="vocab-row"><td>ゆび</td><td>ユビ</td><td>yubi</td><td>Finger / Toe</td></tr>
+<tr class="vocab-row"><td>せなか</td><td>セナカ</td><td>senaka</td><td>Back</td></tr>
+<tr class="vocab-row"><td>むね</td><td>ムネ</td><td>mune</td><td>Chest</td></tr>
+<tr class="vocab-row"><td>おなか</td><td>オナカ</td><td>onaka</td><td>Stomach</td></tr>
+<tr class="vocab-row"><td>こし</td><td>コシ</td><td>koshi</td><td>Waist / Hip</td></tr>
+<tr class="vocab-row"><td>ひざ</td><td>ヒザ</td><td>hiza</td><td>Knee</td></tr>
+<tr class="vocab-row"><td>かた</td><td>カタ</td><td>kata</td><td>Shoulder</td></tr>
+<tr class="vocab-row"><td>あご</td><td>アゴ</td><td>ago</td><td>Chin</td></tr>
+<tr class="vocab-row"><td>のど</td><td>ノド</td><td>nodo</td><td>Throat</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('body-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('body-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 32. FRUITS ================= -->
+<section class="section" id="fruits-section" data-page="1">
+<h2 class="text-2xl font-bold">32. Fruits (果物)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>くだもの</td><td>クダモノ</td><td>kudamono</td><td>Fruit</td></tr>
+<tr class="vocab-row"><td>りんご</td><td>リンゴ</td><td>ringo</td><td>Apple</td></tr>
+<tr class="vocab-row"><td>みかん</td><td>ミカン</td><td>mikan</td><td>Mandarin orange</td></tr>
+<tr class="vocab-row"><td>バナナ</td><td>バナナ</td><td>banana</td><td>Banana</td></tr>
+<tr class="vocab-row"><td>いちご</td><td>イチゴ</td><td>ichigo</td><td>Strawberry</td></tr>
+<tr class="vocab-row"><td>ぶどう</td><td>ブドウ</td><td>budou</td><td>Grapes</td></tr>
+<tr class="vocab-row"><td>もも</td><td>モモ</td><td>momo</td><td>Peach</td></tr>
+<tr class="vocab-row"><td>なし</td><td>ナシ</td><td>nashi</td><td>Pear</td></tr>
+<tr class="vocab-row"><td>すいか</td><td>スイカ</td><td>suika</td><td>Watermelon</td></tr>
+<tr class="vocab-row"><td>メロン</td><td>メロン</td><td>meron</td><td>Melon</td></tr>
+
+<tr class="vocab-row"><td>パイナップル</td><td>パイナップル</td><td>painappuru</td><td>Pineapple</td></tr>
+<tr class="vocab-row"><td>マンゴー</td><td>マンゴー</td><td>mangō</td><td>Mango</td></tr>
+<tr class="vocab-row"><td>さくらんぼ</td><td>サクランボ</td><td>sakuranbo</td><td>Cherry</td></tr>
+<tr class="vocab-row"><td>レモン</td><td>レモン</td><td>remon</td><td>Lemon</td></tr>
+<tr class="vocab-row"><td>オレンジ</td><td>オレンジ</td><td>orenji</td><td>Orange</td></tr>
+<tr class="vocab-row"><td>キウイ</td><td>キウイ</td><td>kiui</td><td>Kiwi</td></tr>
+<tr class="vocab-row"><td>ブルーベリー</td><td>ブルーベリー</td><td>burūberī</td><td>Blueberry</td></tr>
+<tr class="vocab-row"><td>パパイヤ</td><td>パパイヤ</td><td>papaiya</td><td>Papaya</td></tr>
+<tr class="vocab-row"><td>ココナッツ</td><td>ココナッツ</td><td>kokonattsu</td><td>Coconut</td></tr>
+<tr class="vocab-row"><td>ドリアン</td><td>ドリアン</td><td>dorian</td><td>Durian</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('fruits-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('fruits-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 33. VEGETABLES ================= -->
+<section class="section" id="vegetables-section" data-page="1">
+<h2 class="text-2xl font-bold">33. Vegetables (野菜)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>やさい</td><td>ヤサイ</td><td>yasai</td><td>Vegetables</td></tr>
+<tr class="vocab-row"><td>にんじん</td><td>ニンジン</td><td>ninjin</td><td>Carrot</td></tr>
+<tr class="vocab-row"><td>じゃがいも</td><td>ジャガイモ</td><td>jagaimo</td><td>Potato</td></tr>
+<tr class="vocab-row"><td>たまねぎ</td><td>タマネギ</td><td>tamanegi</td><td>Onion</td></tr>
+<tr class="vocab-row"><td>トマト</td><td>トマト</td><td>tomato</td><td>Tomato</td></tr>
+<tr class="vocab-row"><td>きゅうり</td><td>キュウリ</td><td>kyuuri</td><td>Cucumber</td></tr>
+<tr class="vocab-row"><td>なす</td><td>ナス</td><td>nasu</td><td>Eggplant</td></tr>
+<tr class="vocab-row"><td>キャベツ</td><td>キャベツ</td><td>kyabetsu</td><td>Cabbage</td></tr>
+<tr class="vocab-row"><td>はくさい</td><td>ハクサイ</td><td>hakusai</td><td>Chinese cabbage</td></tr>
+<tr class="vocab-row"><td>ほうれんそう</td><td>ホウレンソウ</td><td>hourensou</td><td>Spinach</td></tr>
+
+<tr class="vocab-row"><td>ブロッコリー</td><td>ブロッコリー</td><td>burokkorī</td><td>Broccoli</td></tr>
+<tr class="vocab-row"><td>ピーマン</td><td>ピーマン</td><td>pīman</td><td>Green pepper</td></tr>
+<tr class="vocab-row"><td>とうもろこし</td><td>トウモロコシ</td><td>toumorokoshi</td><td>Corn</td></tr>
+<tr class="vocab-row"><td>だいこん</td><td>ダイコン</td><td>daikon</td><td>Radish</td></tr>
+<tr class="vocab-row"><td>かぼちゃ</td><td>カボチャ</td><td>kabocha</td><td>Pumpkin</td></tr>
+<tr class="vocab-row"><td>れんこん</td><td>レンコン</td><td>renkon</td><td>Lotus root</td></tr>
+<tr class="vocab-row"><td>しょうが</td><td>ショウガ</td><td>shouga</td><td>Ginger</td></tr>
+<tr class="vocab-row"><td>にんにく</td><td>ニンニク</td><td>ninniku</td><td>Garlic</td></tr>
+<tr class="vocab-row"><td>えだまめ</td><td>エダマメ</td><td>edamame</td><td>Green soybeans</td></tr>
+<tr class="vocab-row"><td>もやし</td><td>モヤシ</td><td>moyashi</td><td>Bean sprouts</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('vegetables-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('vegetables-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 34. MONEY & FINANCE ================= -->
+<section class="section" id="money-section" data-page="1">
+<h2 class="text-2xl font-bold">34. Money & Finance (お金)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>おかね</td><td>オカネ</td><td>okane</td><td>Money</td></tr>
+<tr class="vocab-row"><td>えん</td><td>エン</td><td>en</td><td>Yen</td></tr>
+<tr class="vocab-row"><td>さつ</td><td>サツ</td><td>satsu</td><td>Bill / Note</td></tr>
+<tr class="vocab-row"><td>こうか</td><td>コウカ</td><td>kouka</td><td>Coin</td></tr>
+<tr class="vocab-row"><td>かいもの</td><td>カイモノ</td><td>kaimono</td><td>Shopping</td></tr>
+<tr class="vocab-row"><td>ねだん</td><td>ネダン</td><td>nedan</td><td>Price</td></tr>
+<tr class="vocab-row"><td>やすい</td><td>ヤスイ</td><td>yasui</td><td>Cheap</td></tr>
+<tr class="vocab-row"><td>たかい</td><td>タカイ</td><td>takai</td><td>Expensive</td></tr>
+<tr class="vocab-row"><td>はらう</td><td>ハラウ</td><td>harau</td><td>To pay</td></tr>
+<tr class="vocab-row"><td>もらう</td><td>モラウ</td><td>morau</td><td>To receive</td></tr>
+
+<tr class="vocab-row"><td>かう</td><td>カウ</td><td>kau</td><td>To buy</td></tr>
+<tr class="vocab-row"><td>うる</td><td>ウル</td><td>uru</td><td>To sell</td></tr>
+<tr class="vocab-row"><td>つり</td><td>ツリ</td><td>tsuri</td><td>Change (money)</td></tr>
+<tr class="vocab-row"><td>ぎんこう</td><td>ギンコウ</td><td>ginkou</td><td>Bank</td></tr>
+<tr class="vocab-row"><td>こうざ</td><td>コウザ</td><td>kouza</td><td>Account</td></tr>
+<tr class="vocab-row"><td>カード</td><td>カード</td><td>kādo</td><td>Card</td></tr>
+<tr class="vocab-row"><td>しはらい</td><td>シハライ</td><td>shiharai</td><td>Payment</td></tr>
+<tr class="vocab-row"><td>レシート</td><td>レシート</td><td>reshīto</td><td>Receipt</td></tr>
+<tr class="vocab-row"><td>よきん</td><td>ヨキン</td><td>yokin</td><td>Savings</td></tr>
+<tr class="vocab-row"><td>しゃっきん</td><td>シャッキン</td><td>shakkin</td><td>Debt</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('money-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('money-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 35. EMOTIONS ================= -->
+<section class="section" id="emotions-section" data-page="1">
+<h2 class="text-2xl font-bold">35. Emotions (感情)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>かんじょう</td><td>カンジョウ</td><td>kanjou</td><td>Emotion / Feeling</td></tr>
+<tr class="vocab-row"><td>うれしい</td><td>ウレシイ</td><td>ureshii</td><td>Happy</td></tr>
+<tr class="vocab-row"><td>かなしい</td><td>カナシイ</td><td>kanashii</td><td>Sad</td></tr>
+<tr class="vocab-row"><td>たのしい</td><td>タノシイ</td><td>tanoshii</td><td>Fun / Enjoyable</td></tr>
+<tr class="vocab-row"><td>いかり</td><td>イカリ</td><td>ikari</td><td>Anger</td></tr>
+<tr class="vocab-row"><td>おこる</td><td>オコル</td><td>okoru</td><td>To get angry</td></tr>
+<tr class="vocab-row"><td>こわい</td><td>コワイ</td><td>kowai</td><td>Scary / Afraid</td></tr>
+<tr class="vocab-row"><td>ふあん</td><td>フアン</td><td>fuan</td><td>Anxiety</td></tr>
+<tr class="vocab-row"><td>びっくり</td><td>ビックリ</td><td>bikkuri</td><td>Surprised</td></tr>
+<tr class="vocab-row"><td>あんしん</td><td>アンシン</td><td>anshin</td><td>Relief</td></tr>
+
+<tr class="vocab-row"><td>すき</td><td>スキ</td><td>suki</td><td>Like</td></tr>
+<tr class="vocab-row"><td>きらい</td><td>キライ</td><td>kirai</td><td>Dislike</td></tr>
+<tr class="vocab-row"><td>あい</td><td>アイ</td><td>ai</td><td>Love</td></tr>
+<tr class="vocab-row"><td>さみしい</td><td>サミシイ</td><td>samishii</td><td>Lonely</td></tr>
+<tr class="vocab-row"><td>はずかしい</td><td>ハズカシイ</td><td>hazukashii</td><td>Embarrassed</td></tr>
+<tr class="vocab-row"><td>うらやましい</td><td>ウラヤマシイ</td><td>urayamashii</td><td>Jealous</td></tr>
+<tr class="vocab-row"><td>まんぞく</td><td>マンゾク</td><td>manzoku</td><td>Satisfied</td></tr>
+<tr class="vocab-row"><td>しんぱい</td><td>シンパイ</td><td>shinpai</td><td>Worried</td></tr>
+<tr class="vocab-row"><td>つかれた</td><td>ツカレタ</td><td>tsukareta</td><td>Tired</td></tr>
+<tr class="vocab-row"><td>ねむい</td><td>ネムイ</td><td>nemui</td><td>Sleepy</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('emotions-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('emotions-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 36. COUNTRIES ================= -->
+<section class="section" id="countries-section" data-page="1">
+<h2 class="text-2xl font-bold">36. Countries (国)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>くに</td><td>クニ</td><td>kuni</td><td>Country</td></tr>
+<tr class="vocab-row"><td>にほん</td><td>ニホン</td><td>nihon</td><td>Japan</td></tr>
+<tr class="vocab-row"><td>インド</td><td>インド</td><td>indo</td><td>India</td></tr>
+<tr class="vocab-row"><td>アメリカ</td><td>アメリカ</td><td>amerika</td><td>USA</td></tr>
+<tr class="vocab-row"><td>イギリス</td><td>イギリス</td><td>igirisu</td><td>United Kingdom</td></tr>
+<tr class="vocab-row"><td>カナダ</td><td>カナダ</td><td>kanada</td><td>Canada</td></tr>
+<tr class="vocab-row"><td>オーストラリア</td><td>オーストラリア</td><td>ōsutoraria</td><td>Australia</td></tr>
+<tr class="vocab-row"><td>ドイツ</td><td>ドイツ</td><td>doitsu</td><td>Germany</td></tr>
+<tr class="vocab-row"><td>フランス</td><td>フランス</td><td>furansu</td><td>France</td></tr>
+<tr class="vocab-row"><td>イタリア</td><td>イタリア</td><td>itaria</td><td>Italy</td></tr>
+
+<tr class="vocab-row"><td>スペイン</td><td>スペイン</td><td>supein</td><td>Spain</td></tr>
+<tr class="vocab-row"><td>ロシア</td><td>ロシア</td><td>roshia</td><td>Russia</td></tr>
+<tr class="vocab-row"><td>ちゅうごく</td><td>チュウゴク</td><td>chuugoku</td><td>China</td></tr>
+<tr class="vocab-row"><td>かんこく</td><td>カンコク</td><td>kankoku</td><td>South Korea</td></tr>
+<tr class="vocab-row"><td>ブラジル</td><td>ブラジル</td><td>burajiru</td><td>Brazil</td></tr>
+<tr class="vocab-row"><td>メキシコ</td><td>メキシコ</td><td>mekishiko</td><td>Mexico</td></tr>
+<tr class="vocab-row"><td>タイ</td><td>タイ</td><td>tai</td><td>Thailand</td></tr>
+<tr class="vocab-row"><td>ベトナム</td><td>ベトナム</td><td>betonamu</td><td>Vietnam</td></tr>
+<tr class="vocab-row"><td>フィリピン</td><td>フィリピン</td><td>firipin</td><td>Philippines</td></tr>
+<tr class="vocab-row"><td>インドネシア</td><td>インドネシア</td><td>indoneshia</td><td>Indonesia</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('countries-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('countries-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 37. SHOPPING ================= -->
+<section class="section" id="shopping-section" data-page="1">
+<h2 class="text-2xl font-bold">37. Shopping (買い物)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>かいもの</td><td>カイモノ</td><td>kaimono</td><td>Shopping</td></tr>
+<tr class="vocab-row"><td>みせ</td><td>ミセ</td><td>mise</td><td>Shop / Store</td></tr>
+<tr class="vocab-row"><td>スーパー</td><td>スーパー</td><td>sūpā</td><td>Supermarket</td></tr>
+<tr class="vocab-row"><td>デパート</td><td>デパート</td><td>depāto</td><td>Department store</td></tr>
+<tr class="vocab-row"><td>えき</td><td>エキ</td><td>eki</td><td>Station</td></tr>
+<tr class="vocab-row"><td>レジ</td><td>レジ</td><td>reji</td><td>Cash register</td></tr>
+<tr class="vocab-row"><td>てんいん</td><td>テンイン</td><td>ten’in</td><td>Shop assistant</td></tr>
+<tr class="vocab-row"><td>きゃく</td><td>キャク</td><td>kyaku</td><td>Customer</td></tr>
+<tr class="vocab-row"><td>かい</td><td>カイ</td><td>kai</td><td>Buy</td></tr>
+<tr class="vocab-row"><td>うる</td><td>ウル</td><td>uru</td><td>Sell</td></tr>
+
+<tr class="vocab-row"><td>ねだん</td><td>ネダン</td><td>nedan</td><td>Price</td></tr>
+<tr class="vocab-row"><td>やすい</td><td>ヤスイ</td><td>yasui</td><td>Cheap</td></tr>
+<tr class="vocab-row"><td>たかい</td><td>タカイ</td><td>takai</td><td>Expensive</td></tr>
+<tr class="vocab-row"><td>サイズ</td><td>サイズ</td><td>saizu</td><td>Size</td></tr>
+<tr class="vocab-row"><td>いろ</td><td>イロ</td><td>iro</td><td>Color</td></tr>
+<tr class="vocab-row"><td>ためす</td><td>タメス</td><td>tamesu</td><td>Try (on)</td></tr>
+<tr class="vocab-row"><td>えらぶ</td><td>エラブ</td><td>erabu</td><td>Choose</td></tr>
+<tr class="vocab-row"><td>はらう</td><td>ハラウ</td><td>harau</td><td>Pay</td></tr>
+<tr class="vocab-row"><td>つり</td><td>ツリ</td><td>tsuri</td><td>Change (money)</td></tr>
+<tr class="vocab-row"><td>レシート</td><td>レシート</td><td>reshīto</td><td>Receipt</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('shopping-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('shopping-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 38. ENTERTAINMENT ================= -->
+<section class="section" id="entertainment-section" data-page="1">
+<h2 class="text-2xl font-bold">38. Entertainment (娯楽)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>ごらく</td><td>ゴラク</td><td>goraku</td><td>Entertainment</td></tr>
+<tr class="vocab-row"><td>えいが</td><td>エイガ</td><td>eiga</td><td>Movie</td></tr>
+<tr class="vocab-row"><td>テレビ</td><td>テレビ</td><td>terebi</td><td>Television</td></tr>
+<tr class="vocab-row"><td>おんがく</td><td>オンガク</td><td>ongaku</td><td>Music</td></tr>
+<tr class="vocab-row"><td>うた</td><td>ウタ</td><td>uta</td><td>Song</td></tr>
+<tr class="vocab-row"><td>ダンス</td><td>ダンス</td><td>dansu</td><td>Dance</td></tr>
+<tr class="vocab-row"><td>ゲーム</td><td>ゲーム</td><td>gēmu</td><td>Game</td></tr>
+<tr class="vocab-row"><td>スポーツ</td><td>スポーツ</td><td>supōtsu</td><td>Sports</td></tr>
+<tr class="vocab-row"><td>はいゆう</td><td>ハイユウ</td><td>haiyū</td><td>Actor</td></tr>
+<tr class="vocab-row"><td>じょゆう</td><td>ジョユウ</td><td>joyū</td><td>Actress</td></tr>
+
+<tr class="vocab-row"><td>コンサート</td><td>コンサート</td><td>konsāto</td><td>Concert</td></tr>
+<tr class="vocab-row"><td>フェス</td><td>フェス</td><td>fesu</td><td>Festival</td></tr>
+<tr class="vocab-row"><td>カラオケ</td><td>カラオケ</td><td>karaoke</td><td>Karaoke</td></tr>
+<tr class="vocab-row"><td>ラジオ</td><td>ラジオ</td><td>rajio</td><td>Radio</td></tr>
+<tr class="vocab-row"><td>ぶたい</td><td>ブタイ</td><td>butai</td><td>Stage</td></tr>
+<tr class="vocab-row"><td>えんげき</td><td>エンゲキ</td><td>engeki</td><td>Drama / Play</td></tr>
+<tr class="vocab-row"><td>チケット</td><td>チケット</td><td>chiketto</td><td>Ticket</td></tr>
+<tr class="vocab-row"><td>イベント</td><td>イベント</td><td>ibento</td><td>Event</td></tr>
+<tr class="vocab-row"><td>しゅみ</td><td>シュミ</td><td>shumi</td><td>Hobby</td></tr>
+<tr class="vocab-row"><td>あそぶ</td><td>アソブ</td><td>asobu</td><td>To play / have fun</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('entertainment-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('entertainment-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 39. ANIME & MANGA ================= -->
+<section class="section" id="anime-manga-section" data-page="1">
+<h2 class="text-2xl font-bold">39. Anime & Manga (アニメ・漫画)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>アニメ</td><td>アニメ</td><td>anime</td><td>Anime</td></tr>
+<tr class="vocab-row"><td>マンガ</td><td>マンガ</td><td>manga</td><td>Manga</td></tr>
+<tr class="vocab-row"><td>さくひん</td><td>サクヒン</td><td>sakuhin</td><td>Work / Title</td></tr>
+<tr class="vocab-row"><td>きゃらくたー</td><td>キャラクター</td><td>kyarakutā</td><td>Character</td></tr>
+<tr class="vocab-row"><td>しゅじんこう</td><td>シュジンコウ</td><td>shujinkou</td><td>Main character</td></tr>
+<tr class="vocab-row"><td>てき</td><td>テキ</td><td>teki</td><td>Enemy</td></tr>
+<tr class="vocab-row"><td>ゆうしゃ</td><td>ユウシャ</td><td>yuusha</td><td>Hero</td></tr>
+<tr class="vocab-row"><td>まほう</td><td>マホウ</td><td>mahou</td><td>Magic</td></tr>
+<tr class="vocab-row"><td>ばとる</td><td>バトル</td><td>batoru</td><td>Battle</td></tr>
+<tr class="vocab-row"><td>すとーりー</td><td>ストーリー</td><td>sutōrī</td><td>Story</td></tr>
+
+<tr class="vocab-row"><td>え</td><td>エ</td><td>e</td><td>Illustration</td></tr>
+<tr class="vocab-row"><td>さっか</td><td>サッカ</td><td>sakka</td><td>Author / Creator</td></tr>
+<tr class="vocab-row"><td>しゅっぱん</td><td>シュッパン</td><td>shuppan</td><td>Publishing</td></tr>
+<tr class="vocab-row"><td>れんさい</td><td>レンサイ</td><td>rensai</td><td>Serialization</td></tr>
+<tr class="vocab-row"><td>かん</td><td>カン</td><td>kan</td><td>Volume</td></tr>
+<tr class="vocab-row"><td>えいぞう</td><td>エイゾウ</td><td>eizou</td><td>Video</td></tr>
+<tr class="vocab-row"><td>こえ</td><td>コエ</td><td>koe</td><td>Voice</td></tr>
+<tr class="vocab-row"><td>せいゆう</td><td>セイユウ</td><td>seiyuu</td><td>Voice actor</td></tr>
+<tr class="vocab-row"><td>ふぁん</td><td>ファン</td><td>fan</td><td>Fan</td></tr>
+<tr class="vocab-row"><td>おすすめ</td><td>オススメ</td><td>osusume</td><td>Recommendation</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('anime-manga-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('anime-manga-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 40. GAMES ================= -->
+<section class="section" id="games-section" data-page="1">
+<h2 class="text-2xl font-bold">40. Games (ゲーム)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hiragana</th>
+  <th>Katakana</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr class="vocab-row"><td>ゲーム</td><td>ゲーム</td><td>gēmu</td><td>Game</td></tr>
+<tr class="vocab-row"><td>ビデオゲーム</td><td>ビデオゲーム</td><td>bideo gēmu</td><td>Video game</td></tr>
+<tr class="vocab-row"><td>スマホゲーム</td><td>スマホゲーム</td><td>sumaho gēmu</td><td>Mobile game</td></tr>
+<tr class="vocab-row"><td>オンライン</td><td>オンライン</td><td>onrain</td><td>Online</td></tr>
+<tr class="vocab-row"><td>プレイヤー</td><td>プレイヤー</td><td>pureiyā</td><td>Player</td></tr>
+<tr class="vocab-row"><td>キャラクター</td><td>キャラクター</td><td>kyarakutā</td><td>Character</td></tr>
+<tr class="vocab-row"><td>レベル</td><td>レベル</td><td>reberu</td><td>Level</td></tr>
+<tr class="vocab-row"><td>スコア</td><td>スコア</td><td>sukoa</td><td>Score</td></tr>
+<tr class="vocab-row"><td>ミッション</td><td>ミッション</td><td>misshon</td><td>Mission</td></tr>
+<tr class="vocab-row"><td>クエスト</td><td>クエスト</td><td>kuesuto</td><td>Quest</td></tr>
+
+<tr class="vocab-row"><td>バトル</td><td>バトル</td><td>batoru</td><td>Battle</td></tr>
+<tr class="vocab-row"><td>チーム</td><td>チーム</td><td>chīmu</td><td>Team</td></tr>
+<tr class="vocab-row"><td>アイテム</td><td>アイテム</td><td>aitemu</td><td>Item</td></tr>
+<tr class="vocab-row"><td>ボス</td><td>ボス</td><td>bosu</td><td>Boss</td></tr>
+<tr class="vocab-row"><td>スタート</td><td>スタート</td><td>sutāto</td><td>Start</td></tr>
+<tr class="vocab-row"><td>ポーズ</td><td>ポーズ</td><td>pōzu</td><td>Pause</td></tr>
+<tr class="vocab-row"><td>セーブ</td><td>セーブ</td><td>sēbu</td><td>Save</td></tr>
+<tr class="vocab-row"><td>ロード</td><td>ロード</td><td>rōdo</td><td>Load</td></tr>
+<tr class="vocab-row"><td>クリア</td><td>クリア</td><td>kuria</td><td>Clear / Complete</td></tr>
+<tr class="vocab-row"><td>まける</td><td>マケル</td><td>makeru</td><td>To lose</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled" onclick="showPage('games-section',1)">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 02</span>
+  <span class="next" onclick="showPage('games-section',2)">›</span>
+</div>
+</section>
+
+
+<!-- ================= 41. ADULT ================= -->
+<section class="section" id="adult-section" data-page="1">
+  <h2 class="text-2xl font-bold">41. Adult (大人向け)</h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+    <tr>
+      <th>Hiragana</th>
+      <th>Katakana</th>
+      <th>Romaji</th>
+      <th>Meaning</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      <tr class="vocab-row"><td>おとな</td><td>オトナ</td><td>otona</td><td>Adult / Grown-up</td></tr>
+      <tr class="vocab-row"><td>せいじん</td><td>セイジン</td><td>seijin</td><td>Adult (legal)</td></tr>
+      <tr class="vocab-row"><td>れんあい</td><td>レンアイ</td><td>renai</td><td>Romantic love</td></tr>
+      <tr class="vocab-row"><td>こいびと</td><td>コイビト</td><td>koibito</td><td>Boyfriend / Girlfriend</td></tr>
+      <tr class="vocab-row"><td>つきあう</td><td>ツキアウ</td><td>tsukiau</td><td>To date / go out with</td></tr>
+      <tr class="vocab-row"><td>けっこん</td><td>ケッコン</td><td>kekkon</td><td>Marriage</td></tr>
+      <tr class="vocab-row"><td>ふうふ</td><td>フウフ</td><td>fuufu</td><td>Married couple</td></tr>
+      <tr class="vocab-row"><td>りこん</td><td>リコン</td><td>rikon</td><td>Divorce</td></tr>
+      <tr class="vocab-row"><td>おとなのかんけい</td><td>オトナノカンケイ</td><td>otona no kankei</td><td>Adult relationship</td></tr>
+      <tr class="vocab-row"><td>しんみつ</td><td>シンミツ</td><td>shinmitsu</td><td>Intimacy / closeness</td></tr>
+
+      <tr class="vocab-row"><td>みりょく</td><td>ミリョク</td><td>miryoku</td><td>Attractiveness / charm</td></tr>
+      <tr class="vocab-row"><td>せくしー</td><td>セクシー</td><td>sekushī</td><td>Sexy</td></tr>
+      <tr class="vocab-row"><td>だいたん</td><td>ダイタン</td><td>daitan</td><td>Bold / daring</td></tr>
+      <tr class="vocab-row"><td>はんさむ</td><td>ハンサム</td><td>hansamu</td><td>Handsome</td></tr>
+      <tr class="vocab-row"><td>かっこいい</td><td>カッコイイ</td><td>kakkoii</td><td>Cool / good-looking</td></tr>
+      <tr class="vocab-row"><td>いけてる</td><td>イケテル</td><td>iketeru</td><td>Stylish / attractive</td></tr>
+      <tr class="vocab-row"><td>だんせいてき</td><td>ダンセイテキ</td><td>danseiteki</td><td>Manly / masculine</td></tr>
+      <tr class="vocab-row"><td>いろっぽい</td><td>イロッポイ</td><td>iroppoi</td><td>Sensual / subtly sexy</td></tr>
+      <tr class="vocab-row"><td>みわくてき</td><td>ミワクテキ</td><td>miwakuteki</td><td>Alluring / fascinating</td></tr>
+      <tr class="vocab-row"><td>しぶい</td><td>シブイ</td><td>shibui</td><td>Refined / cool (mature taste)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="page-controls">
+    <span class="prev disabled" onclick="showPage('adult-section',1)">‹</span>
+    <span class="page-number">01</span>
+    <span>/ 02</span>
+    <span class="next" onclick="showPage('adult-section',2)">›</span>
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  © 2025 Japanese Learning
+</footer>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("mobileMenu");
+btn.onclick=()=>menu.style.display=menu.style.display==="block"?"none":"block";
+
+function showPage(sectionId, page) {
+  const section = document.getElementById(sectionId);
+  const rows = section.querySelectorAll('.vocab-row');
+  const pageNum = section.querySelector('.page-number');
+
+  const perPage = 10;
+  const totalPages = Math.ceil(rows.length / perPage);
+  const start = (page - 1) * perPage;
+  const end = start + perPage;
+
+  rows.forEach((row, index) => {
+    row.style.display = (index >= start && index < end) ? 'table-row' : 'none';
+  });
+
+  pageNum.textContent = page.toString().padStart(2, '0');
+
+  const prev = section.querySelector('.prev');
+  const next = section.querySelector('.next');
+
+  prev.classList.toggle('disabled', page === 1);
+  next.classList.toggle('disabled', page === totalPages);
+
+  section.dataset.page = page;
+}
+
+/* ✅ INIT AFTER DOM IS READY */
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* 1–10 */
+  showPage('greetings-section', 1);
+  showPage('numbers-section', 1);
+  showPage('colors-section', 1);
+  showPage('days-section', 1);
+  showPage('time-date-section', 1);
+  showPage('family-section', 1);
+  showPage('food-section', 1);
+  showPage('verbs-section', 1);
+  showPage('animals-section', 1);
+  showPage('house-rooms-section', 1);
+
+
+  /* 11–20 */
+  showPage('people-relationship-section', 1);
+  showPage('buildings-section', 1);
+  showPage('flowers-section', 1);
+  showPage('kitchen-items-section', 1);
+  showPage('school-college-section', 1);
+  showPage('education-section', 1);
+  showPage('healthcare-section', 1);
+  showPage('law-section', 1);
+  showPage('business-section', 1);
+  showPage('technology-section', 1);
+
+
+  /* 21–30 */
+  showPage('media-news-section', 1);
+  showPage('government-section', 1);
+  showPage('birds-section', 1);
+  showPage('trees-section', 1);
+  showPage('clothing-section', 1);
+  showPage('transportation-section', 1);
+  showPage('places-section', 1);
+  showPage('daily-use-1-section', 1);
+  showPage('daily-use-2-section', 1);
+  showPage('weather-seasons-section', 1);
+
+
+  /* 31–41 */
+  showPage('body-section', 1);
+  showPage('fruits-section', 1);
+  showPage('vegetables-section', 1);
+  showPage('money-section', 1);
+  showPage('emotions-section', 1);
+  showPage('countries-section', 1);
+  showPage('shopping-section', 1);
+  showPage('entertainment-section', 1);
+  showPage('anime-manga-section', 1);
+  showPage('games-section', 1);
+  showPage('adult-section', 1);
+
+});
+
+function searchVocabulary() {
+  const query = document.getElementById('vocabSearch').value.toLowerCase().trim();
+  if (!query) return alert('Please enter a search term.');
+
+  const sections = document.querySelectorAll('section.section');
+
+  for (let section of sections) {
+    const rows = section.querySelectorAll('.vocab-row');
+
+    for (let i = 0; i < rows.length; i++) {
+      const rowText = rows[i].textContent.toLowerCase();
+
+      if (rowText.includes(query)) {
+        const perPage = 10;
+        const page = Math.floor(i / perPage) + 1;
+
+        // 1️⃣ Show the correct page
+        showPage(section.id, page);
+
+        // 2️⃣ Scroll to the section
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // 3️⃣ Wait for DOM update to ensure row is visible
+        setTimeout(() => {
+          // Only consider visible rows
+          const visibleRows = section.querySelectorAll('.vocab-row');
+          let targetRow = null;
+          visibleRows.forEach((row) => {
+            if (row.style.display !== 'none' && row.textContent.toLowerCase().includes(query)) {
+              targetRow = row;
+            }
+          });
+
+          if (targetRow) {
+            // Apply highlight
+            targetRow.classList.add('highlight');
+
+            // Remove after 2 seconds
+            setTimeout(() => {
+              targetRow.classList.remove('highlight');
+            }, 2000);
+          }
+        }, 50); // short delay to allow showPage to update display
+
+        return; // stop after first match
+      }
+    }
+  }
+
+  alert('Word not found.');
+}
+
+
+
+// Attach events
+document.getElementById('searchBtn').addEventListener('click', searchVocabulary);
+document.getElementById('vocabSearch').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') searchVocabulary();
+});
+
+
+
+</script>
+
+
+</body>
+</html>

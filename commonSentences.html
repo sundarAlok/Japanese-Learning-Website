@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Japanese Common Sentences</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+/* ===== SAME STYLE AS VOCABULARY PAGE ===== */
+:root{
+  --bg1:#f8fafc;
+  --bg2:#eef2ff;
+  --accent:#4f46e5;
+  --accent-soft:rgba(79,70,229,.45);
+  --text:#0f172a;
+  --muted:#475569;
+}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.85);
+  border-bottom:1px solid rgba(15,23,42,.08);
+}
+.header-inner{
+  max-width:1200px;margin:auto;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;}
+.logo{
+  width:42px;height:42px;
+  background:linear-gradient(135deg,#3e4ce6,#8351f7);
+  color:#ffffff;display:grid;place-items:center;border-radius:10px;
+}
+nav a{
+  margin-left:10px;padding:8px 14px;font-weight:600;
+  color:var(--muted);border-radius:8px;
+}
+nav a:hover{background:rgba(79,70,229,.1);color:var(--accent);}
+nav a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+.menu-btn{display:none;font-size:26px;cursor:pointer;}
+.mobile-menu{display:none;background:#fff;border-top:1px solid rgba(15,23,42,.08);}
+.mobile-menu a{
+  display:block;padding:14px 20px;font-weight:600;color:var(--muted);
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.mobile-menu a:hover{background:rgba(79,70,229,.08);color:var(--accent);}
+.mobile-menu a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+@media(max-width:900px){
+  nav{display:none;}
+  .menu-btn{display:block;}
+}
+
+/* LAYOUT */
+.container{max-width:1100px;margin:auto;padding:48px 20px;}
+.section{
+  background:#fff;border-radius:16px;padding:32px;
+  box-shadow:0 15px 40px rgba(0,0,0,.05);
+  margin-bottom:32px;
+}
+.section h2{color:var(--accent);}
+.table-wrap{overflow-x:auto;margin-top:16px;}
+table{width:100%;border-collapse:collapse;font-size:.95rem;}
+th,td{border:1px solid rgba(15,23,42,.1);padding:10px;}
+th{background:rgba(79,70,229,.08);font-weight:700;}
+tbody tr:nth-child(even){background:#f8fafc;}
+.vocab-row{display:none;}
+
+/* pagination */
+.page-controls{
+  display:flex;justify-content:center;align-items:center;
+  gap:14px;margin-top:12px;font-weight:600;color:var(--accent);
+}
+.page-controls span{cursor:pointer;user-select:none;}
+.page-controls span.disabled{opacity:.4;cursor:default;}
+.page-controls .prev,.page-controls .next{
+  font-size:34px;line-height:1;padding:4px 6px;margin-top:-8px;
+}
+
+/* ✅ CUSTOM UNDERLINE STYLE */
+.replace{
+  color:var(--accent);
+  padding-bottom:1px;
+  border-bottom:2px dashed var(--accent-soft);
+  font-weight:600;
+}
+
+footer{
+  background:#fff;border-top:1px solid rgba(15,23,42,.08);
+  text-align:center;padding:24px;color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">JL</div>
+      <span>Japanese Learning</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="introduction.html">Introduction</a>
+      <a href="writingSystem.html">Writing</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="commonSentences.html" class="active">Phrases</a>
+      <a href="readingPassage.html">Reading</a>
+      <a href="additional.html">More</a>
+    </nav>
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="writingSystem.html">Writing</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="commonSentences.html" class="active">Phrases</a>
+    <a href="readingPassage.html">Reading</a>
+    <a href="additional.html">More</a>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- INTRO -->
+<section class="section">
+  <h1 class="text-3xl font-bold mb-3">Common Japanese Sentences</h1>
+
+  <p class="text-slate-700 leading-relaxed">
+    This page focuses on <strong>complete, natural Japanese sentences</strong> that are
+    used in real-life conversations — not isolated words.
+  </p>
+
+  <p class="text-slate-600 mt-3 leading-relaxed">
+    Each sentence is designed as a <strong>reusable pattern</strong>.
+    Words highlighted with an underline can be replaced to help you
+    <strong>create many similar sentences</strong> on your own.
+  </p>
+
+  <p class="text-slate-600 mt-3 leading-relaxed">
+    This approach will help you <strong>think in Japanese</strong>,
+    speak more confidently, and understand how the language works
+    in everyday situations.
+  </p>
+</section>
+
+
+<!-- ============ 1. GREETINGS & POLITE SENTENCES ============ -->
+<section class="section" id="greetings-section" data-page="1">
+<h2 class="text-2xl font-bold">1. Greetings & Polite Sentences (あいさつ)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td>わたしは アロク です。</td>
+  <td>watashi wa <span class="replace">Alok</span> desu</td>
+  <td>My name is <span class="replace">Alok</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>はじめまして、アロク です。</td>
+  <td>hajimemashite, <span class="replace">Alok</span> desu</td>
+  <td>Nice to meet you, I’m <span class="replace">Alok</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>おはよう ございます。</td>
+  <td>ohayou gozaimasu</td>
+  <td>Good morning.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>こんにちは。</td>
+  <td>konnichiwa</td>
+  <td>Hello / Good afternoon.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>こんばんは。</td>
+  <td>konbanwa</td>
+  <td>Good evening.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>おげんきですか。</td>
+  <td>ogenki desu ka</td>
+  <td>How are you?</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>わたしは げんきです。</td>
+  <td>watashi wa genki desu</td>
+  <td>I am fine.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>ありがとうございます。</td>
+  <td>arigatou gozaimasu</td>
+  <td>Thank you very much.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>すみません。</td>
+  <td>sumimasen</td>
+  <td>Excuse me / I’m sorry.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>それでは、また あいましょう。</td>
+  <td>sore dewa, mata aimashou</td>
+  <td>Well then, let’s meet again.</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 2. SELF INTRODUCTION SENTENCES ============ -->
+<section class="section" id="selfintro-section" data-page="1">
+<h2 class="text-2xl font-bold">2. Self Introduction Sentences (自己紹介)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td>インドから きました。</td>
+  <td><span class="replace">India</span> kara kimashita</td>
+  <td>I am from <span class="replace">India</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>デリー に すんでいます。</td>
+  <td><span class="replace">Delhi</span> ni sunde imasu</td>
+  <td>I live in <span class="replace">Delhi</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>がくせいです。</td>
+  <td>gakusei desu</td>
+  <td>I am a student.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>エンジニア です。</td>
+  <td><span class="replace">engineer</span> desu</td>
+  <td>I am an <span class="replace">engineer</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>にほんごを べんきょうしています。</td>
+  <td>nihongo o benkyou shite imasu</td>
+  <td>I am studying Japanese.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>えいご と ヒンディーご を はなします。</td>
+  <td><span class="replace">English</span> to <span class="replace">Hindi</span> o hanashimasu</td>
+  <td>I speak <span class="replace">English</span> and <span class="replace">Hindi</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>しゅみは おんがく です。</td>
+  <td>shumi wa <span class="replace">music</span> desu</td>
+  <td>My hobby is <span class="replace">music</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>まいにち べんきょうします。</td>
+  <td>mainichi benkyou shimasu</td>
+  <td>I study every day.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>しごとは IT です。</td>
+  <td>shigoto wa <span class="replace">IT</span> desu</td>
+  <td>My job is in <span class="replace">IT</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>どうぞ よろしく おねがいします。</td>
+  <td>douzo yoroshiku onegaishimasu</td>
+  <td>Please treat me well.</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 3. DAILY LIFE & ROUTINE SENTENCES ============ -->
+<section class="section" id="daily-section" data-page="1">
+<h2 class="text-2xl font-bold">3. Daily Life & Routine Sentences (日常生活)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td>まいにち <span class="replace">はやく</span> おきます。</td>
+  <td>mainichi <span class="replace">hayaku</span> okimasu</td>
+  <td>I wake up <span class="replace">early</span> every day.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">あさごはん</span> を たべます。</td>
+  <td><span class="replace">asagohan</span> o tabemasu</td>
+  <td>I eat <span class="replace">breakfast</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">がっこう</span> へ いきます。</td>
+  <td><span class="replace">gakkou</span> e ikimasu</td>
+  <td>I go to <span class="replace">school</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>まいにち <span class="replace">にほんご</span> を べんきょうします。</td>
+  <td>mainichi <span class="replace">nihongo</span> o benkyou shimasu</td>
+  <td>I study <span class="replace">Japanese</span> every day.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">ひるごはん</span> は <span class="replace">じゅうにじ</span> に たべます。</td>
+  <td><span class="replace">hirugohan</span> wa <span class="replace">juu-ni-ji</span> ni tabemasu</td>
+  <td>I eat <span class="replace">lunch</span> at <span class="replace">12 o’clock</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">ともだち</span> と はなします。</td>
+  <td><span class="replace">tomodachi</span> to hanashimasu</td>
+  <td>I talk with my <span class="replace">friends</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">ばんごはん</span> を たべます。</td>
+  <td><span class="replace">bangohan</span> o tabemasu</td>
+  <td>I eat <span class="replace">dinner</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>よる <span class="replace">テレビ</span> を みます。</td>
+  <td>yoru <span class="replace">terebi</span> o mimasu</td>
+  <td>I watch <span class="replace">TV</span> at night.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>よる <span class="replace">じゅういちじ</span> に ねます。</td>
+  <td>yoru <span class="replace">juu-ichi-ji</span> ni nemasu</td>
+  <td>I sleep at <span class="replace">11 PM</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>まいにち <span class="replace">いそがしい</span> です。</td>
+  <td>mainichi <span class="replace">isogashii</span> desu</td>
+  <td>I am <span class="replace">busy</span> every day.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 4. FOOD & EATING SENTENCES ============ -->
+<section class="section" id="food-section" data-page="1">
+<h2 class="text-2xl font-bold">4. Food & Eating Sentences (食べ物・食事)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td><span class="replace">ごはん</span> を たべます。</td>
+  <td><span class="replace">gohan</span> o tabemasu</td>
+  <td>I eat <span class="replace">rice</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">パン</span> を たべます。</td>
+  <td><span class="replace">pan</span> o tabemasu</td>
+  <td>I eat <span class="replace">bread</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">みず</span> を のみます。</td>
+  <td><span class="replace">mizu</span> o nomimasu</td>
+  <td>I drink <span class="replace">water</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">コーヒー</span> を のみます。</td>
+  <td><span class="replace">koohii</span> o nomimasu</td>
+  <td>I drink <span class="replace">coffee</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">りんご</span> が すきです。</td>
+  <td><span class="replace">ringo</span> ga suki desu</td>
+  <td>I like <span class="replace">apples</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">やさい</span> を たべます。</td>
+  <td><span class="replace">yasai</span> o tabemasu</td>
+  <td>I eat <span class="replace">vegetables</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">にく</span> を たべません。</td>
+  <td><span class="replace">niku</span> o tabemasen</td>
+  <td>I do not eat <span class="replace">meat</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">レストラン</span> で たべます。</td>
+  <td><span class="replace">resutoran</span> de tabemasu</td>
+  <td>I eat at a <span class="replace">restaurant</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">ひるごはん</span> を たべています。</td>
+  <td><span class="replace">hirugohan</span> o tabete imasu</td>
+  <td>I am eating <span class="replace">lunch</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>とても <span class="replace">おいしい</span> です。</td>
+  <td>totemo <span class="replace">oishii</span> desu</td>
+  <td>It is very <span class="replace">delicious</span>.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 5. TRAVEL & TRANSPORTATION SENTENCES ============ -->
+<section class="section" id="travel-section" data-page="1">
+<h2 class="text-2xl font-bold">5. Travel & Transportation Sentences (旅行・交通)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td><span class="replace">えき</span> へ いきます。</td>
+  <td><span class="replace">eki</span> e ikimasu</td>
+  <td>I go to the <span class="replace">station</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">でんしゃ</span> に のります。</td>
+  <td><span class="replace">densha</span> ni norimasu</td>
+  <td>I take the <span class="replace">train</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">バス</span> で いきます。</td>
+  <td><span class="replace">basu</span> de ikimasu</td>
+  <td>I go by <span class="replace">bus</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">タクシー</span> を つかいます。</td>
+  <td><span class="replace">takushii</span> o tsukaimasu</td>
+  <td>I use a <span class="replace">taxi</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">きっぷ</span> を かいます。</td>
+  <td><span class="replace">kippu</span> o kaimasu</td>
+  <td>I buy a <span class="replace">ticket</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">にほん</span> へ りょこうします。</td>
+  <td><span class="replace">Nihon</span> e ryokou shimasu</td>
+  <td>I travel to <span class="replace">Japan</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">ホテル</span> に とまります。</td>
+  <td><span class="replace">hoteru</span> ni tomarimasu</td>
+  <td>I stay at a <span class="replace">hotel</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">ちず</span> を みます。</td>
+  <td><span class="replace">chizu</span> o mimasu</td>
+  <td>I look at a <span class="replace">map</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">ここ</span> から <span class="replace">えき</span> まで あるきます。</td>
+  <td><span class="replace">koko</span> kara <span class="replace">eki</span> made arukimasu</td>
+  <td>I walk from <span class="replace">here</span> to the <span class="replace">station</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">なんじ</span> に しゅっぱつしますか。</td>
+  <td><span class="replace">nanji</span> ni shuppatsu shimasu ka</td>
+  <td>At <span class="replace">what time</span> does it depart?</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 6. SHOPPING & MONEY SENTENCES ============ -->
+<section class="section" id="shopping-section" data-page="1">
+<h2 class="text-2xl font-bold">6. Shopping & Money Sentences (買い物・お金)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td><span class="replace">みせ</span> に はいります。</td>
+  <td><span class="replace">mise</span> ni hairimasu</td>
+  <td>I enter the <span class="replace">shop</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">シャツ</span> を さがしています。</td>
+  <td><span class="replace">shatsu</span> o sagashite imasu</td>
+  <td>I am looking for a <span class="replace">shirt</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>これ は <span class="replace">いくら</span> ですか。</td>
+  <td>kore wa <span class="replace">ikura</span> desu ka</td>
+  <td>How <span class="replace">much</span> is this?</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">たかい</span> です。</td>
+  <td><span class="replace">takai</span> desu</td>
+  <td>It is <span class="replace">expensive</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">やすい</span> と おもいます。</td>
+  <td><span class="replace">yasui</span> to omoimasu</td>
+  <td>I think it is <span class="replace">cheap</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">これ</span> を ください。</td>
+  <td><span class="replace">kore</span> o kudasai</td>
+  <td>Please give me <span class="replace">this</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">カード</span> で はらいます。</td>
+  <td><span class="replace">kaado</span> de haraimasu</td>
+  <td>I will pay by <span class="replace">card</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">げんきん</span> は つかえますか。</td>
+  <td><span class="replace">genkin</span> wa tsukaemasu ka</td>
+  <td>Can I use <span class="replace">cash</span>?</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">レシート</span> を ください。</td>
+  <td><span class="replace">reshiito</span> o kudasai</td>
+  <td>Please give me the <span class="replace">receipt</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>もう <span class="replace">かいません</span>。</td>
+  <td>mou <span class="replace">kaimasen</span></td>
+  <td>I will <span class="replace">not buy</span> it.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 7. OFFICE & WORK SENTENCES ============ -->
+<section class="section" id="office-section" data-page="1">
+<h2 class="text-2xl font-bold">7. Office & Work Sentences (仕事・オフィス)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td><span class="replace">かいしゃ</span> で はたらいています。</td>
+  <td><span class="replace">kaisha</span> de hataraite imasu</td>
+  <td>I work at a <span class="replace">company</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>まいあさ <span class="replace">はちじ</span> に しごとを はじめます。</td>
+  <td>maiasa <span class="replace">hachi-ji</span> ni shigoto o hajimemasu</td>
+  <td>I start work at <span class="replace">8 AM</span> every morning.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">パソコン</span> を つかって しごとを します。</td>
+  <td><span class="replace">pasokon</span> o tsukatte shigoto o shimasu</td>
+  <td>I work using a <span class="replace">computer</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">かいぎ</span> に さんかします。</td>
+  <td><span class="replace">kaigi</span> ni sanka shimasu</td>
+  <td>I attend a <span class="replace">meeting</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">メール</span> を おくります。</td>
+  <td><span class="replace">meeru</span> o okurimasu</td>
+  <td>I send an <span class="replace">email</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">しりょう</span> を じゅんびします。</td>
+  <td><span class="replace">shiryou</span> o junbi shimasu</td>
+  <td>I prepare the <span class="replace">documents</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>きょうは <span class="replace">いそがしい</span> です。</td>
+  <td>kyou wa <span class="replace">isogashii</span> desu</td>
+  <td>Today is <span class="replace">busy</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">ざんぎょう</span> を します。</td>
+  <td><span class="replace">zangyou</span> o shimasu</td>
+  <td>I work <span class="replace">overtime</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>あしたは <span class="replace">やすみ</span> です。</td>
+  <td>ashita wa <span class="replace">yasumi</span> desu</td>
+  <td>Tomorrow is a <span class="replace">holiday</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">じょうし</span> に ほうこくします。</td>
+  <td><span class="replace">joushi</span> ni houkoku shimasu</td>
+  <td>I report to my <span class="replace">boss</span>.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 8. HEALTH & BODY SENTENCES ============ -->
+<section class="section" id="health-section" data-page="1">
+<h2 class="text-2xl font-bold">8. Health & Body Sentences (健康・体)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td><span class="replace">あたま</span> が いたいです。</td>
+  <td><span class="replace">atama</span> ga itai desu</td>
+  <td>My <span class="replace">head</span> hurts.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">おなか</span> が いたいです。</td>
+  <td><span class="replace">onaka</span> ga itai desu</td>
+  <td>My <span class="replace">stomach</span> hurts.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>きのうから <span class="replace">ねつ</span> が あります。</td>
+  <td>kinou kara <span class="replace">netsu</span> ga arimasu</td>
+  <td>I have had a <span class="replace">fever</span> since yesterday.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">びょういん</span> に いきました。</td>
+  <td><span class="replace">byouin</span> ni ikimashita</td>
+  <td>I went to the <span class="replace">hospital</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">いしゃ</span> に みてもらいました。</td>
+  <td><span class="replace">isha</span> ni mite moraimashita</td>
+  <td>I was checked by a <span class="replace">doctor</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">くすり</span> を のみます。</td>
+  <td><span class="replace">kusuri</span> o nomimasu</td>
+  <td>I take <span class="replace">medicine</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>すこし <span class="replace">つかれています</span>。</td>
+  <td>sukoshi <span class="replace">tsukarete imasu</span></td>
+  <td>I am a little <span class="replace">tired</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>きょうは <span class="replace">やすむ</span> ことに します。</td>
+  <td>kyou wa <span class="replace">yasumu</span> koto ni shimasu</td>
+  <td>I will <span class="replace">rest</span> today.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>まいにち <span class="replace">うんどう</span> を しています。</td>
+  <td>mainichi <span class="replace">undou</span> o shite imasu</td>
+  <td>I exercise <span class="replace">every day</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>いまは <span class="replace">だいじょうぶ</span> です。</td>
+  <td>ima wa <span class="replace">daijoubu</span> desu</td>
+  <td>I am <span class="replace">okay</span> now.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 9. FEELINGS & OPINIONS SENTENCES ============ -->
+<section class="section" id="feelings-section" data-page="1">
+<h2 class="text-2xl font-bold">9. Feelings & Opinions Sentences (気持ち・意見)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td>とても <span class="replace">うれしい</span> です。</td>
+  <td>totemo <span class="replace">ureshii</span> desu</td>
+  <td>I am very <span class="replace">happy</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>すこし <span class="replace">かなしい</span> です。</td>
+  <td>sukoshi <span class="replace">kanashii</span> desu</td>
+  <td>I am a little <span class="replace">sad</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>いま <span class="replace">たのしい</span> です。</td>
+  <td>ima <span class="replace">tanoshii</span> desu</td>
+  <td>I am <span class="replace">enjoying myself</span> now.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>その えいがは <span class="replace">おもしろい</span> と おもいます。</td>
+  <td>sono eiga wa <span class="replace">omoshiroi</span> to omoimasu</td>
+  <td>I think that movie is <span class="replace">interesting</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>この ほんは <span class="replace">つまらない</span> です。</td>
+  <td>kono hon wa <span class="replace">tsumaranai</span> desu</td>
+  <td>This book is <span class="replace">boring</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">すき</span> な おんがくを ききます。</td>
+  <td><span class="replace">suki</span> na ongaku o kikimasu</td>
+  <td>I listen to <span class="replace">music I like</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">きらい</span> な たべものが あります。</td>
+  <td><span class="replace">kirai</span> na tabemono ga arimasu</td>
+  <td>There is food I <span class="replace">dislike</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>それは <span class="replace">だいじ</span> だと おもいます。</td>
+  <td>sore wa <span class="replace">daiji</span> da to omoimasu</td>
+  <td>I think that is <span class="replace">important</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>いま <span class="replace">しんぱい</span> しています。</td>
+  <td>ima <span class="replace">shinpai</span> shite imasu</td>
+  <td>I am <span class="replace">worried</span> now.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>けっかを <span class="replace">きたい</span> しています。</td>
+  <td>kekka o <span class="replace">kitai</span> shite imasu</td>
+  <td>I am <span class="replace">expecting</span> the result.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+<!-- ============ 10. REQUESTS & PERMISSIONS SENTENCES ============ -->
+<section class="section" id="requests-section" data-page="1">
+<h2 class="text-2xl font-bold">10. Requests & Permissions Sentences (お願い・許可)</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Japanese Sentence</th>
+  <th>Romaji</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="vocab-row">
+  <td><span class="replace">てつだって</span> ください。</td>
+  <td><span class="replace">tetsudatte</span> kudasai</td>
+  <td>Please <span class="replace">help</span> me.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>もう いちど <span class="replace">いって</span> ください。</td>
+  <td>mou ichido <span class="replace">itte</span> kudasai</td>
+  <td>Please <span class="replace">say it</span> one more time.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">まって</span> ください。</td>
+  <td><span class="replace">matte</span> kudasai</td>
+  <td>Please <span class="replace">wait</span>.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">はいって</span> も いいですか。</td>
+  <td><span class="replace">haitte</span> mo ii desu ka</td>
+  <td>May I <span class="replace">enter</span>?</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">すわって</span> も いいですか。</td>
+  <td><span class="replace">suwatte</span> mo ii desu ka</td>
+  <td>May I <span class="replace">sit</span>?</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">つかって</span> も いいです。</td>
+  <td><span class="replace">tsukatte</span> mo ii desu</td>
+  <td>You may <span class="replace">use</span> it.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">みせて</span> ください。</td>
+  <td><span class="replace">misete</span> kudasai</td>
+  <td>Please <span class="replace">show</span> me.</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>すこし <span class="replace">まって</span> もらえますか。</td>
+  <td>sukoshi <span class="replace">matte</span> moraemasu ka</td>
+  <td>Could you <span class="replace">wait</span> a little?</td>
+</tr>
+
+<tr class="vocab-row">
+  <td><span class="replace">しゃしん</span> を とって も いいですか。</td>
+  <td><span class="replace">shashin</span> o totte mo ii desu ka</td>
+  <td>May I take a <span class="replace">photo</span>?</td>
+</tr>
+
+<tr class="vocab-row">
+  <td>ここで <span class="replace">はなして</span> は だめです。</td>
+  <td>koko de <span class="replace">hanashite</span> wa dame desu</td>
+  <td>You must not <span class="replace">talk</span> here.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="page-controls">
+  <span class="prev disabled">‹</span>
+  <span class="page-number">01</span>
+  <span>/ 01</span>
+  <span class="next disabled">›</span>
+</div>
+</section>
+
+
+</main>
+
+<footer>
+© 2025 Japanese Learning — Sentence-based communication
+</footer>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("mobileMenu");
+btn.onclick=()=>menu.style.display=menu.style.display==="block"?"none":"block";
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.vocab-row').forEach(r=>r.style.display='table-row');
+});
+</script>
+
+</body>
+</html>

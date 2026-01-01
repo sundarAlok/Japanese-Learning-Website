@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Introduction to Japanese Language & Culture</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+  --bg1:#f8fafc;
+  --bg2:#eef2ff;
+  --accent:#4f46e5;
+  --text:#0f172a;
+  --muted:#475569;
+}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+}
+
+/* ================= HEADER (SAME AS HOME) ================= */
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.85);
+  border-bottom:1px solid rgba(15,23,42,.08);
+}
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+}
+.logo{
+  width:42px;height:42px;
+  background:linear-gradient(135deg,#3e4ce6,#8351f7);
+  color:#ffffff;display:grid;place-items:center;border-radius:10px;
+}
+nav a{
+  margin-left:10px;
+  padding:8px 14px;
+  font-weight:600;
+  color:var(--muted);
+  border-radius:8px;
+}
+nav a:hover{
+  background:rgba(79,70,229,.1);
+  color:var(--accent);
+}
+nav a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+
+/* mobile */
+.menu-btn{display:none;font-size:26px;cursor:pointer;}
+.mobile-menu{
+  display:none;
+  background:#fff;
+  border-top:1px solid rgba(15,23,42,.08);
+}
+.mobile-menu a{
+  display:block;
+  padding:14px 20px;
+  font-weight:600;
+  color:var(--muted);
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.mobile-menu a:hover{
+  background:rgba(79,70,229,.08);
+  color:var(--accent);
+}
+.mobile-menu a.active{
+  background:rgba(86,96,210,.15);
+  color:rgb(86,96,210);
+}
+@media(max-width:900px){
+  nav{display:none;}
+  .menu-btn{display:block;}
+}
+
+/* ================= LAYOUT ================= */
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:48px 20px;
+}
+.section{
+  background:#fff;
+  border-radius:16px;
+  padding:32px;
+  box-shadow:0 15px 40px rgba(0,0,0,.05);
+  margin-bottom:32px;
+}
+.section h2{
+  color:var(--accent);
+}
+
+.image-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:16px;
+  margin-top:16px;
+}
+
+/* H3 with dashed underline only */
+.section h3 {
+  border-bottom: 2px dashed var(--accent); /* Dashed underline in violet */
+  padding-bottom: 0px;                     /* Space between text and underline */
+  display: inline-block;                   /* Makes underline fit text width */
+  color: var(--accent);
+  font-weight: bold;
+}
+
+
+.image-row img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+footer{
+  background:#fff;
+  border-top:1px solid rgba(15,23,42,.08);
+  text-align:center;
+  padding:24px;
+  color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">JL</div>
+      <span>Japanese Learning</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="introduction.html" class="active">Introduction</a>
+      <a href="writingSystem.html">Writing</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="commonSentences.html">Phrases</a>
+      <a href="readingPassage.html">Reading</a>
+      <a href="additional.html">More</a>
+    </nav>
+
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="introduction.html" class="active">Introduction</a>
+    <a href="writingSystem.html">Writing</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="commonSentences.html">Phrases</a>
+    <a href="readingPassage.html">Reading</a>
+    <a href="additional.html">More</a>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- INTRO -->
+<section class="section">
+  <h1 class="text-3xl font-bold mb-2">Introduction to Japanese Language & Culture</h1>
+  <p class="text-slate-700">
+    Explore the essence of Japanese language, traditions, and society and more.
+  </p>
+</section>
+
+<!-- LANGUAGE OVERVIEW -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-4">Overview of the Japanese Language</h2>
+
+  <p class="mb-4">
+    Japanese (日本語 - Nihongo) is the official language of Japan, spoken by over
+    125 million people. It is a unique language with a rich history, written
+    in a combination of three scripts and shaped by cultural values like respect
+    and harmony.
+  </p>
+
+  <p class="mb-4">
+    The Japanese language is context-rich, which means meaning often depends
+    on social relationships and situations. Understanding Japanese requires
+    paying attention to politeness, formality, and subtle cultural cues.
+  </p>
+
+  <ul class="list-disc list-inside mt-4 space-y-2">
+    <li><strong>Sentence Structure:</strong> Subject-Object-Verb (SOV). The verb usually comes at the end.</li>
+    <li><strong>Grammar:</strong> Uses particles like <em>は (wa)</em>, <em>が (ga)</em>, and <em>を (wo)</em> to indicate grammatical roles.</li>
+    <li><strong>Politeness Levels:</strong> Casual, polite, and honorific speech (<em>keigo</em>) are essential in different social contexts.</li>
+    <li><strong>Phonetics:</strong> Relatively simple syllables with five vowels and consistent consonant patterns.</li>
+  </ul>
+
+  <!-- Writing Systems Cards -->
+  <div class="mt-4">
+    <h3 class="text-xl font-bold text-violet-600 mb-5 mt-2">Writing Systems</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white border border-violet-200 rounded-xl shadow-sm p-4 text-center hover:shadow-lg transition">
+        <h4 class="text-slate-800 font-bold text-lg mb-2">Hiragana (ひらがな)</h4>
+        <p class="text-slate-700 text-sm">Used for native words and grammatical endings.</p>
+      </div>
+
+      <div class="bg-white border border-violet-200 rounded-xl shadow-sm p-4 text-center hover:shadow-lg transition">
+        <h4 class="text-slate-800 font-bold text-lg mb-2">Katakana (カタカナ)</h4>
+        <p class="text-slate-700 text-sm">Used for foreign words and names.</p>
+      </div>
+
+      <div class="bg-white border border-violet-200 rounded-xl shadow-sm p-4 text-center hover:shadow-lg transition">
+        <h4 class="text-slate-800 font-bold text-lg mb-2">Kanji (漢字)</h4>
+        <p class="text-slate-700 text-sm">Chinese characters representing words or ideas.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="mt-4">
+    Learning Japanese is not just about grammar and vocabulary — it is also about
+    understanding Japanese culture, social behavior, and ways of thinking.
+  </p>
+</section>
+
+
+<!-- JAPANESE HISTORY -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-6">Japanese History (日本の歴史)</h2>
+
+  <p class="mb-6 text-slate-700">
+    Japanese history spans thousands of years, shaped by unique traditions, foreign influence, 
+    periods of isolation, and rapid modernization. Explore this fun timeline of Japan’s major eras!
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    
+    <!-- Jomon Period -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">🌿 Jōmon Period (c. 14,000 BCE – 300 BCE)</h3>
+      <p class="text-slate-700 text-sm">
+        Early hunter-gatherers famous for cord-pattern pottery. Small communities thrived on fishing, hunting, and foraging. Imagine living in a cozy pit house surrounded by forests!
+      </p>
+    </div>
+
+    <!-- Yayoi Period -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">🌾 Yayoi Period (c. 300 BCE – 300 CE)</h3>
+      <p class="text-slate-700 text-sm">
+        Rice farming and metal tools arrive! Social classes start to form, and strong influences from China and Korea shape early Japanese society.
+      </p>
+    </div>
+
+    <!-- Kofun Period -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">🏯 Kofun Period (c. 300 – 538)</h3>
+      <p class="text-slate-700 text-sm">
+        Powerful clans rise and rulers get huge burial mounds called kofun. Early Japan is becoming more organized and centralized.
+      </p>
+    </div>
+
+    <!-- Asuka & Nara Periods -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">🙏 Asuka & Nara Periods (538 – 794)</h3>
+      <p class="text-slate-700 text-sm">
+        Buddhism officially arrives! Chinese writing, laws, and culture influence Japan. Nara becomes the first permanent capital.
+      </p>
+    </div>
+
+    <!-- Heian Period -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">📜 Heian Period (794 – 1185)</h3>
+      <p class="text-slate-700 text-sm">
+        Classical culture blooms! Hiragana & Katakana develop. Famous literary works like <em>The Tale of Genji</em> appear. A golden age of art and poetry!
+      </p>
+    </div>
+
+    <!-- Kamakura & Muromachi Periods -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">⚔ Kamakura & Muromachi Periods (1185 – 1573)</h3>
+      <p class="text-slate-700 text-sm">
+        Samurai take charge! Military governments (shogunates) dominate, Zen Buddhism spreads, and Japan sees many internal conflicts.
+      </p>
+    </div>
+
+    <!-- Azuchi–Momoyama Period -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">🎌 Azuchi–Momoyama Period (1573 – 1603)</h3>
+      <p class="text-slate-700 text-sm">
+        Japan is unified under powerful leaders like Oda Nobunaga and Toyotomi Hideyoshi. Castles and culture flourish.
+      </p>
+    </div>
+
+    <!-- Edo Period -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">🏙 Edo Period (1603 – 1868)</h3>
+      <p class="text-slate-700 text-sm">
+        Long peace under the Tokugawa shogunate. Japan isolates itself (sakoku), but cities, arts, and merchant culture thrive.
+      </p>
+    </div>
+
+    <!-- Meiji Period -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">🚂 Meiji Period (1868 – 1912)</h3>
+      <p class="text-slate-700 text-sm">
+        Samurai rule ends. Japan modernizes rapidly with new industry, schools, and a modern military. Western ideas meet Japanese tradition!
+      </p>
+    </div>
+
+    <!-- Modern Japan -->
+    <div class="bg-white border border-violet-200 rounded-xl shadow-md p-5 hover:shadow-lg transition">
+      <h3 class="text-violet-600 font-bold text-lg mb-2">💡 Modern Japan (1912 – Present)</h3>
+      <p class="text-slate-700 text-sm">
+        Japan grows into a technological powerhouse, recovers from war, and becomes a peaceful, advanced nation. Anime, tech, and culture now shape global influence!
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CULTURE -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-4">Japanese Culture and Traditions</h2>
+
+  <p class="mb-4">
+    Japanese culture is shaped by centuries of tradition, strong social values,
+    and a deep respect for nature. While modern Japan is highly technological,
+    traditional customs continue to influence daily life, communication, and art.
+  </p>
+
+  <!-- CORE VALUES -->
+  <h3 class="mt-4 font-semibold text-lg">Core Cultural Values</h3>
+  <ul class="list-disc list-inside space-y-2 mt-2">
+    <li>
+      <strong>Wa (和) — Harmony:</strong>
+      Emphasis on maintaining peace, cooperation, and avoiding conflict in society.
+    </li>
+    <li>
+      <strong>Respect & Politeness:</strong>
+      Bowing, honorific language, and formal behavior reflect social awareness.
+    </li>
+    <li>
+      <strong>Group Over Individual:</strong>
+      Decisions often prioritize group harmony rather than personal opinion.
+    </li>
+    <li>
+      <strong>Discipline & Responsibility:</strong>
+      Punctuality, cleanliness, and dedication are highly valued.
+    </li>
+  </ul>
+
+
+
+  <!-- TRADITIONAL ARTS -->
+  <h3 class="mt-6 font-semibold text-lg">Traditional Arts & Practices</h3>
+  <p class="mt-2">
+    Many traditional arts focus on patience, precision, and mindfulness.
+    These practices are often passed down through generations.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Tea Ceremony (茶道):</strong> Ritual preparation of matcha tea</li>
+    <li><strong>Calligraphy (書道):</strong> Artistic writing using brush and ink</li>
+    <li><strong>Ikebana (生け花):</strong> Art of flower arrangement</li>
+    <li><strong>Martial Arts:</strong> Judo, Kendo, Karate, Aikido</li>
+    <li><strong>Traditional Theatre:</strong> Kabuki and Noh performances</li>
+  </ul>
+
+  <!-- IMAGE PLACEHOLDER: ARTS -->
+  <div class="image-row">
+    <img src="Assets/Traditional-Arts(Craft).png" alt="Japanese Craft">
+    <img src="Assets/Traditional-Arts(Painting).png" alt="Japanese Painting">
+    <img src="Assets/Traditional-Arts(Sumo-Fight).png" alt="Japanese Sumo Fight">
+  </div>
+
+
+  <!-- FESTIVALS -->
+  <h3 class="mt-6 font-semibold text-lg">Festivals & Seasonal Traditions</h3>
+  <p class="mt-2">
+    Japanese festivals (祭り – <em>matsuri</em>) celebrate seasons, nature,
+    historical events, and local gods.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Hanami:</strong> Cherry blossom viewing in spring</li>
+    <li><strong>Gion Matsuri:</strong> Famous Kyoto summer festival</li>
+    <li><strong>Obon:</strong> Honoring ancestors in summer</li>
+    <li><strong>Shōgatsu:</strong> New Year celebrations</li>
+  </ul>
+
+  <!-- IMAGE PLACEHOLDER: FESTIVALS -->
+  <div class="image-row">
+    <img src="Assets/Obon-Festival.jpg" alt="Obon Festival for ancestors">
+    <img src="Assets/Cherry-blossom.png" alt="Cherry blossom festival in Japan">
+    <img src="Assets/Firework.jpg" alt="Japanese Firework">
+  </div>
+
+
+  <!-- MODERN LIFE -->
+  <h3 class="mt-6 font-semibold text-lg">Tradition in Modern Japanese Life</h3>
+  <p class="mt-2">
+    Even in modern cities, traditional customs remain visible.
+    People still remove shoes indoors, exchange business cards respectfully,
+    and use polite language in daily interactions.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>Kimono worn during ceremonies and festivals</li>
+    <li>Seasonal foods and limited-time menus</li>
+    <li>Respectful workplace culture</li>
+    <li>Blending tradition with advanced technology</li>
+  </ul>
+
+  <!-- IMAGE PLACEHOLDER: MODERN + TRADITION -->
+  <div class="image-row">
+    <img src="Assets/Food.png" alt="Japanese Food">
+    <img src="Assets/Kimono.png" alt="Traditional Dress">
+    <img src="Assets/Market.png" alt="Market View">
+  </div>
+
+
+</section>
+
+
+<!-- ARCHITECTURE -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-4">Architecture and Environment</h2>
+
+  <p class="mb-4">
+    Japanese architecture reflects a deep respect for nature, simplicity, and balance.
+    Buildings are designed to coexist with the environment rather than dominate it.
+    From ancient temples to modern cities, Japan blends tradition with innovation.
+  </p>
+
+  <!-- TRADITIONAL ARCHITECTURE -->
+  <h3 class="mt-4 font-semibold text-lg">Traditional Japanese Architecture</h3>
+  <p class="mt-2">
+    Traditional buildings use natural materials and flexible spaces.
+    They are designed to adapt to Japan’s climate, earthquakes, and seasonal changes.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>
+      <strong>Natural Materials:</strong>
+      Wood, bamboo, paper, and stone are commonly used.
+    </li>
+    <li>
+      <strong>Sliding Doors (障子・襖):</strong>
+      Shoji and fusuma allow rooms to be reconfigured easily.
+    </li>
+    <li>
+      <strong>Tatami Flooring:</strong>
+      Straw mats define room size and provide comfort.
+    </li>
+    <li>
+      <strong>Engawa:</strong>
+      A wooden veranda that connects indoor and outdoor spaces.
+    </li>
+  </ul>
+
+  <div class="image-row">
+    <img src="Assets/House.webp" alt="Traditional Japanese house">
+    <img src="Assets/Tatamiiroom-interior.webp" alt="Tatami room interior">
+    <img src="Assets/temple.jpg" alt="Japanese temple architecture">
+  </div>
+
+  <!-- TEMPLES & SHRINES -->
+  <h3 class="mt-6 font-semibold text-lg">Temples and Shrines</h3>
+  <p class="mt-2">
+    Religious architecture plays a major role in Japanese landscapes.
+    Shinto shrines and Buddhist temples are often surrounded by forests,
+    symbolizing harmony between humans and nature.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Shinto Shrines:</strong> Marked by torii gates and natural settings</li>
+    <li><strong>Buddhist Temples:</strong> Feature pagodas, statues, and meditation halls</li>
+    <li><strong>Sacred Nature:</strong> Mountains, trees, and rivers are respected</li>
+  </ul>
+
+  <!-- MODERN ARCHITECTURE -->
+  <h3 class="mt-6 font-semibold text-lg">Modern Architecture and Urban Design</h3>
+  <p class="mt-2">
+    Modern Japan is known for advanced engineering and creative design.
+    Cities like Tokyo and Osaka combine high-rise buildings with traditional elements.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>Earthquake-resistant construction technology</li>
+    <li>Efficient use of small living spaces</li>
+    <li>Futuristic architecture alongside historic landmarks</li>
+  </ul>
+
+  <div class="image-row">
+    <img src="Assets/cityscrape.webp" alt="Tokyo modern cityscape">
+    <img src="Assets/skyscraper.webp" alt="Modern Japanese skyscrapers">
+    <img src="Assets/modern-architecture.webp" alt="Traditional and modern architecture in Japan">
+  </div>
+
+  <!-- ENVIRONMENT -->
+  <h3 class="mt-6 font-semibold text-lg">Nature and the Japanese Environment</h3>
+  <p class="mt-2">
+    Japan’s environment strongly influences its culture and architecture.
+    The country experiences four distinct seasons, frequent earthquakes,
+    and limited land space.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>Seasonal design changes (summer airflow, winter insulation)</li>
+    <li>Compact cities due to mountainous terrain</li>
+    <li>Strong disaster-prevention and eco-friendly practices</li>
+    <li>Parks, gardens, and green spaces within cities</li>
+  </ul>
+
+  <div class="image-row">
+    <img src="Assets/garden.jfif" alt="Japanese garden">
+    <img src="Assets/moun-fuji.jfif" alt="Mount Fuji nature">
+    <img src="Assets/greenery.webp" alt="Green spaces in Japanese cities">
+  </div>
+
+</section>
+
+
+<!-- POP CULTURE -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-4">Anime, Pop Culture & Technology</h2>
+
+  <p class="mb-4">
+    Modern Japanese culture is widely recognized through anime, manga, fashion,
+    music, and cutting-edge technology. These cultural elements have influenced
+    global entertainment, trends, and innovation.
+  </p>
+
+  <!-- ANIME & MANGA -->
+  <h3 class="mt-4 font-semibold text-lg">Anime and Manga</h3>
+  <p class="mt-2">
+    Anime (アニメ) and manga (漫画) are central to Japanese pop culture.
+    They cover a wide range of genres and are enjoyed by people of all ages.
+    Many anime are adapted from manga and reflect Japanese values, history,
+    and everyday life.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Popular Genres:</strong> Action, fantasy, romance, slice of life, sci-fi</li>
+    <li><strong>Famous Works:</strong> Naruto, One Piece, Attack on Titan, Doraemon</li>
+    <li><strong>Cultural Themes:</strong> Friendship, perseverance, honor, teamwork</li>
+  </ul>
+
+  <div class="image-row">
+    <img src="Assets/one-piece.jpg" alt="Japanese anime scene">
+    <img src="Assets/manga-goku.png" alt="Japanese manga books">
+    <img src="Assets/attack-on-titan.webp" alt="Popular anime characters">
+  </div>
+
+  <!-- FASHION & MUSIC -->
+  <h3 class="mt-6 font-semibold text-lg">Fashion and Music</h3>
+  <p class="mt-2">
+    Japanese pop culture strongly influences global fashion and music trends.
+    Styles range from traditional clothing to bold, experimental street fashion.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Street Fashion:</strong> Harajuku and Shibuya styles</li>
+    <li><strong>J-Pop:</strong> Popular music genre featuring idol groups and solo artists</li>
+    <li><strong>Visual Kei:</strong> Rock music style with dramatic fashion</li>
+  </ul>
+
+  <div class="image-row">
+    <img src="Assets/harajuku-street.webp" alt="Harajuku street fashion">
+    <img src="Assets/pop-idols.webp" alt="Japanese pop idols">
+    <img src="Assets/street-style.jfif" alt="Japanese street style">
+  </div>
+
+  <!-- GAMING & TECHNOLOGY -->
+  <h3 class="mt-6 font-semibold text-lg">Gaming and Technology</h3>
+  <p class="mt-2">
+    Japan is a global leader in video games, robotics, and electronic innovation.
+    Technology plays an important role in daily life, education, and entertainment.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Video Games:</strong> Nintendo, PlayStation, Sega</li>
+    <li><strong>Robotics:</strong> Service robots, humanoid robots</li>
+    <li><strong>Everyday Tech:</strong> High-speed trains, smart toilets, vending machines</li>
+  </ul>
+
+  <div class="image-row">
+    <img src="Assets/video-games.webp" alt="Japanese video games">
+    <img src="Assets/robotics.webp" alt="Robotics in Japan">
+    <img src="Assets/shinkansen-bullet-train.webp" alt="Shinkansen bullet train">
+  </div>
+
+  <!-- GLOBAL INFLUENCE -->
+  <h3 class="mt-6 font-semibold text-lg">Global Influence of Japanese Pop Culture</h3>
+  <p class="mt-2">
+    Japanese pop culture has spread worldwide through media, the internet,
+    and fan communities. Anime conventions, cosplay, and Japanese games
+    are popular across many countries.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>Anime conventions and cosplay events worldwide</li>
+    <li>Influence on global animation and storytelling</li>
+    <li>Japanese games and technology used globally</li>
+  </ul>
+
+</section>
+
+
+<!-- BELIEFS -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-4">Beliefs and Philosophy</h2>
+
+  <p class="mb-4">
+    Japanese beliefs and philosophy are shaped by a blend of religious traditions
+    and ethical systems. Rather than following one single religion, many people in
+    Japan practice elements of different beliefs in daily life.
+  </p>
+
+  <!-- SHINTO -->
+  <h3 class="mt-4 font-semibold text-lg">Shinto (神道)</h3>
+  <p class="mt-2">
+    Shinto is Japan’s indigenous belief system and focuses on harmony with nature
+    and respect for spirits called <em>kami</em>.
+    It emphasizes rituals, purification, and gratitude.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>Worship of <strong>kami</strong> (spirits found in nature)</li>
+    <li>Importance of cleanliness and purification rituals</li>
+    <li>Seasonal festivals and shrine visits</li>
+    <li>Connection between nature and daily life</li>
+  </ul>
+
+  <!-- BUDDHISM -->
+  <h3 class="mt-6 font-semibold text-lg">Buddhism (仏教)</h3>
+  <p class="mt-2">
+    Buddhism was introduced to Japan from China and Korea.
+    It focuses on understanding suffering, impermanence, and compassion.
+    Many Japanese funerals and memorial services follow Buddhist traditions.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>Beliefs in impermanence and rebirth</li>
+    <li>Practice of meditation and mindfulness</li>
+    <li>Zen Buddhism emphasizes simplicity and focus</li>
+    <li>Influence on art, gardens, and tea ceremony</li>
+  </ul>
+
+  <!-- CONFUCIANISM -->
+  <h3 class="mt-6 font-semibold text-lg">Confucianism (儒教)</h3>
+  <p class="mt-2">
+    Confucianism is a philosophy rather than a religion.
+    It strongly influenced Japanese society, especially ethics,
+    education, and social relationships.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>Respect for elders and authority</li>
+    <li>Importance of duty, loyalty, and responsibility</li>
+    <li>Emphasis on education and self-discipline</li>
+  </ul>
+
+  <!-- KEY PHILOSOPHICAL IDEAS -->
+  <h3 class="mt-6 font-semibold text-lg">Key Philosophical Concepts</h3>
+  <p class="mt-2">
+    Several unique philosophical ideas influence Japanese thinking and behavior.
+    These ideas guide social interactions and personal attitudes.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Wa (和):</strong> Harmony and peaceful cooperation</li>
+    <li><strong>Mono no aware (物の哀れ):</strong> Awareness of impermanence</li>
+    <li><strong>Giri (義理):</strong> Sense of duty and obligation</li>
+    <li><strong>Wabi-sabi (侘寂):</strong> Beauty in simplicity and imperfection</li>
+  </ul>
+
+</section>
+
+
+<!-- SOCIETY -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-4">Society and Education</h2>
+
+  <p class="mb-4">
+    Japanese society values respect, discipline, and harmony. Social behavior emphasizes
+    politeness, consideration for others, and cooperation. Education plays a key role
+    in teaching these values from an early age.
+  </p>
+
+  <!-- SOCIAL VALUES -->
+  <h3 class="mt-4 font-semibold text-lg">Social Values</h3>
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Politeness:</strong> Bowing, polite language, and respectful behavior</li>
+    <li><strong>Group Harmony (Wa):</strong> Cooperation and avoiding conflict</li>
+    <li><strong>Discipline:</strong> Punctuality, orderliness, and responsibility</li>
+    <li><strong>Respect for Authority:</strong> Teachers, elders, and workplace hierarchy</li>
+  </ul>
+
+  <!-- EDUCATION SYSTEM -->
+  <h3 class="mt-6 font-semibold text-lg">Education System</h3>
+  <p class="mt-2">
+    Education in Japan is structured and rigorous. Schools emphasize not only academics,
+    but also moral development, teamwork, and practical skills.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li><strong>Levels:</strong> Elementary (6 yrs) → Junior High (3 yrs) → High School (3 yrs) → University</li>
+    <li><strong>Uniforms:</strong> Most students wear school uniforms to promote equality</li>
+    <li><strong>Exams:</strong> Entrance exams determine advancement to high school and university</li>
+    <li><strong>Student Participation:</strong> Cleaning classrooms, school events, and club activities</li>
+  </ul>
+
+  <!-- DAILY LIFE & COMMUNITY -->
+  <h3 class="mt-6 font-semibold text-lg">Daily Life and Community</h3>
+  <p class="mt-2">
+    Students learn the importance of contributing to society. Volunteer work, teamwork,
+    and community involvement are encouraged. These habits continue into adult life.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 mt-3">
+    <li>School events build teamwork and leadership</li>
+    <li>Students participate in cleaning and maintaining school facilities</li>
+    <li>Clubs and extracurricular activities encourage skill development and friendships</li>
+    <li>Respect, responsibility, and community awareness are core life lessons</li>
+  </ul>
+
+  <div class="image-row mt-4">
+    <img src="Assets/school-building.jfif" alt="Japanese school building">
+    <img src="Assets/cleaning-classroom.jpg" alt="Students cleaning classroom">
+    <img src="Assets/club-activity.jfif" alt="Japanese students in club activity">
+  </div>
+
+</section>
+
+
+<!-- PRACTICAL TIPS -->
+<section class="section">
+  <h2 class="text-2xl font-bold mb-4">Practical Tips for Learners</h2>
+  <ul class="list-disc list-inside space-y-2">
+    <li>Use anime, songs, and media</li>
+    <li>Practice writing and speaking daily</li>
+    <li>Learn particles early</li>
+    <li>Use polite speech when unsure</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  © 2025 Japanese Learning
+</footer>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("mobileMenu");
+btn.onclick=()=>menu.style.display=menu.style.display==="block"?"none":"block";
+</script>
+
+</body>
+</html>
